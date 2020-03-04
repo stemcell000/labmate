@@ -22,7 +22,7 @@ class Item < ApplicationRecord
   belongs_to :location
   belongs_to :status
   belongs_to :currency
-  has_many :item_attachments, :dependent => :destroy
+  has_many :attachments, :dependent => :destroy
   
   accepts_nested_attributes_for :teams
   accepts_nested_attributes_for :users
@@ -31,7 +31,7 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :location
   accepts_nested_attributes_for :status
   accepts_nested_attributes_for :currency
-  accepts_nested_attributes_for :item_attachments, :allow_destroy => true
+  accepts_nested_attributes_for :attachments, :allow_destroy => true
   accepts_nested_attributes_for :occurances, :allow_destroy=>true, reject_if: :all_blank
   
   def check_manager(user_id)

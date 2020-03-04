@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :item_attachments
+  resources :attachments
 scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
   resources :days
   resources :occurances
@@ -12,7 +12,6 @@ scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     get :add_to_queue, on: :member
     patch :update_queue, on: :member
   end
-  resources :attachments
   resources :types
   resources :options
   resources :users, only: [:edit, :new, :create, :update] 

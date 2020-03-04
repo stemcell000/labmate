@@ -60,18 +60,21 @@
 					<strong>Folder : </strong><%= @folder_number%>
 				</div>
 			</div>
-	<% unless @item.item_attachments.empty? %>
+	
 		<hr />
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12">
 					<strong>Attached file(s): </strong><br />
-						<% @item.item_attachments.each do |item_attachment|%>
-							<%= link_to File.basename(item_attachment.attachment.path), item_attachment.attachment.to_s, :target => "_blank"%><br />
-							<%= a.doc_type%>
+					<% unless @item.attachments.empty? %>
+						<% @item.attachments.each do |attachment|%>
+							<%= link_to File.basename(attachment.attachment.path), attachment.attachment.to_s, :target => "_blank"%><br />
 						<%end%>
+					<%else%>
+						<em>No file attached</em>
+					<%end%>
 				</div>
 			</div>
-	<%end%>
+	
 			
 	<% unless (current_user.teams.ids & @item.teams.ids).empty? %>
 	<hr />

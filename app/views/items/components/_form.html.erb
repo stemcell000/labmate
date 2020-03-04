@@ -85,26 +85,27 @@
 					<%= f.input :comment, label: "Comment" %> 
 				</div>
 			</div>	
-<div class="row">
-    			<h3>Attachements</h3>
-  		</div>
-<div class="row">		
-			<div id="file_container" class="col-lg-12">
-				<%= f.simple_fields_for :item_attachments do |ff| %>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+			<h3 class="panel-title">Events</h3>
+	</div>
+	<div class="panel-body">			
+		<div id="events_container" class="col-lg-12">
+				<%= f.simple_fields_for :attachments do |ff| %>
 					<div class="row">	
 						<div class="col-lg-12 vcenter">
 								<%= File.basename(ff.object.attachment.to_s)%>
+								<%= ff.input_field :doc_type %>
 					       		<%= ff.input_field :attachment, :as => :file, :title => "Search for a file to add", :multiple => true%>
 					       		<%= ff.link_to_remove "remove"%>
 						</div>
 					</div>
 				<% end %>
-						<%= f.link_to_add "Add a file", :item_attachments, :class => "btn btn-xs btn-primary" %>
+						<%= f.link_to_add "Add a file", :attachments, :class => "btn btn-xs btn-primary" %>
 						
 			</div>
 	  </div>
 	</div>
-	</small>
 	</div>	
 <div class="panel panel-success">
 	<div class="panel-heading">
@@ -162,7 +163,8 @@
 			</div>
 	</div>
 </div>
-	
+</small>
+	</div>
 <%if can? :crud, Item%>	
 	<div class="row">
 			<div class="col-md-12">
@@ -172,7 +174,6 @@
 		        	<%= link_to "Back to inventory", :back, :class => "btn btn-default" %>
 <%end%>
 <%end%>
-		        	<%= link_to "Print label", print_label_items_path(:id => @item.id), :class => "btn btn-default", method: :post, remote: true, title: "Print label"%>
 		    </div>
 		</div>
 	
