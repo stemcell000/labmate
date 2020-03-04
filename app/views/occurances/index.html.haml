@@ -1,0 +1,27 @@
+%h1 Listing occurances
+
+%table
+  %thead
+    %tr
+      %th Item
+      %th Name
+      %th Comment
+      %th Done
+      %th
+      %th
+      %th
+
+  %tbody
+    - @occurances.each do |occurance|
+      %tr
+        %td= occurance.item_id
+        %td= occurance.name
+        %td= occurance.comment
+        %td= occurance.done
+        %td= link_to 'Show', occurance
+        %td= link_to 'Edit', edit_occurance_path(occurance)
+        %td= link_to 'Destroy', occurance, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Occurance', new_occurance_path

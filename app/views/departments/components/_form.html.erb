@@ -1,0 +1,21 @@
+<td colspan="12">
+	<%= simple_nested_form_for( @department, remote: true) do |f|  %>
+		<%= f.error_notification %>
+		<ul class="errors"></ul>
+			
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<%= f.input :name%>
+				</div>
+			</div>
+</small>	
+	<div class="row">
+		<div class="btn-group" role="group" aria-label="...">
+			<div class="col-md-12">
+					<%= f.submit "Save", :class => "btn btn-primary" %>
+		        		<%= link_to "Cancel", :back, :class => "btn btn-default btn-sm", :remote => true %>
+	        </div>
+		</div>
+	</div>
+<%end%>
+</td>

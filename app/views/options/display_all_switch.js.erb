@@ -1,0 +1,5 @@
+console.debug('checkbox submitting');
+$('#display-container').html("<%= escape_javascript( render :partial => "items/toggle_display" , :locals => { :option => @option }) %>");
+console.debug('refreshing checkbox');
+$('#item_search').submit();
+console.debug('refreshing search');

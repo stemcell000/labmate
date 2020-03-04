@@ -1,0 +1,15 @@
+current directory: /Users/marc/ws/labmate/vendor/ruby/2.5.0/gems/debug_inspector-0.0.3/ext/debug_inspector
+/Users/marc/.rvm/rubies/ruby-2.5.7/bin/ruby -I /Users/marc/.rvm/rubies/ruby-2.5.7/lib/ruby/site_ruby/2.5.0 -r ./siteconf20200224-65917-1k2mypr.rb extconf.rb
+creating Makefile
+
+current directory: /Users/marc/ws/labmate/vendor/ruby/2.5.0/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR=" clean
+
+current directory: /Users/marc/ws/labmate/vendor/ruby/2.5.0/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR="
+compiling debug_inspector.c
+linking shared-object debug_inspector.bundle
+
+current directory: /Users/marc/ws/labmate/vendor/ruby/2.5.0/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 debug_inspector.bundle ./.gem.20200224-65917-g6fdws

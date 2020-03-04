@@ -1,0 +1,120 @@
+<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-3">
+					<strong>Barcode : </strong><%= item.barcode.nil? ? '-' : item.barcode %>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-5">
+					<strong>Name : <span class=" text-primary"><%= item.name.nil? ? '-' : item.name %></strong></span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-5 col-md-5 col-sm-5">
+					<strong><%= item.teams.nil? ? 'Team':'Team'.pluralize(item.teams.count) %> : </strong> <%=item.teams.nil? ? '-' : item.teams.map{|t| t.name}.to_sentence %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-md-3">
+					<strong> Serial number : </strong><%= item.serial_number.nil? ? '-': item.serial_number %>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-2">
+					<strong> date : </strong><%= item.installation_date.nil? ? '-' : item.installation_date.strftime('%b %e, %Y')%>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-4">
+					<strong>Location : </strong><%= item.location.nil? ? '-' : item.location.name %>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-3">
+					<strong><%='Contact'.pluralize(item.users.count)+' : '%></strong><%=item.users.nil? ? 'None' : item.users.map{|u| "<a href = 'mailto:#{u.email}'>#{u.full_name}</a>".html_safe}.to_sentence %>
+				</div>
+			</div>
+			<hr />
+			<div class="row">
+				<div class="col-lg-4 col-md-4 col-md-4">
+					<strong>Provider : </strong> <%= item.provider.nil? ? '-' : item.provider.name%>
+				</div>
+				<div class="col-lg-4 col-md-4 col-md-4">
+					<strong>Brand : </strong><%= item.brand.blank? ? '-' : item.brand.name%>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-8 col-md-8 col-sm-8">
+					<strong>Category : </strong> <%= item.category.nil? ? '-' : item.category.name%>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-3">
+					<strong>Status : </strong><%= item.status.nil? ? '-' : item.status.name%>
+				</div>
+			</div>
+			<hr />
+			
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-3">
+					<strong>Owner : </strong><%=item.owner.blank? ? '-' : item.owner.name %>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-3">
+					<strong>Owner inventory ID : </strong><%= item.owner_inventory.blank? ? '-' : item.owner_inventory %>
+				</div>
+				<div class="col-md-3 col-md-3 col-sm-3">
+					<strong>Folder : </strong><%= item.folder.blank? ? '-' : item.folder %>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-3">
+					<strong>Price : </strong><%= item.price == 0 ? '-' : item.price.to_s %> <%= item.price == 0 ? '' : item.currency.name %>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-3">
+					<strong>Residue : </strong><%=  item.residue .nil? ? '-' : item.residue.to_s %> <%item.residue == 0 ? '' : item.currency.name%>
+				</div>
+				<div class="col-lg-2 col-md-2 col-sm-3">
+					<strong>Donation : </strong><%= item.donation.nil? ? '-' : to_yesorno(item.donation) %>
+				</div>
+			</div>
+			<hr />
+			<div class="row">
+				<div class="col-lg-5 col-md-5 col-sm-5">
+					<strong>Current maintenance contract : </strong><%= item.contracts.where('end_date <=?', DateTime.now).last.nil? ? '-' : item.contracts.where('end_date <=?', DateTime.now).last %>
+				</div>
+			</div>
+			<hr />
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-3">
+					<strong>Order : </strong><%= item.order.nil? ? '-' : item.order %>
+				</div>
+				<div class="col-lg-5 col-md-5 col-sm-5">
+					<strong>Order note: </strong><%= item.order_note.nil? ? '-': item.order_note %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-3">
+					<strong>Invoice : </strong><%= item.invoice.nil? ? '-': item.invoice %>
+				</div>
+				<div class="col-lg-5 col-md-5 col-sm-5">
+					<strong>Invoice note: </strong><%= item.invoice_note.nil? ? '-': item.invoice_note %>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<strong>Comment : </strong><%= item.comment.blank? ? '-' : item.comment %> 
+				</div>
+			</div>	
+<%unless item.occurances.empty?%>			
+<div class="row">
+		<table class="table table-small table-hover table-bordered">
+			<%  item.occurances.each do |e| %>
+			<tr>
+				<th>Event's name</th>
+				<th>Status</th>
+				<th>Comment</th>
+				<th>Dates</th>
+			</tr>
+			<tr>
+				<td><%= e.name %></td>
+				<td><%= e.done.nil? ? "NC":(e.done? ? "Done" : "Not done") %></td>
+				<td><%= e.comment %></td>
+				<td><%= e.days.pluck(:date).to_sentence %></td>
+			</tr>
+			<%end%>
+		</table>
+	</div>
+<%end%>
+

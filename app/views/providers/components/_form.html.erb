@@ -1,0 +1,36 @@
+<small>
+<%= simple_nested_form_for( @provider, html: { class: 'form-vertical' }) do |f|  %>
+		<%= f.error_notification %>
+		<ul class="errors"></ul>
+		<div class="container">	
+			<div class="row">
+				<div class="col-lg-2 col-md-4 col-sm-4">
+					<%= f.input :name%>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-6">
+					<%= f.input :address%>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 col-md-4 col-sm-4">
+					<%= f.input :email%>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-3">
+					<%= f.input :tel, label: 'Phone number'%>
+				</div>
+			</div>
+</small>	
+	<div class="row">
+		<div class="btn-group" role="group" aria-label="...">
+			<div class="col-md-12">
+					<%= f.submit "Save", :class => "btn btn-primary" %>
+					<%= link_to "Cancel", :back, :class => "btn btn-default" %>
+	        </div>
+		</div>
+	</div>
+	</div>
+<%end%>

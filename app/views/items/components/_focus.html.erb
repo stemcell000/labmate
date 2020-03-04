@@ -1,0 +1,62 @@
+	<small>	
+		<div class="form-group row">
+			
+				<div class="col-lg-6 col-md-6">
+					<%= f.label t('global.menu.teams')%>
+						<%= f.select :teams_id_in, @teams, {:include_blank => " "}, {:class => "select2-select"}%>
+				</div>
+				
+				<div class="col-md-6">
+					<%= f.label 'Contact'%>
+					<%= f.select( :users_id_in, @users, {include_blank: " "}, {:class => "select2-select"} ) %>
+				</div>
+				
+		</div>
+		
+		<h6> <strong>Installation date</strong></h6>
+		
+		<div class="form-group row">
+			
+				<div class="col-md-5 col-sm-4" >
+						<%= f.search_field :installation_date_gteq, value: @installation_date_date_gteq_with_proper_format, 'data-behaviour' => 'datepicker', placeholder: "Starting date", class: "col-md-12"%>
+				</div>
+			
+				<div class="col-md-5 col-sm-4" >
+						<%= f.search_field :installation_date_gteq, value: @installation_date_date_lteq_with_proper_format, 'data-behaviour' => 'datepicker', input_html: { class: "datepicker"}, placeholder: "Ending date", class: "col-md-12" %>
+				</div>
+		</div>
+		
+		<div class="form-group row">
+				<div class="col-lg-6 col-md-6">
+					<%= f.label 'Category'%>
+					<%= f.select(:category_id_in, @categories, {include_blank: " "}, {:class => "select2-select"})%>
+				</div>
+
+				<div class="col-lg-4 col-md-4">
+					<%= f.label 'Location'%>
+					<%= f.select(:location_id_in, @locations, {include_blank: " "}, {:class => "select2-select"})%>
+				</div>
+		</div>
+		
+		<div class="form-group row">
+				<div class="col-md-6">
+					<%= f.label 'Provider'%>
+					<%= f.select(:provider_id_in, @providers, {include_blank: " "}, {:class => "select2-select"})%>
+				</div>
+				<div class="col-md-6">
+					<%= f.label 'Brand'%>
+					<%= f.select(:brand_id_in, @brands, {include_blank: " "}, {:class => "select2-select"})%>
+				</div>
+		</div>
+			
+		<div class="form-group row">
+				<div class="col-md-6">
+					<%= f.label 'Owner'%>
+					<%= f.select(:owner_id_in, @owners, {include_blank: " "}, {:class => "select2-select"})%>
+				</div>
+				<div class="col-md-6">
+					<%= f.label 'Status'%>
+					<%= f.select(:status_id_in, @statuses, {include_blank: " "}, {:class => "select2-select"})%>
+				</div>
+		</div>
+	</small>

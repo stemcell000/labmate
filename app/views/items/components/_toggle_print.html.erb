@@ -1,0 +1,3 @@
+<%= simple_nested_form_for object, url: toggle_queue_items_path,  html: { class: 'form-inline' }, :remote=> true do |f| %>
+  					<%= f.input :queue_toggle, :as => :boolean, :label =>false, :input_html => {:onclick => "$('#item_add_to_queue*').submit();"}%>
+<%end%>

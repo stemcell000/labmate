@@ -1,0 +1,178 @@
+<%= simple_nested_form_for @item, html: {:multipart => true} do |f| %>
+	<% unless @item.new_record? %>	
+		<%barcode = @item.id %>
+	<%end%>
+		<%= f.error_notification %>
+<div class="panel panel-default">
+	  <div class="panel-heading">
+    			<h3 class="panel-title">Main</h3>
+  		</div>
+  		<div class="panel-body">
+	<small>
+		<ul class="errors"></ul>
+					<%= f.input :id, :as => :hidden %>
+
+				
+				<div class="col-lg-4 col-md-4 col-sm-4">
+					<%= f.input :name %>
+				</div>
+				<div class="col-lg-5 col-md-5 col-sm-5">
+					<%= f.association :teams, label: "Team", collection: @teams, input_html: { class:"select2-select"} %>
+				</div>
+			<div class="row">
+				<div class="col-lg-3 col-md-4 col-md-4">
+					<%= f.input :serial_number, label: "Serial number" %>
+				</div>
+				<div class="col-lg-2 col-md-2 col-sm-2">
+					<%= f.input :installation_date, :label => "Installation on:", as: :string, input_html: { class: "datepicker"} %>
+				</div>
+				<div class="col-lg-2 col-md-3 col-sm-4">
+					<%= f.association :location, label: "Location", collection: @locations, input_html: { class:"select2-select"} %>
+				</div>
+				<div class="col-lg-4 col-md-3 col-sm-3">
+					<%= f.association :users, label: "Contact", collection: @users, input_html: { class:"select2-select" } %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 col-md-4 col-md-4">
+					<%= f.association :provider, label: "Provider", collection: @providers, input_html: { class: "select2-select"} %>
+				</div>
+				<div class="col-lg-4 col-md-4 col-md-4">
+					<%= f.association :brand, label: "Brand", collection: @brands, input_html: { class: "select2-select"} %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-8 col-md-8 col-sm-8">
+					<%= f.association :category, label: "Category", collection: @categories, input_html: { class:"select2-select" } %>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-3">
+					<%= f.association :status, label: "Status", collection: @statuses, input_html: { class:"select2-select" } %>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-3">
+					<%= f.association :owner, label: "Owner", collection: @owners, input_html: { class:"select2-select" } %>
+				</div>
+				<div class="col-lg-2 col-md-2 col-sm-2">
+					<%= f.input :owner_inventory, label: "Owner ID"%>
+				</div>
+				<div class="col-md-3 col-md-3 col-sm-3">
+					<%= f.input :folder, label: "Folder #" %>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-3">
+					<%= f.input :price, label: "Price" %> 
+				</div>
+				<div class="col-lg-2 col-md-2 col-sm-2">
+					<%= f.association :currency, label: "Currency", collection: @currencies, input_html: { class:"select2-select col-lg-12" }%>
+				</div>
+				<div class="col-lg-2 col-md-2 col-sm-3">
+					<%= f.label "Donation" %>
+					<%= f.select(:donation, [['Yes', true], ['No', false]], {:include_blank => " "}, { class:"select2-select col-lg-12 col-md-12 col-sm-12" })%>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-5 col-md-5 col-sm-5">
+					<%= f.association :contracts, label: "Maintenance contract", collection: @contracts, input_html: { class:"select2-select col-lg-12" }%>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<%= f.input :comment, label: "Comment" %> 
+				</div>
+			</div>	
+<div class="row">
+    			<h3>Attachements</h3>
+  		</div>
+<div class="row">		
+			<div id="file_container" class="col-lg-12">
+				<%= f.simple_fields_for :item_attachments do |ff| %>
+					<div class="row">	
+						<div class="col-lg-12 vcenter">
+								<%= File.basename(ff.object.attachment.to_s)%>
+					       		<%= ff.input_field :attachment, :as => :file, :title => "Search for a file to add", :multiple => true%>
+					       		<%= ff.link_to_remove "remove"%>
+						</div>
+					</div>
+				<% end %>
+						<%= f.link_to_add "Add a file", :item_attachments, :class => "btn btn-xs btn-primary" %>
+						
+			</div>
+	  </div>
+	</div>
+	</small>
+	</div>	
+<div class="panel panel-success">
+	<div class="panel-heading">
+			<h3 class="panel-title">Events</h3>
+	</div>
+	<div class="panel-body">			
+		<div id="events_container" class="col-lg-12">
+				<%= f.simple_fields_for :occurances do |ff| %>
+			<div class="panel panel-default">
+				<div class="panel panel-body">
+					<div class="row">
+						<div class="col-lg-5 col-md-5 col-sm-5">
+							<%=ff.input :name%>
+							<%=ff.input :done, label: "Task done ",
+								as: :select, 
+								collection: [['No',false], ['Yes',true]],
+								input_html: { class: "select2-select"},
+								 include_blank: true%>
+							<%=ff.input :comment%>
+					</div>
+			<div class="col-lg-6 col-md-6 col-sm-6">
+				
+				<div class="panel panel-default">
+						
+						<div class="panel panel-body">
+				
+						<%= ff.simple_fields_for :days do |fff| %>
+							<div class="row">
+								<div class="col-lg-9 col-md-9 col-sm-9 vcenter">
+									<%= fff.input :date, :label => "Date :", as: :string, input_html: { class: "datepicker"} %>
+								</div>
+								<div class="col-lg-2 col-md-2 col-sm-2 vcenter">
+									<%= fff.link_to_remove "<span class='fa fa-times'></span>".html_safe%>
+								</div>
+							</div>
+					<%end%>
+					<div class="row">
+						<div class="col-lg-12">
+							<%= ff.link_to_add "New date", :days, :class => "btn btn-xs btn-default" %>
+						</div>
+					</div>
+						</div>
+					</div>
+				</div>
+				</div>
+				<div class="row pull-right">
+					<div class="col-lg-12">
+						<%= ff.link_to_remove "remove event", :class => "btn btn-xs btn-danger"%>
+					</div>
+				</div>
+				<%end%>
+				</div>
+			</div>
+				<%= f.link_to_add "Add an event", :occurances, :class => "btn btn-xs btn-success" %>
+			</div>
+	</div>
+</div>
+	
+<%if can? :crud, Item%>	
+	<div class="row">
+			<div class="col-md-12">
+				<% if can? :cru, @item %>
+					<%= f.submit "Save", :class => "btn btn-primary" %>
+		        	<%end%>
+		        	<%= link_to "Back to inventory", :back, :class => "btn btn-default" %>
+<%end%>
+<%end%>
+		        	<%= link_to "Print label", print_label_items_path(:id => @item.id), :class => "btn btn-default", method: :post, remote: true, title: "Print label"%>
+		    </div>
+		</div>
+	

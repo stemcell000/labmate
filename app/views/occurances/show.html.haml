@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Item:
+  = @occurance.item_id
+%p
+  %b Name:
+  = @occurance.name
+%p
+  %b Comment:
+  = @occurance.comment
+%p
+  %b Done:
+  = @occurance.done
+
+= link_to 'Edit', edit_occurance_path(@occurance)
+\|
+= link_to 'Back', occurances_path

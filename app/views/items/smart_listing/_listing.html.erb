@@ -1,0 +1,27 @@
+  <table class="table table-hover">
+    <thead>
+	      <tr>
+			<th class="col-lg-1 center">
+				<%= smart_listing.sortable "Barcode", :id %>
+			</th>
+	        <th class="col-lg-4 col-sm-5 col-md-5" ><%= smart_listing.sortable "Name", :name %></th>
+	        <th class="col-lg-2 col-sm-2 col-md-2" >Category</th>
+			<th class="col-lg-2 col-sm-2 col-md-2" >Team</th>
+			<th class="col-lg-2 col-sm-2 col-md-2" ></th>
+	      </tr>
+    </thead>
+    <tbody>
+    	<% unless smart_listing.empty? %>  
+      <% smart_listing.collection.each do |item| %>
+        <tr class="editable <%=set_item_row_color(current_user, item)%>" data-id = "<%= item.id %>">
+         	<%= smart_listing.render item: item, partial: "items/smart_listing/item", locals: {object: item} %>
+        </tr>
+      <% end %>
+	<% end %>
+	   	<%= smart_listing.item_new colspan: 12, link: new_item_path(:item), class: "btn btn-primary" %>
+    </tbody>
+  </table>
+  <%= smart_listing.paginate %>
+  <%= smart_listing.pagination_per_page_links %>
+
+

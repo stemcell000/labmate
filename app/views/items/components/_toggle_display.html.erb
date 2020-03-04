@@ -1,0 +1,7 @@
+		<%= simple_nested_form_for @option, url: display_all_switch_option_path(@option),  html: { class: 'form-inline' }, :remote=> true do |f| %>
+			<div class="form-group">
+				<div class=" pull-right">
+		  				<div class= "row">My team's inventory only <%= f.input :display_all, :as => :boolean, :label =>false, :input_html => {:onclick => "$('#option_display_all*').submit();"}%></div>
+		  		</div>
+	  		</div>
+		<%end%>

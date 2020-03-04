@@ -1,0 +1,25 @@
+<%= simple_form_for @organization, html: {class: 'vertical-form'} do |f| %>
+		<%= f.error_notification %>
+	<small>	
+		
+		<%= f.input :id, :as => :hidden %>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<%= f.input :name %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-2 col-md-2 col-sm-3">
+					<%= f.input :acronym, maxlength: 4  %>
+				</div>
+			</div>
+	</small>
+<%if can? :crud, Organization%>	
+	<div class="row">
+			<div class="col-md-12">
+				<%= f.submit "Save", :class => "btn btn-primary" %>
+		        	<%= link_to "Cancel", organizations_path, :class => "btn btn-default btn-sm" %>
+	        </div>
+		</div>
+<%end%>
+<%end%>

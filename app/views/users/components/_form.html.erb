@@ -1,0 +1,116 @@
+
+<%= simple_form_for @user, remote: false do |f| %>
+    <%= f.error_notification %>
+    <div class="container">
+   <div class="row">
+   		<div class="col-md-5 col-sm-4">
+    			<%=f.input :firstname, label: "Firstname"%>
+   	 	</div>
+   	 	<div class="col-md-5 col-sm-4">
+    			<%=f.input :lastname, label: "Lastname"%>
+    		</div>
+  </div>
+  <% if ['superadmin', 'administrator'].include? current_user.role %>
+   <div class="row">
+   		<div class="col-md-12 col-sm-12">
+    			<%= f.association :teams, label:"Team(s)",
+												label_method: lambda { |team| "#{team.name}"},
+												prompt: 'Select a team.',
+												disabled: !isAdmin,
+												input_html:  {class: "select2-select"},
+												include_blank: false,
+												include_hidden: false
+												 %>
+		</div>
+  </div>
+<%end%>
+  <div class="row">
+		<div class="col-lg-5 col-md-5 col-sm-4">
+    			<%= f.input :email, label: "E-mail"%>
+    			<%= f.input :tel1, label: "Tel1"%>
+    			<%= f.input :tel2, label: "Tel2"%>
+    		</div>
+  </div>
+ <% if ['superadmin', 'administrator'].include? current_user.role %> 
+   <div class="row">
+   		<div class="col-md-12 col-sm-12">
+   			<%= f.association :positions, :label => "Position",
+												label_method: lambda { |position| "#{position.name}"},
+												prompt: 'Select a position.',
+												disabled: !isManager,
+												input_html: {class: "select2-select"},
+												include_blank: false,
+												include_hidden: false
+												%>
+		</div>
+  </div>
+  <%end%>
+    <div class="row">
+  		<div class="col-md-5 col-sm-4">
+   			<%= f.association :location, :label => "Location",
+												label_method: lambda { |location| "#{location.name}"},
+												value_method: :id,
+												prompt: 'Select a location.',
+												input_html: {class: "select2-select"},
+												include_blank: false,
+												include_hidden: false
+												%>
+		</div>
+  </div>
+  
+  <% roles_list = [["superadmin", "Superadmin"],
+      ["administrator", "Administrator"],
+      ["HR_administrator", "HR administrator"],
+      ["inventory_manager", "Inventory manager"],
+      ["team_leader" , "Team leader"],
+      ["guest" , "Guest"],
+      ["user" , "User"]
+      ]%>
+  <% if ['superadmin'].include? current_user.role
+      roles_list = roles_list
+  elsif ['administrator', 'HR_administrator'].include? current_user.role
+      roles_list = roles_list.slice(1, 2)
+  elsif ['inventory_manager'].include? current_user.role
+  	roles_list = roles_list.slice(1, 2, 3)
+  end %>
+   
+ <div class="row">
+		<div class="col-md-6 col-lg-6 col-sm-6">
+		  	<%= f.input :role,
+		  	:collection => roles_list,
+			label_method: :second, value_method: :first,
+		  	required: true, 
+		  	input_html:  {class: "select2-select"},
+		  	disabled: !isManager %>
+		  	
+		  	<%= f.input :role, :collection => @roles,
+		  	 label_method: :second, value_method: :first,
+		  	as: :hidden %>
+  		</div>
+ </div>
+ 
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<%= !Item.new ? "Enter password" : "Change password" %>
+	</div>
+	<div class="panel-body">
+	<div class="col-lg-4 col-md-4 col-sm-4">
+  		<%= f.label 'Password'%><br />
+  		<% if @minimum_password_length %>
+  				<em>(<%= @minimum_password_length %> characters minimum)</em>
+  		<% end %>
+	    <%= f.input :password , label: false %>
+    		<%= f.input :password_confirmation %>
+    	</div>
+  </div>
+  </div>
+
+  <div class="row">
+  	<div class="btn-group">
+    <%= f.submit "Save", :class => "btn btn-default" %>
+    <%= link_to 'Back', users_path, :class => "btn btn-default" %>
+    </div>
+  </div>
+  </div>
+<% end %>
+

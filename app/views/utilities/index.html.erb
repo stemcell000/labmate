@@ -1,0 +1,15 @@
+<h4>Organization</h4>
+<div class="row">
+	<div class="col-lg-7 offset-lg-2">
+		<%= render "organizations/show", locals: {id: Organization.first.id, name: Organization.first.name}%>
+	</div>
+</div>
+<h4>Departments</h4>
+<div class="row">
+	<div class="col-lg-7 offset-lg-2">
+		<%= smart_listing_render :departments %>
+	</div>
+</div>
+<h4>Teams</h4>
+
+<h4>Users</h4>

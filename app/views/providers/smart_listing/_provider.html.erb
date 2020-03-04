@@ -1,0 +1,23 @@
+<td class="col-lg-10 col-md-10 col-sm-10"><small><%= object.name.nil? ? "unknown" : object.name %></small></td>
+<td class="col-lg-2 col-md-10 col-sm-10 actions">
+<%if isManager %>	
+	<%= smart_listing_item_actions [
+		{name: :custom,    url: edit_provider_path(object),
+	  		method: :get, 
+  			icon: 'fa fa-pencil-square-o', 
+  			title: "Edit"}]%>
+<%end%>
+<%if isAdmin %>
+<%= smart_listing_item_actions [
+  			{name: :destroy, url: provider_path(object), title: "Destroy",
+			confirmation: "Are you sure you want to delete this?",
+			placement:"left"}]%>
+<%end%>
+	<%= smart_listing_item_actions [
+		{name: :custom,    url: provider_path(object),
+	  		method: :get, 
+  			icon: 'fa_icon fa fa-eye', 
+  			title: "Show info"}]%>
+<%end%>
+
+ </td>

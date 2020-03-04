@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Organization</h1>
+
+<% if Organization.first.nil? %>
+	<%= link_to 'New Organization', new_organization_path %>
+<%else%>
+<div class="row">
+	<div class="col-lg-7 offset-lg-2">
+		<%= render "organizations/show"%>
+	</div>
+</div>
+<%end%>
+

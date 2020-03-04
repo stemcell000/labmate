@@ -1,0 +1,101 @@
+<td><%= object.barcode %></td>
+<td><%= object.name %></td>
+<td><small><%= object.category.nil? ? "unknown" : object.category.acronym %></small></td>
+<td><small><%= object.teams.pluck(:name).to_sentence %></small></td>
+
+<td class="actions">
+	<!--Item panel-->
+ <a class= "card" tabindex="0" data-toggle="popover" data-trigger="focus" data-placement="left"
+			title='
+				<div class="row"> 
+					<div class="col-lg-12 text-left font-primary">
+						<strong><%=object.name%></strong>
+					</div>
+				</div>
+				<div class="row"> 
+					<div class="col-lg-12 text-left font-primary">
+						<strong><%=object.barcode%></strong>
+					</div>
+				</div>
+				'
+				data-content ='
+					<%= object.recap %>
+			<% if can? :manage, object %>
+					<%= object.recap_conf %>	
+			<%end%>
+					<% unless object.item_attachments.empty? %>
+						<div class="row">
+							<strong>note : </strong><br />
+							<%object.item_attachments.each do |o|%>
+								<%= link_to o.doc_type.nil? ? o.attachment.to_s : o.doc_type, File.basename(o.attachment.to_s), :target => "_blank" %><br />
+							<%end%>
+						</div>
+					<%end%>
+							'
+		>
+			<span class="fa_icon fa fa-eye"></span>
+	</a>	
+	<!--user panel-->
+	<a class= "card" tabindex="0" data-toggle="popover" data-trigger="focus" data-placement="left"
+			title='
+				<div class="row"> 
+					<div class="col-lg-12 text-left font-primary">
+						<strong>Contact</strong>
+					</div>
+				</div>
+			'
+				data-content ='
+					<% object.users.each do |u| %>
+						<%= u.recap %><br />
+					<%end%>
+					'
+			>
+			
+			<% if object.users.empty? %>
+				<span class = "fa fa-user-slash text-danger"></span>
+			<%else%>
+				<span class= "<%= object.users.where(id: current_user.id).exists? ? 'fa fa-user text-success':'fa fa-user'%>"></span>
+			<%end%>
+			
+			<% unless object.teams.merge(current_user.teams).empty? %>
+				<% if Contract.any? {|contract| contract.categories.include? object.category } %>
+					<span class="'fa fa-user text-success'"></span>
+				<%end%>
+			<%end%>
+	</a>
+	
+	<!---->
+	<%= smart_listing_item_actions [
+  	  		{name: :custom,    url: item_path(object),
+  			icon: 'fas fa-digital-tachograph', 
+  			title: "Show item"}]%>
+	<% unless (current_user.teams.ids & object.teams.ids).empty? %>
+		<%= smart_listing_item_actions [
+  	  		{name: :custom,    url: item_path(object),
+	  		method: :get, 
+  			icon: 'far fa-sticky-note', 
+  			title: "Show item"}]%>
+	<% if ["inventory manager", "superadmin", "administrator"].include? current_user.role %>
+	  	<%= smart_listing_item_actions [
+  	  		{name: :custom,    url: edit_item_path(object),
+	  		method: :get, 
+  			icon: 'fa fa-pencil-square-o', 
+  			title: "Edit item"}]%>
+  	  	<% if object.status_id == 5%>
+		<span class="fas fa-trash-alt text-danger"></span>
+		<%end%>
+	<%end%>
+	<% end %>
+	
+	<!---->
+	<% if current_user.items.include? object %>
+	<% if ["user"].include? current_user.role %>
+	  	<%= smart_listing_item_actions [
+  	  			{name: :custom,    url: edit_item_path(object),
+	  		method: :get, 
+  			icon: 'fa fa-pencil-square-o', 
+  			title: "Edit item"}]%>
+	<%end%>
+	<% end %>
+	<!---->
+</td>

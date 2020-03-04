@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+	<h2>Contacts</h2>
+</div>
+<div class="row">
+	<div class="col-lg-12 col-md-12 col-sm-12">
+		<%= render 'users/components/search' %>
+		<div id="display-container" class="col-lg-3 pull-right">
+				<%= render :partial => "users/components/toggle_display", :locals => { :option => @option } %>	
+		</div>
+	</div>
+</div>
+<%if can? :create, User %>
+<div class="row">
+	<div class="col-lg-12 col-md-12 col-sm-12">
+		<%= link_to 'New user', new_user_path, class: "btn btn-default" %>
+	</div>
+</div>
+<%end%>
+<div class="row">
+	<div class="col-lg-12 col-md-12 col-sm-12">
+		<%= smart_listing_render(:users) %>
+	</div>
+</div>

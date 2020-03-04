@@ -1,0 +1,12 @@
+<td ><small><%= object.acronym%></small></td>
+<td ><small><%= object.name%></small></td>
+<td ><small><%= object.department.name unless object.department.nil?%></small></td>
+<td ><small><%= object.type.name unless object.type.nil? %></small></td>
+<td class="actions">
+<%if can? :manage, :all %>
+	<%= smart_listing_item_actions [
+	  	{name: :edit,    url: edit_team_path(object), title: "Edit"},
+		{name: :destroy, url: team_path(object), title: "Destroy", :confirmation => "Are you sure you want to delete this?"}
+		]%>
+	<%end%>
+</td>

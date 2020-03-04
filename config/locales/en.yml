@@ -1,0 +1,25 @@
+en:
+  global:
+    search_any_term: "Search any term"
+    fine_search: "Fine search"
+    menu:
+      inventory: "Inventory"
+      maintenance: "Maintenance"
+      organization: "Organization"
+      department: "Departments"
+      team: "Team(s)"
+      user: "User directory"
+      utilities: "Utilities"
+      language: "Language"
+      brands: "Brands"
+      providers: "Providers"
+      brand: 'brand'
+      provider: 'provider'
+      sign_in_as: "Sign-in as"
+      status: "Status"
+      installation date: "Installation date"
+      starting_date: "Start"
+      ending_date: "End"
+      category: "Category"
+      location: "Location"
+      owner: "Owner"

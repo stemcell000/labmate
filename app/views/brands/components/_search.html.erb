@@ -1,0 +1,15 @@
+<%= search_form_for @q, :url => brands_path, :remote => true do |f| %>
+<div class="form-group row">
+	<div class="col_lg_12 col-md-12 col-sm-12">
+	  	<%= f.search_field :name_has_any_term, class: "col-md-9", placeholder: t('global.search_any_term') %>
+	</div>	
+</div>
+			<div class="form-row">
+				<div class="col-lg-4 col-md-4 col-sm-4 pull-right">
+					<div class="form-group">
+		  				<%= f.submit class:"btn btn-default" %>
+		 				 <input type="reset" value="Reset" onClick="window.location.reload()" class= "btn btn-default">
+		  			</div>
+		  		</div>
+			</div>
+ <%end%>

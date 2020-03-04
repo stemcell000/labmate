@@ -1,0 +1,24 @@
+<div class="row">
+	<h2><%=t('global.menu.inventory')%></h2>
+</div>
+<div class="row">
+	<div class="col-lg-12 col-md-12 col-sm-12">
+		<%= render 'items/components/search'%>
+		<div id="display-container" class="col-lg-3 pull-right">
+				<%= render :partial => "items/components/toggle_display", :locals => { :option => @option } %>	
+		</div>
+	</div>
+</div>
+<%if can? :manage, Item %>
+<div class="row">
+	<div class="col-lg-12 col-md-12 col-sm-12">
+		<%= link_to 'New item', new_item_path, class: "btn btn-default" %>
+	</div>
+</div>
+<%end%>
+<div class="row">
+	<div class="col-lg-12 col-md-12 col-sm-12">
+		<%= smart_listing_render(:items) %>
+	</div>
+</div>
+

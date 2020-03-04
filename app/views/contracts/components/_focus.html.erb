@@ -1,0 +1,21 @@
+		
+		<h6> <strong>Dates</strong></h6>
+		
+		<div class="form-group row">
+			
+				<div class="col-md-5 col-sm-4" >
+						<%= f.search_field :start_date_lteq, value: @start_date_gteq_with_proper_format, 'data-behaviour' => 'datepicker', placeholder: "Starting date", class: "col-md-12"%>
+				</div>
+			
+				<div class="col-md-5 col-sm-4" >
+						<%= f.search_field :end_date_gteq, value: @end_date_lteq_with_proper_format, 'data-behaviour' => 'datepicker', input_html: { class: "datepicker"}, placeholder: "Ending date", class: "col-md-12" %>
+				</div>
+		</div>
+		
+		<div class="form-group row">
+				<div class="col-md-6">
+					<%= f.label 'Category'%>
+					<%= f.select(:categories_id_in, @categories, {include_blank: " "}, {:class => "select2-select"})%>
+				</div>
+		</div>
+		

@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Occurance:
+  = @day.occurance_id
+%p
+  %b Date:
+  = @day.date
+
+= link_to 'Edit', edit_day_path(@day)
+\|
+= link_to 'Back', days_path

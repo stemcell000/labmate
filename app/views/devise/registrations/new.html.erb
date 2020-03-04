@@ -1,0 +1,89 @@
+<h2>Sign up</h2>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+   <%= devise_error_messages! %>
+
+   <div class="row">
+   		<div class="col-md-5 col-sm-4">
+    			<%=f.input :firstname, label: "Firstname"%>
+   	 	</div>
+   	 	<div class="col-md-5 col-sm-4">
+    			<%=f.input :lastname, label: "Lastname"%>
+    		</div>
+  </div>
+  
+   <div class="row">
+   		<div class="col-md-12 col-sm-12">
+   			<%= f.association :teams, label:"Team(s)",
+												value_method: :id,
+												label_method: lambda { |team| "#{team.name}"},
+												prompt: 'Select a team.',
+												input_html:  {class: "select2-select"},
+												include_blank: false,
+												include_hidden: false
+												 %>
+		</div>
+  </div>
+
+  <div class="row">
+		<div class="col-lg-4 col-md-4 col-sm-4">
+    			<%= f.input :email, label: "E-mail"%>
+    		</div>
+  </div>
+ 
+ <div class="row">
+  		<div class="col-lg-4 col-md-4 col-sm-4">
+  			<%= f.input :role, :collection => [ "administrator","HR administrator", "inventory manager", "team_leader", "guest", "user" ] , as: :hidden %>
+		</div>
+  </div>
+  
+  
+  <div class="row">
+  		<div class="col-lg-4 col-md-4 col-sm-4">
+   			<%= f.association :positions, :label => "Position",
+												label_method: lambda { |position| "#{position.name}"},
+												value_method: :id,
+												prompt: 'Select a position.',
+												input_html: {class: "select2-select"},
+												include_blank: false,
+												include_hidden: false
+												%>
+		</div>
+  </div>
+  
+   <div class="row">
+   		<div class="col-lg-4 col-md-4 col-sm-4">
+   			<%= f.association :location, :label => "Location",
+												label_method: lambda { |location| "#{location.name}"},
+												value_method: :id,
+												prompt: 'Select a location.',
+												input_html: {class: "select2-select"},
+												include_blank: false,
+												include_hidden: false
+												%>
+		</div>
+  </div>
+<div class="row">
+  	<div class="col-lg-5 col-md-5 col-sm-5">
+  		<%= f.label 'Password'%><br />
+  		<% if @minimum_password_length %>
+  				<em>(<%= @minimum_password_length %> characters minimum)</em>
+  		<% end %>
+	    <%= f.input :password , label: false %>
+	</div>
+  </div>
+
+  <div class="row">
+  	<div class="col-lg-5 col-md-5 col-sm-5">
+    		<%= f.input :password_confirmation %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

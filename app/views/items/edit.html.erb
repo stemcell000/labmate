@@ -1,0 +1,10 @@
+<% isAdmin = can? :manage, Organization %>
+<% isManager= ['superadmin', 'administrator', 'inventory_manager'].include? current_user.role%>
+<div class="row">
+	<h2>Edit Item #<%=@item.barcode%></h2>
+</div>
+<div class="jumbotron">
+	<div class="container">
+		<%= render 'items/components/form', locals: {isAdmin: isAdmin, isManager: isManager}%>
+	</div>
+</div>

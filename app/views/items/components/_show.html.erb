@@ -1,0 +1,148 @@
+<div class="jumbotron">
+<div class="container">
+<div class="panel panel-primary">
+  		<div class="panel-body">
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-3">
+					<strong>Barcode : </strong><%= @barcode %>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-5">
+					<strong>Name : </strong><span><%= @name.upcase%></span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-5 col-md-5 col-sm-5">
+					<strong><%='Team'.pluralize(@item.teams.count)%> : </strong> <%=@team_name %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-md-3">
+					<strong> Serial number : </strong><%= @serial_number %>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-2">
+					<strong> date : </strong><%= @installation_date %>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-4">
+					<strong>Location : </strong><%= @location_name%>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+						<strong><%='Contact'.pluralize(@item.users.count)+' : '%></strong><%=@full_name.html_safe %>
+				</div>
+			</div>
+			<hr />
+			<div class="row">
+				<div class="col-lg-4 col-md-4 col-md-4">
+					<strong>Provider : </strong> <%= @provider_name%>
+				</div>
+				<div class="col-lg-4 col-md-4 col-md-4">
+					<strong>Brand : </strong><%= @brand_name%>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-8 col-md-8 col-sm-8">
+					<strong>Category : </strong> <%= @category_name%>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-3">
+					<strong>Status : </strong><%= @item_status%>
+				</div>
+			</div>
+			<hr />
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-3">
+					<strong>Owner : </strong><%=@owner_name%>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-3">
+					<strong>Owner inventory ID : </strong><%= @owner_inventory%>
+				</div>
+				<div class="col-md-3 col-md-3 col-sm-3">
+					<strong>Folder : </strong><%= @folder_number%>
+				</div>
+			</div>
+	<% unless @item.item_attachments.empty? %>
+		<hr />
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<strong>Attached file(s): </strong><br />
+						<% @item.item_attachments.each do |item_attachment|%>
+							<%= link_to File.basename(item_attachment.attachment.path), item_attachment.attachment.to_s, :target => "_blank"%><br />
+							<%= a.doc_type%>
+						<%end%>
+				</div>
+			</div>
+	<%end%>
+			
+	<% unless (current_user.teams.ids & @item.teams.ids).empty? %>
+	<hr />
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-3">
+					<strong>Order : </strong><%= @order%>
+				</div>
+				<div class="col-lg-5 col-md-5 col-sm-5">
+					<strong>Order note: </strong><%= @order_note%>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-3">
+					<strong>Invoice : </strong><%= @invoice%>
+				</div>
+				<div class="col-lg-5 col-md-5 col-sm-5">
+					<strong>Invoice note: </strong><%= @invoice_note%>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-3">
+					<strong>Price : </strong><%= @price +" "+@currency_price_name %> 
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-3">
+					<strong>Residue : </strong><%= @residue +" "+@currency_residue_name %> 
+				</div>
+				<div class="col-lg-2 col-md-2 col-sm-3">
+					<strong>Donation : </strong><%= @donation %>
+				</div>
+			</div>
+			<hr />
+			<div class="row">
+				<div class="col-lg-5 col-md-5 col-sm-5">
+					<strong>Current maintenance contract : </strong><%= @contract%>
+				</div>
+			</div>
+			<hr />
+	<%end%>
+	<hr />
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<strong>Comment : </strong><%= @comment%> 
+				</div>
+			</div>	
+	</div>
+</div>
+<%unless @item.occurances.empty?%>			
+<div class="row">
+<div class="panel panel-success">
+	<div class="panel-heading">
+			<h3 class="panel-title">Events</h3>
+	</div>
+	<div class="panel-body">			
+		<table class="table table-small table-hover table-bordered">
+			<%  @item.occurances.each do |e| %>
+			<tr>
+				<th>Event's name</th>
+				<th>Status</th>
+				<th>Comment</th>
+				<th>Dates</th>
+			</tr>
+			<tr>
+				<td><%= e.name %></td>
+				<td><%= e.done.nil? ? "NC":(e.done? ? "Done" : "Not done") %></td>
+				<td><%= e.comment %></td>
+				<td><%= e.days.pluck(:date).to_sentence %></td>
+			</tr>
+			<%end%>
+		</table>
+	</div>
+	</div><!--End of meetings panel-body-->
+</div><!--End of meetings panel-->
+<%end%>
+</div></div>

@@ -1,0 +1,13 @@
+current directory: /Users/marc/ws/labmate/vendor/ruby/2.5.0/gems/json-1.8.6/ext/json
+/Users/marc/.rvm/rubies/ruby-2.5.7/bin/ruby -I /Users/marc/.rvm/rubies/ruby-2.5.7/lib/ruby/site_ruby/2.5.0 -r ./siteconf20200224-65917-1p9ee3q.rb extconf.rb
+creating Makefile
+
+current directory: /Users/marc/ws/labmate/vendor/ruby/2.5.0/gems/json-1.8.6/ext/json
+make "DESTDIR=" clean
+
+current directory: /Users/marc/ws/labmate/vendor/ruby/2.5.0/gems/json-1.8.6/ext/json
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+current directory: /Users/marc/ws/labmate/vendor/ruby/2.5.0/gems/json-1.8.6/ext/json
+make "DESTDIR=" install

@@ -1,0 +1,55 @@
+Successfully installed activesupport-5.0.0.rc2
+Successfully installed actionview-5.0.0.rc2
+Successfully installed rack-2.2.2
+Successfully installed actionpack-5.0.0.rc2
+Successfully installed method_source-0.9.2
+Successfully installed rake-13.0.1
+Successfully installed railties-5.0.0.rc2
+Successfully installed websocket-extensions-0.1.4
+Building native extensions. This could take a while...
+Successfully installed websocket-driver-0.6.5
+Building native extensions. This could take a while...
+Successfully installed nio4r-1.2.1
+Successfully installed actioncable-5.0.0.rc2
+Successfully installed activejob-5.0.0.rc2
+Successfully installed actionmailer-5.0.0.rc2
+Successfully installed arel-7.1.4
+Successfully installed activemodel-5.0.0.rc2
+Successfully installed activerecord-5.0.0.rc2
+Successfully installed rails-5.0.0.rc2
+Parsing documentation for activesupport-5.0.0.rc2
+Installing ri documentation for activesupport-5.0.0.rc2
+Parsing documentation for actionview-5.0.0.rc2
+Installing ri documentation for actionview-5.0.0.rc2
+Parsing documentation for rack-2.2.2
+Installing ri documentation for rack-2.2.2
+Parsing documentation for actionpack-5.0.0.rc2
+Installing ri documentation for actionpack-5.0.0.rc2
+Parsing documentation for method_source-0.9.2
+Installing ri documentation for method_source-0.9.2
+Parsing documentation for rake-13.0.1
+Installing ri documentation for rake-13.0.1
+Parsing documentation for railties-5.0.0.rc2
+Installing ri documentation for railties-5.0.0.rc2
+Parsing documentation for websocket-extensions-0.1.4
+Installing ri documentation for websocket-extensions-0.1.4
+Parsing documentation for websocket-driver-0.6.5
+Installing ri documentation for websocket-driver-0.6.5
+Parsing documentation for nio4r-1.2.1
+Installing ri documentation for nio4r-1.2.1
+Parsing documentation for actioncable-5.0.0.rc2
+Installing ri documentation for actioncable-5.0.0.rc2
+Parsing documentation for activejob-5.0.0.rc2
+Installing ri documentation for activejob-5.0.0.rc2
+Parsing documentation for actionmailer-5.0.0.rc2
+Installing ri documentation for actionmailer-5.0.0.rc2
+Parsing documentation for arel-7.1.4
+Installing ri documentation for arel-7.1.4
+Parsing documentation for activemodel-5.0.0.rc2
+Installing ri documentation for activemodel-5.0.0.rc2
+Parsing documentation for activerecord-5.0.0.rc2
+Installing ri documentation for activerecord-5.0.0.rc2
+Parsing documentation for rails-5.0.0.rc2
+Installing ri documentation for rails-5.0.0.rc2
+Done installing documentation for activesupport, actionview, rack, actionpack, method_source, rake, railties, websocket-extensions, websocket-driver, nio4r, actioncable, activejob, actionmailer, arel, activemodel, activerecord, rails after 15 seconds
+17 gems installed
