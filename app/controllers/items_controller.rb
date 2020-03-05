@@ -239,7 +239,7 @@ class ItemsController < InheritedResources::Base
       :invoice, :invoice_note, :comment, :status, :deleted, :date_of_deletion, :created_at, :update_at, :currency, :location_id, :category_id, :provider_id,
       :brand_id, :owner_id, :donation,
       
-      :attachments_attributes =>[:id, :item_id, :doc_type, :attachment, :_destroy],
+      :attachments_attributes =>[:id, :item_id, :doc_type, :name, :attachment, :_destroy],
       
       user_ids: [], team_ids: [], teams_attributes: [:id, :name], locations_attributes: [:id, :name], users_attributes: [:id, :firstname, :lastname, :email, :full_name, :display],
       category_attributes: [:id, :name, :acronym], provider_attributes: [:id, :name ], brand_attributes: [:id, :name], owners_attributes: [:id, :name],

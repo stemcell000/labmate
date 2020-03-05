@@ -3,7 +3,7 @@ class Attachment < ActiveRecord::Base
  
  belongs_to :item
  
- #La ligne suivante permet de supprimer l'enregistrement de Clone_batch_attachment lorsqu'un fichier est supprimé
+ #La ligne suivante permet de supprimer l'enregistrement de l'attachement (attachment) lorsqu'un fichier est supprimé
  #dans le formulaire. En son absence, seul le fichier est supprimé et la valeur d'":attachement" effacée.
  
  after_save { |attachment| attachment.destroy if attachment.attachment.blank? }

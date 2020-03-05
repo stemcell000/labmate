@@ -67,7 +67,7 @@
 					<strong>Attached file(s): </strong><br />
 					<% unless @item.attachments.empty? %>
 						<% @item.attachments.each do |attachment|%>
-							<%= link_to File.basename(attachment.attachment.path), attachment.attachment.to_s, :target => "_blank"%><br />
+							<%= link_to attachment.doc_type, attachment.attachment.to_s, :target => "_blank"%><br />
 						<%end%>
 					<%else%>
 						<em>No file attached</em>
@@ -111,7 +111,6 @@
 					<strong>Current maintenance contract : </strong><%= @contract%>
 				</div>
 			</div>
-			<hr />
 	<%end%>
 	<hr />
 			<div class="row">
@@ -119,15 +118,9 @@
 					<strong>Comment : </strong><%= @comment%> 
 				</div>
 			</div>	
-	</div>
-</div>
-<%unless @item.occurances.empty?%>			
+	<hr />
 <div class="row">
-<div class="panel panel-success">
-	<div class="panel-heading">
-			<h3 class="panel-title">Events</h3>
-	</div>
-	<div class="panel-body">			
+<%unless @item.occurances.empty?%>			
 		<table class="table table-small table-hover table-bordered">
 			<%  @item.occurances.each do |e| %>
 			<tr>
@@ -144,8 +137,11 @@
 			</tr>
 			<%end%>
 		</table>
-	</div>
-	</div><!--End of meetings panel-body-->
-</div><!--End of meetings panel-->
+<%else%>
+		<div class="col-lg-12 col-md-12 col-sm-12">
+			<strong>Events : </strong><br />
+				<em>No event</em>
+		</div>
 <%end%>
-</div></div>
+</div><!--End of occurances row-->
+</div>

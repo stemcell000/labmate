@@ -23,10 +23,10 @@
 			<% if can? :manage, object %>
 					<%= object.recap_conf %>	
 			<%end%>
-					<% unless object.item_attachments.empty? %>
+					<% unless object.attachments.empty? %>
 						<div class="row">
 							<strong>note : </strong><br />
-							<%object.item_attachments.each do |o|%>
+							<%object.attachments.each do |o|%>
 								<%= link_to o.doc_type.nil? ? o.attachment.to_s : o.doc_type, File.basename(o.attachment.to_s), :target => "_blank" %><br />
 							<%end%>
 						</div>
@@ -65,12 +65,8 @@
 	</a>
 	
 	<!---->
+
 	<%= smart_listing_item_actions [
-  	  		{name: :custom,    url: item_path(object),
-  			icon: 'fas fa-digital-tachograph', 
-  			title: "Show item"}]%>
-	<% unless (current_user.teams.ids & object.teams.ids).empty? %>
-		<%= smart_listing_item_actions [
   	  		{name: :custom,    url: item_path(object),
 	  		method: :get, 
   			icon: 'far fa-sticky-note', 
@@ -84,7 +80,6 @@
   	  	<% if object.status_id == 5%>
 		<span class="fas fa-trash-alt text-danger"></span>
 		<%end%>
-	<%end%>
 	<% end %>
 	
 	<!---->
