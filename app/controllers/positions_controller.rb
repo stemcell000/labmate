@@ -1,5 +1,5 @@
 class PositionsController < InheritedResources::Base
-
+load_and_authorize_resource
   private
 
     def position_params

@@ -16,7 +16,7 @@
 			confirmation: "Are you sure you want to delete this?",
 			placement:"left"}]%>
 <%end%>
- <%if can? :edit, Item %> 			
+ <%if can? :edit, Item %>		
   	<%= smart_listing_item_actions [
   		  {name: :custom,    url: add_to_queue_contract_path(object),
 	  		method: :get, 

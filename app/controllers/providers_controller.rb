@@ -1,4 +1,5 @@
 class ProvidersController < InheritedResources::Base
+load_and_authorize_resource
 #Smart_listing
   include SmartListing::Helper::ControllerExtensions
   helper  SmartListing::Helper

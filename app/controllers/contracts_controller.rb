@@ -1,5 +1,5 @@
 class ContractsController < InheritedResources::Base
-
+load_and_authorize_resource
  #Smart_listing
   include SmartListing::Helper::ControllerExtensions
   helper  SmartListing::Helper
@@ -60,6 +60,7 @@ class ContractsController < InheritedResources::Base
     if @contract.valid?
       flash.keep[:success] = 'Contract created'
       redirect_to contract_path(@contract)
+      current_user.contracts << @contract
       if @contract.teams.pluck(:name).any? {|name| name == 'All'}
         @contract.teams.destroy_all
         Team.all.where.not(name: ['system', 'all']).all.each do |team|
@@ -115,7 +116,7 @@ class ContractsController < InheritedResources::Base
   private
   
   def contract_params
-      params.require(:contract).permit(:id, :start_date, :end_date, :register, :contract_number, :cost, :name, :provider_id, :tender, :locked,
+      params.require(:contract).permit(:id, :start_date, :end_date, :register, :contract_number, :cost, :name, :provider_id, :currency_id, :user_id, :tender, :locked,
       attachments_attributes: [:id, :item_id, :attachment, :remove_attachment, :doc_type, :_destroy],
       category_ids: [], team_ids: [])
   end

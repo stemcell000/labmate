@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :types, :through => :teams
   belongs_to :location
   has_many :options
+  has_many :contracts
   
   accepts_nested_attributes_for :items, reject_if: :all_blank
   accepts_nested_attributes_for :positions, reject_if: :all_blank
@@ -25,6 +26,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :location 
   accepts_nested_attributes_for :positions
   accepts_nested_attributes_for :options
+  accepts_nested_attributes_for :contracts
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

@@ -1,5 +1,5 @@
 class OrganizationsController < InheritedResources::Base
-  
+  load_and_authorize_resource
   before_action :set_organization, only: [:edit, :show, :update]
   
   def new

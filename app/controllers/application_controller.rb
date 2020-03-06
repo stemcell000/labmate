@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  check_authorization :unless => :devise_controller?
   protect_from_forgery with: :exception
   before_action :authenticate_user!, except: [:set_locale]
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -30,7 +31,7 @@ class ApplicationController < ActionController::Base
         n_items= Item.orphan.size
         orphans = Item.by_teams(@current_user_teams_ids).orphan.pluck(:barcode)
         if n_items > 0
-          flash.now[:error] = "<small>#{t('global.orphans')} #{view_context.pluralize(n_items, 'orphan item')} : #{orphans.to_sentence}</small>".html_safe
+          flash.now[:error] = "<small>#{t('global.flash_orphans')} #{t('global.orphan_item', count: n_items)} : #{orphans.to_sentence}</small>".html_safe
         end
       end
      end
@@ -46,7 +47,7 @@ class ApplicationController < ActionController::Base
          if tender.teams & current_user.teams 
            #check if the current user's teams items categories are concerned by the on going tender
             if tender.categories & @current_teams_categories
-              flash.now[:success] = "<small>A public tender has been edited for some of your team's items (cat. #{tender.categories.pluck(:name).to_sentence.humanize}). Check out the Maintenance page.</small>".html_safe
+              flash.now[:success] = t('global.flash_tender', category:tender.categories.pluck(:name).to_sentence.humanize)
             end
           end
          end

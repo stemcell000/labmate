@@ -1,5 +1,5 @@
 class DepartmentsController < InheritedResources::Base
-  
+  load_and_authorize_resource
   before_action :find_department, only: [:edit, :destroy, :update]
   
   #Smart_listing

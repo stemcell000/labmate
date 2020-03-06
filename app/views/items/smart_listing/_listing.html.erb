@@ -1,14 +1,16 @@
   <table class="table table-hover">
     <thead>
+    	<small>
 	      <tr>
 			<th class="col-lg-1 center">
-				<%= smart_listing.sortable "Barcode", :id %>
+				<%= smart_listing.sortable t('global.barcode'), :id %>
 			</th>
-	        <th class="col-lg-4 col-sm-5 col-md-5" ><%= smart_listing.sortable "Name", :name %></th>
-	        <th class="col-lg-2 col-sm-2 col-md-2" >Category</th>
-			<th class="col-lg-2 col-sm-2 col-md-2" >Team</th>
+	        <th class="col-lg-4 col-sm-5 col-md-5" ><%= smart_listing.sortable t('global.name'), :name %></th>
+	        <th class="col-lg-2 col-sm-2 col-md-2" ><%= t('global.menu.category') %></th>
+			<th class="col-lg-2 col-sm-2 col-md-2" ><%= t('global.menu.teams') %></th>
 			<th class="col-lg-2 col-sm-2 col-md-2" ></th>
 	      </tr>
+	   </small>
     </thead>
     <tbody>
     	<% unless smart_listing.empty? %>  
@@ -18,7 +20,6 @@
         </tr>
       <% end %>
 	<% end %>
-	   	<%= smart_listing.item_new colspan: 12, link: new_item_path(:item), class: "btn btn-primary" %>
     </tbody>
   </table>
   <%= smart_listing.paginate %>

@@ -1,7 +1,7 @@
 <%= search_form_for @q, :url => items_path, :remote => true do |f| %>
 		 	<div class="form-group row">
 		 		<div class="col_lg_11 col-md-11 col-sm-11">
-				  	<%= f.search_field :name_or_barcode_or_recap_or_recap_conf_has_any_term, class: "col-md-9", placeholder: t('global.search_any_term') %>
+				  	<%= f.search_field :name_or_barcode_or_recap_or_recap_conf_has_any_term, class: "col-md-9", placeholder: "#{t('global.search_any_term')}" %>
 				</div>	
 			</div>
 	<div class="row">
@@ -29,7 +29,7 @@
 				<div class="col-md-12 col-sm-12">
 		  			<div class="form-group pull-right">
 						<%= f.submit class:"cancel-button btn btn-default" %>
-						<%= link_to "Clear Search", request.path, class:"btn btn-default" %>
+						<%= link_to t('global.clear_search'), request.path, class:"btn btn-default" %>
 					</div>
 		  			</div>
 		  		</div>

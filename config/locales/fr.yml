@@ -2,6 +2,16 @@ fr:
   global:
     search_any_term: "Recherche"
     fine_search: "Recherche avancée"
+    clear_search: "Effacer"
+    my_teams_inventory_only: "Afficher l'inventaire de mon équipe"
+    new_item: "Créer un objet"
+    orphan_item:
+      one: "1 objet orphelin"
+      other: "%{count} objets orphelins"
+    flash_orphans: "Votre inventaire contient"
+    flash_tender: "Un appel d'offre public a été édité pour certains des objets de votre équipe (cat.%{category}). Vérifiez sur la page Maintenance."
+    barcode: "code-barre"
+    name: "nom"
     menu:
       inventory: "Inventaire"
       maintenance: "Maintenance"
@@ -12,15 +22,16 @@ fr:
       utilities: "Autres"
       language: "Langue"
       brands: "Marques"
+      brand: 'Marque'
+      provider: "Fournisseur"
       providers: "Fournisseurs"
-      brand: 'brand'
-      provider: 'provider'
       sign_in_as: "Utilisateur"
       status: "Statut"
-      installation date: "Date d'installation"
+      installation_date: "Date d'installation"
       starting_date: "Date de début"
       ending_date: "Date de fin"
       category: "Categorie"
+      categories: "Categories"
       location: "Local"
       owner: "propriétaire"
       

@@ -1,5 +1,5 @@
 class LocationsController < InheritedResources::Base
-
+load_and_authorize_resource
   private
 
     def location_params
