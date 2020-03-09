@@ -71,7 +71,7 @@
 	  		method: :get, 
   			icon: 'far fa-sticky-note', 
   			title: "Show item"}]%>
-	<% if ["inventory manager", "superadmin", "administrator"].include? current_user.role %>
+	<% if can? :manage, :create, :update, object %>
 	  	<%= smart_listing_item_actions [
   	  		{name: :custom,    url: edit_item_path(object),
 	  		method: :get, 
@@ -83,14 +83,5 @@
 	<% end %>
 	
 	<!---->
-	<% if current_user.items.include? object %>
-	<% if ["user"].include? current_user.role %>
-	  	<%= smart_listing_item_actions [
-  	  			{name: :custom,    url: edit_item_path(object),
-	  		method: :get, 
-  			icon: 'fa fa-pencil-square-o', 
-  			title: "Edit item"}]%>
-	<%end%>
-	<% end %>
 	<!---->
 </td>

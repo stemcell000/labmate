@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
-  load_and_authorize_resource
   before_action :set_user, only: [:edit, :update, :destroy, :editadmin, :show]
   before_action :set_option, only: [:index]
    
@@ -21,10 +19,10 @@ class UsersController < ApplicationController
   end
   
   def new
+    @user = User.new
   end
   
   def create
-    @user = User.new
     @user = User.create(user_params)
     if @user.valid?
       flash.keep[:success] = "A new user has been successfully created!"
@@ -56,6 +54,7 @@ class UsersController < ApplicationController
         Team.all.each do |team|
           @user.teams << team
         end
+        @user.update_columns(recap: @user.generate_recap)
       end
       redirect_to users_path
     else

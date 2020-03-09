@@ -1,7 +1,7 @@
 <%= search_form_for @q, :url => users_path, :remote => true do |f| %>
 		 	<div class="form-group row">
 		 		<div class="col_lg_11 col-md-11 col-sm-11">
-				  	<%= f.search_field :firstname_or_lastname_or_teams_name_or_location_name_has_any_term, class: "col-md-9", placeholder: t('global.search_any_term') %>
+				  	<%= f.search_field :recap_has_any_term, class: "col-md-9", placeholder: t('global.search_any_term') %>
 				</div>	
 			</div>
 			<div class="form-row">

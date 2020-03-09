@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  check_authorization :unless => :devise_controller?
+  #check_authorization :unless => :devise_controller?
   protect_from_forgery with: :exception
   before_action :authenticate_user!, except: [:set_locale]
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -7,9 +7,18 @@ class ApplicationController < ActionController::Base
   before_action :current_collections
   before_action :set_locale
   
+  ActiveRecord::Base.connection.tables.each do |t|
+   ActiveRecord::Base.connection.reset_pk_sequence!(t)
+  end
+  
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :email, :firstname, :lastname, :location_id, :recap, {roles: []}, {team_ids: []}, {position_ids: []}, teams_attributes:[:id, :name, :acronym], positions_attributes:[:id, :name] ])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :email, :firstname, :lastname, :location_id, :recap, :role, :password, :remember_me, {team_ids: []}, {position_ids: []}, teams_attributes:[:id, :name, :acronym], positions_attributes:[:id, :name] ])
     devise_parameter_sanitizer.permit(:account_update, keys: [:username, :email, :firstname, :lastname, :location_id, :recap, :password, :password_confirmation,
+      {roles: []}, {team_ids: []}, {position_ids: []}, {option_ids:[]},
+      teams_attributes:[:id, :name, :acronym],
+      options_attributes:[:id, :display_all],
+      positions_attributes:[:id, :name]])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:username, :email, :firstname, :lastname, :location_id, :recap, :password, :password_confirmation,
       {roles: []}, {team_ids: []}, {position_ids: []}, {option_ids:[]},
       teams_attributes:[:id, :name, :acronym],
       options_attributes:[:id, :display_all],
@@ -28,10 +37,11 @@ class ApplicationController < ActionController::Base
   def check_for_orphans
     if current_user
       unless Item.by_teams(@current_user_teams_ids).orphan.nil?
-        n_items= Item.orphan.size
-        orphans = Item.by_teams(@current_user_teams_ids).orphan.pluck(:barcode)
-        if n_items > 0
-          flash.now[:error] = "<small>#{t('global.flash_orphans')} #{t('global.orphan_item', count: n_items)} : #{orphans.to_sentence}</small>".html_safe
+        orphans = Item.by_teams(@current_user_teams_ids).orphan
+        n_orphans = orphans.size
+        orphans_bc = orphans.pluck(:barcode)
+        if n_orphans > 0
+          flash.now[:error] = "<small>#{t('global.flash_orphans')} #{t('global.orphan_item', count: n_orphans)} : #{orphans_bc.to_sentence}</small>".html_safe
         end
       end
      end
@@ -79,10 +89,10 @@ private
   end
  
   def current_collections
-    if current_user
-    @current_user_teams_ids = current_user.teams.map {|team| team.id}
-    @current_teams_items = Item.by_teams(@current_user_teams_ids)
-    @current_teams_categories = @current_teams_items.map{|i| i.category}
+    unless current_user.nil?
+      @current_user_teams_ids = current_user.teams.map {|team| team.id}
+      @current_teams_items = Item.by_teams(@current_user_teams_ids)
+      @current_teams_categories = @current_teams_items.map{|i| i.category}
     end
   end
 end

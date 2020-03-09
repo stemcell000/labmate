@@ -1,6 +1,6 @@
 class ItemsController < InheritedResources::Base
   
-  load_and_authorize_resource
+  #load_and_authorize_resource
   before_action :set_item, only: [:edit,:destroy, :update, :set_item_parameters, :print_label, :show, :format_attributes, :printable_show]
   before_action :set_item_parameters, only: [:new, :edit, :show, :printable_show]
   before_action :set_option, only: [:index]
@@ -46,11 +46,12 @@ class ItemsController < InheritedResources::Base
    
     if @option.display_all
       @items = @items.joins(:items_teams).where(:items_teams => {team_id: current_user.team_ids})
+     unless ['superadmin', 'administrator'].include? current_user.role
+        @items = @items.where.not('status_id' == 5)
+      end
     end
     
-    unless ['superadmin', 'administrator'].include? current_user.role
-      @items = @items.joins(:status).where.not(:status=>{name: 'removed'})
-    end
+
      
       #
       #Config de l'affichage des résultats.
@@ -236,7 +237,7 @@ class ItemsController < InheritedResources::Base
   def item_params
       params.require(:item).permit(
       :id, :barcode, :name, :serial_number, :owner_inventory, :installation_date, :price, :residue, :interval, :duration, :amortization, :folder, :registered, :order, :order_note,
-      :invoice, :invoice_note, :comment, :status, :deleted, :date_of_deletion, :created_at, :update_at, :currency, :location_id, :category_id, :provider_id,
+      :invoice, :invoice_note, :comment, :status_id, :deleted, :date_of_deletion, :created_at, :update_at, :currency, :location_id, :category_id, :provider_id,
       :brand_id, :owner_id, :donation,
       
       :attachments_attributes =>[:id, :item_id, :doc_type, :name, :attachment, :_destroy],

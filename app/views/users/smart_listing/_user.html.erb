@@ -2,7 +2,13 @@
 <td ><small><%= object.email %></small></td>
 <td ><small><%= object.tel1 unless object.tel1.nil?%> <%= object.tel2 unless object.tel2.nil?%></small></td>
 <td ><small><%= object.location.name unless object.location.nil?%></small></td>
-<td ><small><%= object.teams.pluck(:name).to_sentence unless object.teams.nil? %></small></td>
+<td ><small>
+	<%if ['superadmin', 'administrator'].include? object.role%>
+	-
+	<%else%>
+	<%= object.teams.pluck(:name).to_sentence unless object.teams.nil? %>
+	<%end%>
+	</small></td>
 <td class="actions">
 	<%if can? :manage, User %>
 		<%unless (current_user.teams & object.teams).empty? %>

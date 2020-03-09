@@ -5,13 +5,20 @@ fr:
     clear_search: "Effacer"
     my_teams_inventory_only: "Afficher l'inventaire de mon équipe"
     new_item: "Créer un objet"
+    new_user: "Nouvel utilisateur"
     orphan_item:
       one: "1 objet orphelin"
       other: "%{count} objets orphelins"
     flash_orphans: "Votre inventaire contient"
     flash_tender: "Un appel d'offre public a été édité pour certains des objets de votre équipe (cat.%{category}). Vérifiez sur la page Maintenance."
     barcode: "code-barre"
-    name: "nom"
+    name: "Nom"
+    firstname: "Prénom"
+    lastname: "Nom"
+    position: "Poste occupé"
+    password: "Mot de passe"
+    enter_password: "Mot de passe (entrez votre mot de passe ou choisissez en un nouveau.)"
+    change_password: "Changez le mot de passe"
     menu:
       inventory: "Inventaire"
       maintenance: "Maintenance"
@@ -33,7 +40,8 @@ fr:
       category: "Categorie"
       categories: "Categories"
       location: "Local"
-      owner: "propriétaire"
+      owner: "Propriétaire"
+      role: "Rôle"
       
     
      

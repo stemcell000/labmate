@@ -1,9 +1,5 @@
 class User < ApplicationRecord
   
-  before_create :set_username
-  after_create :create_option
-  after_create :generate_recap
-  after_update :generate_recap
   attr_writer :login
   
   scope :is_in_charge_of, -> u_id {joins(:items_users).where(:items_users => {user_id: u_id})}
@@ -29,10 +25,9 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :contracts
   
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :confirmable
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable,:rememberable, :trackable, :confirmable, 
+         :validatable, :authentication_keys => [:login, :email]
   
   validates :tel1, phone: { possible: true, allow_blank: true, types: [:voip, :mobile]}
   validates :tel2, phone: { possible: true, allow_blank: true, types: [:voip, :mobile]}
@@ -116,10 +111,13 @@ class User < ApplicationRecord
 
     def set_username
       self.username= (self.firstname[0]+self.lastname).downcase!
+      self.save!
     end
     
     def create_option
-      self.options.create(:display_all => false)
+       if self.options.empty?
+        self.options.create(:display_all=> false)
+      end
     end
     
  

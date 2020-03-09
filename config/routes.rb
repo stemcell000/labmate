@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
+  
+  devise_for :users do
+    get "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
+  end
+  
+  devise_scope :user do
+  put 'user/confirmation', to: 'confirmations#update'
+  end
+  
   resources :attachments
-scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
+  scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
   resources :days
   resources :occurances
   resources :event_items
@@ -14,10 +23,8 @@ scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
   end
   resources :types
   resources :options
-  resources :users, only: [:edit, :new, :create, :update] 
-
-  devise_for :users
-
+  resources :users
+  
   resources :positions
   resources :owners
   resources :providers
@@ -36,6 +43,8 @@ scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
   resources :users do
     resources :options do
       patch :display_all_switch, on: :member
+      patch :display_all_users_switch, on: :member
+      patch :display_all_contracts_switch, on: :member
       patch :add_to_queue, on: :member
     end
   end
