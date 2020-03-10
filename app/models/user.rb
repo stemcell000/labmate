@@ -27,10 +27,13 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,:rememberable, :trackable, :confirmable, 
-         :validatable, :authentication_keys => [:login, :email]
+         :validatable
   
   validates :tel1, phone: { possible: true, allow_blank: true, types: [:voip, :mobile]}
   validates :tel2, phone: { possible: true, allow_blank: true, types: [:voip, :mobile]}
+  validates :email, uniqueness: true
+  validates :location, presence: true
+  validates :teams, presence: true
 
   def login
     @login || self.username || self.email
@@ -68,8 +71,8 @@ class User < ApplicationRecord
             <div class='row'><strong>Location : </strong> #{ location_name } </div>
             <div class='row'><strong>Tel1. : </strong> #{ self.tel1 } </div>
             <div class='row'><strong>Tel2. : </strong> #{ self.tel2 } </div>"
-    
-   self.update_columns(:recap => block)
+      self.recap = block
+      self.save!
   end
   
    def password_match?
@@ -109,16 +112,22 @@ class User < ApplicationRecord
     end
   end
 
-    def set_username
-      self.username= (self.firstname[0]+self.lastname).downcase!
-      self.save!
+  def set_username
+    self.username= (self.firstname[0]+self.lastname).downcase!
+    self.save!
+  end
+  
+  def humanize_name
+    self.firstname=self.firstname.humanize
+    self.lastname=self.lastname.humanize
+    self.save!
+  end
+  
+  def create_option
+     if self.options.empty?
+      self.options.create(:display_all=> false, :display_all_users=> false, :display_all_contracts=> false)
     end
-    
-    def create_option
-       if self.options.empty?
-        self.options.create(:display_all=> false)
-      end
-    end
+  end
     
  
 end

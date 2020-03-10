@@ -25,10 +25,10 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.valid?
+      render :action => :show
       flash.keep[:success] = "A new user has been successfully created!"
       #
-      @user.create_option
-      @user.update_columns(recap: @user.generate_recap)
+      set_adds(@user)
       #
       if ['superadmin', 'administrator'].include? @user.role
         @user.teams.destroy_all
@@ -36,7 +36,6 @@ class UsersController < ApplicationController
           @user.teams << team
          end
       end
-      redirect_to 'users'
     else
       render :action => :new
     end
@@ -48,13 +47,13 @@ class UsersController < ApplicationController
   def update
     @user.update_attributes(user_params)
     if @user.valid?
-      flash.keep[:success] = "Profile udpate."
+      flash.keep[:success] = "Profile udpated."
       if ['superadmin', 'administrator'].include? @user.role
         @user.teams.destroy_all
         Team.all.each do |team|
           @user.teams << team
         end
-        @user.update_columns(recap: @user.generate_recap)
+        set_adds(@user)
       end
       redirect_to users_path
     else
@@ -110,6 +109,13 @@ class UsersController < ApplicationController
  
  def set_option
     @option = current_user.options.first
+ end
+ 
+ def set_adds(user)
+   user.generate_recap
+   user.set_username
+   user.humanize_name
+   user.create_option
  end
  
 end

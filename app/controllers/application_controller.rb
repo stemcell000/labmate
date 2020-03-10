@@ -12,17 +12,10 @@ class ApplicationController < ActionController::Base
   end
   
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :email, :firstname, :lastname, :location_id, :recap, :role, :password, :remember_me, {team_ids: []}, {position_ids: []}, teams_attributes:[:id, :name, :acronym], positions_attributes:[:id, :name] ])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:username, :email, :firstname, :lastname, :location_id, :recap, :password, :password_confirmation,
-      {roles: []}, {team_ids: []}, {position_ids: []}, {option_ids:[]},
-      teams_attributes:[:id, :name, :acronym],
-      options_attributes:[:id, :display_all],
-      positions_attributes:[:id, :name]])
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:username, :email, :firstname, :lastname, :location_id, :recap, :password, :password_confirmation,
-      {roles: []}, {team_ids: []}, {position_ids: []}, {option_ids:[]},
-      teams_attributes:[:id, :name, :acronym],
-      options_attributes:[:id, :display_all],
-      positions_attributes:[:id, :name]])
+    added_attrs = [:username, :email, :firstname, :lastname, :location_id, :recap, :role, :password, :password_confirmation, :remember_me, {team_ids: []}, {position_ids: []}, teams_attributes:[:id, :name, :acronym], positions_attributes:[:id, :name]]
+    devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
+    devise_parameter_sanitizer.permit :sign_in, keys: added_attrs
+    devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
 
   def define_organization
@@ -89,7 +82,7 @@ private
   end
  
   def current_collections
-    unless current_user.nil?
+    if current_user
       @current_user_teams_ids = current_user.teams.map {|team| team.id}
       @current_teams_items = Item.by_teams(@current_user_teams_ids)
       @current_teams_categories = @current_teams_items.map{|i| i.category}

@@ -3,12 +3,13 @@
 <td ><small><%= object.tel1 unless object.tel1.nil?%> <%= object.tel2 unless object.tel2.nil?%></small></td>
 <td ><small><%= object.location.name unless object.location.nil?%></small></td>
 <td ><small>
-	<%if ['superadmin', 'administrator'].include? object.role%>
+	<%if can? :manage, Department %>
 	-
 	<%else%>
 	<%= object.teams.pluck(:name).to_sentence unless object.teams.nil? %>
 	<%end%>
-	</small></td>
+	</small>
+</td>
 <td class="actions">
 	<%if can? :manage, User %>
 		<%unless (current_user.teams & object.teams).empty? %>
@@ -32,7 +33,7 @@
 				]%>
 		<%end%>
 	<%end%>	
-	<%if ['superadmin', 'administrator'].include? current_user.role%>
+	<%if can? :manage, Department %>
 		<%= smart_listing_item_actions [
 			{name: :destroy, url: user_path(object), title: "Destroy", :confirmation => "Are you sure you want to delete this user ?"}
 			]%>

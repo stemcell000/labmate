@@ -21,7 +21,8 @@ class ItemsController < InheritedResources::Base
     @locations = Location.all.order(name: "asc").uniq.map{|obj| [obj['name'], obj['id']]}
     @providers = Provider.all.order(name: "asc").uniq.map{|obj| [obj['name'], obj['id']]}
     @brands = Brand.all.order(name: "asc").uniq.map{|obj| [obj['name'], obj['id']]}
-    unless ['superadmin','administartor', 'inventory_manager'].include? current_user.role
+    
+    unless ['superadmin','administrator', 'inventory_manager'].include? current_user.role
       @statuses = Status.where.not(id: 5).order(name: "asc").uniq.map{|obj| [obj['name'], obj['id']]}
     else
       @statuses=Status.all.order(name: "asc").uniq.map{|obj| [obj['name'].capitalize, obj['id']]}
@@ -44,11 +45,10 @@ class ItemsController < InheritedResources::Base
       @q = Item.ransack(params[:q])
       @items = @q.result.includes([ :teams, :location, :users, :category, :status, :owner, :provider, :brand, :currency ])
    
-    if @option.display_all
-      @items = @items.joins(:items_teams).where(:items_teams => {team_id: current_user.team_ids})
-     unless ['superadmin', 'administrator'].include? current_user.role
-        @items = @items.where.not('status_id' == 5)
-      end
+    if @option.display_all == false
+      @items = @items.where.not('status_id' => 5)
+    else
+      @items = @items.joins(:items_teams).where(:items_teams => {team_id: current_user.team_ids}).where.not('status_id' => 5)
     end
     
 
