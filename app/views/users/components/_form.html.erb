@@ -9,21 +9,20 @@
     			<%=f.input :lastname, label: t('global.lastname'), required: true%>
     		</div>
   </div>
-  <% if ['superadmin', 'administrator'].include? current_user.role %>
    <div class="row">
    		<div class="col-md-12 col-sm-12">
     			<%= f.association :teams, label:t('global.menu.teams'),
-												label_method: lambda { |team| "#{team.name}"},
-												prompt: 'Select a team.',
-												disabled: !isAdmin,
-												input_html:  {class: "select2-select"},
-												include_blank: false,
-												include_hidden: false,
-												required: true
-												 %>
+    									collection: current_user.teams,
+									label_method: lambda { |team| "#{team.name}"},
+									prompt: 'Select a team.',
+									disabled: !isAdmin,
+									input_html:  {class: "select2-select"},
+									include_blank: false,
+									include_hidden: false,
+									required: true
+									 %>
 		</div>
   </div>
-<%end%>
   <div class="row">
 		<div class="col-lg-5 col-md-5 col-sm-4">
     			<%= f.input :email, label: "E-mail", required: true%>
@@ -31,7 +30,6 @@
     			<%= f.input :tel2, label: "Tel2"%>
     		</div>
   </div>
- <% if ['superadmin', 'administrator'].include? current_user.role %> 
    <div class="row">
    		<div class="col-md-12 col-sm-12">
    			<%= f.association :positions, :label => t('global.position'),
@@ -44,7 +42,6 @@
 												%>
 		</div>
   </div>
-  <%end%>
     <div class="row">
   		<div class="col-md-5 col-sm-4">
    			<%= f.association :location, :label => t('global.menu.location'),

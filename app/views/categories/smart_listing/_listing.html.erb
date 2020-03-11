@@ -1,0 +1,22 @@
+  <table class="table table-hover">
+    <thead>
+	      <tr>
+	        <th class="col-lg-10 col-sm-10 col-md-10" ><%= smart_listing.sortable t('global.name'), :name %></th>
+	        <th class="col-lg-10 col-sm-10 col-md-10" ><%= smart_listing.sortable t('global.acronym'), :acronym %></th>
+			<th class="col-lg-2 col-sm-2 col-md-2"></th>
+	      </tr>
+    </thead>
+    <tbody>
+    	<% unless smart_listing.empty? %>  
+      <% smart_listing.collection.each do |category| %>
+        <tr class="editable" data-id = "<%= category.id %>" >
+         	<%= smart_listing.render object: category, partial: "categories/smart_listing/category", locals: {category: category} %>
+        </tr>
+      	<% end %>
+	<% end %>
+    </tbody>
+  </table>
+  <%= smart_listing.paginate %>
+  <%= smart_listing.pagination_per_page_links %>
+
+

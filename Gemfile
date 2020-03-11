@@ -155,3 +155,4 @@ gem 'nprogress-rails'
   
   gem 'rails-i18n'
   gem 'activerecord-session_store'
+  gem 'flag-icons-rails'

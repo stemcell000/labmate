@@ -5,7 +5,7 @@ load_and_authorize_resource
   helper  SmartListing::Helper
   
   #Load_and_authorize_resource
-  before_action :set_brand, only: [:edit, :update, :destroy]
+  before_action :set_brand, only: [:edit, :update, :destroy, :show]
   
   #Index
  def index
@@ -28,7 +28,7 @@ load_and_authorize_resource
   def create
     @brand = Brand.create(brand_params)
     if @brand.valid?
-      flash.keep[:success] = 'Brand created'
+      flash.keep[:success] = t('global.menu.brand') +" "+ t('global.createdf')
       redirect_to brand_path(@brand)
     else
       render :action => :new
@@ -41,11 +41,15 @@ load_and_authorize_resource
   def update
     @brand.update_attributes(brand_params)
     if @brand.valid?   
-      flash.keep[:success] = 'Brand updated'
+      flash.keep[:success] = t('global.menu.brand') +" "+ t('global.updatedf')
       redirect_to brand_path(@brand)
     else
       render :action => 'edit'
     end
+  end
+  
+  def show
+    
   end
   
  def destroy

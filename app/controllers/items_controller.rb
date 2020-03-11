@@ -1,6 +1,6 @@
 class ItemsController < InheritedResources::Base
   
-  #load_and_authorize_resource
+  load_and_authorize_resource
   before_action :set_item, only: [:edit,:destroy, :update, :set_item_parameters, :print_label, :show, :format_attributes, :printable_show]
   before_action :set_item_parameters, only: [:new, :edit, :show, :printable_show]
   before_action :set_option, only: [:index]
@@ -97,7 +97,7 @@ class ItemsController < InheritedResources::Base
   def update
     @item.update_attributes(item_params)
     if @item.valid?
-      flash.keep[:success] = "Task completed!"
+      flash.keep[:success] = t('global.menu.inventory')+" "+t('global.updatedm')
       @item.generate_recap
       redirect_to item_path(@item)
       return
@@ -142,7 +142,7 @@ class ItemsController < InheritedResources::Base
     if @item.valid?
       @item.update_columns(barcode: Organization.last.acronym+@item.id.to_s)
       @item.generate_recap
-      flash.keep[:success] = "Task completed!"
+      flash.keep[:success] = t('global.menu.item')+" "+t('global.createdm')
       redirect_to item_path(@item)
     else
       render :action => :new
@@ -171,19 +171,10 @@ class ItemsController < InheritedResources::Base
     @brands = Brand.all.order(name: "asc")
     @currencies = Currency.all.order(name: "asc")
     
-     @user_status = current_user.role.include?("superadmin" || "administrator")
+     @user_status = ['superadmin', 'administrator'].include? current_user.role
      
-     unless @user_status
-            @teams = @item.teams
-           if params[:action] == "new"
-               @users = User.by_teams(current_user.team_ids)
-           elsif params[:action] == "edit"
-             @users = User.by_teams(@item.team_ids)
-            end
-      else
-        @teams = Team.all
-        @users = User.all
-      end
+            @teams = current_user.teams
+            @users = User.by_teams(current_user.team_ids)
     @teams =  @teams.order(name: "asc").map{ |obj| [obj['name'], obj['id']] }
     @users = @users.order(lastname: "asc").map{ |obj| [(obj['firstname']+" "+obj['lastname']), obj['id']] }
       

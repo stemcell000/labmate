@@ -8,7 +8,7 @@
 				<div class="col-lg-4 col-md-4 col-sm-4 pull-right">
 					<div class="form-group">
 		  				<%= f.submit class:"btn btn-default" %>
-		 				 <input type="reset" value="Reset" onClick="window.location.reload()" class= "btn btn-default">
+		 				 <%= link_to t('global.clear_search'), request.path, class:"btn btn-default" %>
 		  			</div>
 		  		</div>
 			</div>

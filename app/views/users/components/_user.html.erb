@@ -1,5 +1,6 @@
 <div class='row'> <strong>Email : </strong> <a href = 'mailto:#{self.email}'><%=user.email%></a> </div>
 <div class='row'><strong><%= "Team".pluralize(user.teams.count)%> : </strong> <%=user.teams.pluck(:name).to_sentence %></div>
+<div class='row'><strong>Position : </strong> <%=user.positions.nil? ? "-" : user.positions.pluck(:name).to_sentence %> </div>
 <div class='row'><strong>Location : </strong> <%=user.location.nil? ? "-" : user.location.name %> </div>
 <div class='row'><strong>Role : </strong> <%=user.role %> </div>
 <div class='row'><strong>Tel1. : </strong> <%=user.tel1.nil? ? "NC": num_to_phone(user.tel1) %> </div>

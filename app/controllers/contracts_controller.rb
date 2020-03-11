@@ -5,7 +5,7 @@ load_and_authorize_resource
   helper  SmartListing::Helper
   
  #Load_and_authorize_resource
-  before_action :set_contract, only: [:edit, :update, :add_to_queue, :update_queue, :destroy]
+  before_action :set_contract, only: [:edit, :update, :add_to_queue, :update_queue, :destroy, :show]
   before_action :set_collections, only: [:edit, :update, :create, :new]
    
  #Index
@@ -32,13 +32,13 @@ load_and_authorize_resource
     
         @q = Contract.ransack(params[:q])
         
-          if ['superadmin', 'administrator'].include? current_user.role
+          if can? :manage, Department
              @contracts = @q.result(distinct: true).includes([ :items, :categories ])
           elsif ['inventory_manager'].include? current_user.role
              @contracts =  @q.result(distinct: true).includes([ :items, :categories ]).where(id: current_user_teams_ids)
           else
              @contracts = @q.result(distinct: true).includes([ :items, :categories ]).belongs_to_teams(current_user_teams_ids)
-             @categories = current_user.items.map{|item| item.contract}
+             @categories = current_user.items.map{|item| item.category}
           end
 
       if @option.display_all_contracts
@@ -58,7 +58,7 @@ load_and_authorize_resource
   def create
     @contract = Contract.create(contract_params)
     if @contract.valid?
-      flash.keep[:success] = 'Contract created'
+      flash.keep[:success] = t('global.menu.contract')+" "+t('global.createdm')
       redirect_to contract_path(@contract)
       current_user.contracts << @contract
       if @contract.teams.pluck(:name).any? {|name| name == 'All'}
@@ -78,7 +78,7 @@ load_and_authorize_resource
   def update
     @contract.update_attributes(contract_params)
     if @contract.valid?   
-      flash.keep[:success] = 'Contract updated'
+      flash.keep[:success] = t('global.menu.contract')+" "+t('global.updatedm')
       redirect_to contract_path(@contract)
       if @contract.teams.pluck(:name).any? {|name| name == 'All'}
         @contract.teams.destroy_all
@@ -100,11 +100,14 @@ load_and_authorize_resource
   def update_queue
     @contract.update_attributes(contract_params)
     if @contract.valid?   
-      flash.keep[:success] = 'Contract updated - Selection added.'
+      flash.keep[:success] = t('global.menu.contract')+" "+t('global.updatedm')
       redirect_to :action => 'index'
     else
       render :action => 'add_to_queue'
     end
+  end
+  
+  def show
     
   end
 

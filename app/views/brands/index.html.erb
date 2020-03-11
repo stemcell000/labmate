@@ -6,10 +6,10 @@
 		<%= render 'brands/components/search'%>
 	</div>
 </div>
-<%if can? :manage, Brand %>	
+<%if can? :cru, Brand %>	
 <div class="row">
 	<div class="col-lg-3 col-md-3 col-sm-3">
-		<%= link_to 'New brand', new_brand_path, class: "btn btn-default" %>
+		<%= link_to t('global.new_brand'), new_brand_path, class: "btn btn-default" %>
 	</div>
 </div>
 <%end%>

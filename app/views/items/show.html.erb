@@ -9,13 +9,13 @@
 	</div>
 </div>
 <div class="row">
-	<%= link_to "Edit", edit_item_path(@item), :class => "btn btn-default" %>
-	<%= link_to "Back to inventory", :items, :class => "btn btn-default" %>
-<% if !(current_user.teams.ids & @item.teams.ids).empty? %>
-	<%= link_to "Print (PDF)", item_path(@item, format: "pdf"), target: "_blank", :class => "btn btn-default"  %>
-	<%= link_to "Print tracking sheet (PDF)", generate_tracking_sheet_item_path(@item, format: "pdf"), target: "_blank", :class => "btn btn-default"  %>
+	<% if can? :cru, @item %>
+		<%= link_to "Edit", edit_item_path(@item), :class => "btn btn-default" %>
+		<%= link_to "Print (PDF)", item_path(@item, format: "pdf"), target: "_blank", :class => "btn btn-default"  %>
+		<%= link_to "Print tracking sheet (PDF)", generate_tracking_sheet_item_path(@item, format: "pdf"), target: "_blank", :class => "btn btn-default"  %>
 		<%= link_to "Print label", print_label_items_path(:id => @item.id), :class => "btn btn-default", method: :post, remote: true, title: "Print label"%>
-<%end%>
+	<%end%>
+	<%= link_to "Back to inventory", :items, :class => "btn btn-default" %>
 </div>
 </div><!--End of container-->
 </div><!--End of jumbotron-->

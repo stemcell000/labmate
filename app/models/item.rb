@@ -10,9 +10,7 @@ class Item < ApplicationRecord
   has_many :occurances
   has_many :users, through: :item_users
   has_and_belongs_to_many :teams, join_table: "items_teams"
-  
-  #has_many :attachments, :dependent => :destroy
-
+  has_many :attachments, :dependent => :destroy
   has_and_belongs_to_many :contracts, join_table: "contracts_items"
   
   belongs_to :brand

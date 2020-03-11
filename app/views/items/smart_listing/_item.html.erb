@@ -69,16 +69,18 @@
 	<%= smart_listing_item_actions [
   	  		{name: :custom,    url: item_path(object),
 	  		method: :get, 
-  			icon: 'far fa-sticky-note', 
+  			icon: 'fa fa-sticky-note', 
   			title: "Show item"}]%>
-	<% if can? :manage, :create, :update, object %>
+  			
+	<% if can? :cru, object %>
 	  	<%= smart_listing_item_actions [
   	  		{name: :custom,    url: edit_item_path(object),
 	  		method: :get, 
   			icon: 'fa fa-pencil-square-o', 
   			title: "Edit item"}]%>
+  			
   	  	<% if object.status_id == 5%>
-		<span class="fas fa-trash-alt text-danger"></span>
+			<span class="fas fa-trash-alt text-danger"></span>
 		<%end%>
 	<% end %>
 	

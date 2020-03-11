@@ -4,36 +4,20 @@
 <td ><small><%= object.location.name unless object.location.nil?%></small></td>
 <td ><small>
 	<%if can? :manage, Department %>
-	-
+		-
 	<%else%>
 	<%= object.teams.pluck(:name).to_sentence unless object.teams.nil? %>
 	<%end%>
 	</small>
 </td>
 <td class="actions">
-	<%if can? :manage, User %>
-		<%unless (current_user.teams & object.teams).empty? %>
+	<%if can? :crud, :manage, object %>
 			<%= smart_listing_item_actions [
 			 {name: :custom, url: edit_user_path(object),
 	  		method: :get, 
   			icon: 'fa fa-pencil-square-o', 
   			title: "Edit user"},
 				]%>
-		<%end%>
-	<%end%>	
-	<%if can? :update, User %>
-		<%if current_user.id == object.id %>
-		
-			<%= smart_listing_item_actions [
-			  	{name: :edit, url: edit_user_path(object), title: "Edit"},
-			 {name: :custom, url: edit_user_path(object),
-	  		method: :get, 
-  			icon: 'fa fa-pencil-square-o', 
-  			title: "Edit user"},
-				]%>
-		<%end%>
-	<%end%>	
-	<%if can? :manage, Department %>
 		<%= smart_listing_item_actions [
 			{name: :destroy, url: user_path(object), title: "Destroy", :confirmation => "Are you sure you want to delete this user ?"}
 			]%>

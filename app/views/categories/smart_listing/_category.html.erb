@@ -1,0 +1,15 @@
+<td class="col-lg-10 col-md-10 col-sm-10"><small><%= category.name.nil? ? "unknown" : category.name %></small></td>
+<td class="col-lg-2 col-md-10 col-sm-10 actions">
+<%if can? :manage, Category %>	
+	<%= smart_listing_item_actions [
+		{name: :custom,    url: edit_category_path(category),
+	  		method: :get, 
+  			icon: 'fa fa-pencil-square-o', 
+  			title: "Edit"}]%>
+<%end%>
+	<%= smart_listing_item_actions [
+		{name: :custom,    url: category_path(category),
+	  		method: :get, 
+  			icon: 'fa fa-sticky-note', 
+  			title: "Show info"}]%>
+</td>

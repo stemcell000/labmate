@@ -13,4 +13,7 @@ class Category < ApplicationRecord
     self.name.upcase
   end
   
+  validates :name, presence: true
+  validates :acronym, presence: true
+  
 end

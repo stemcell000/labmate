@@ -125,17 +125,13 @@
 	</div>
 	</div>
 </small>
-<%if can? :crud, Item%>	
 	<div class="row">
-			<div class="col-md-12">
-				<% if can? :cru, @item %>
+				<div class="col-md-12">
 					<%= f.submit "Save", :class => "btn btn-primary" %>
-		        	<%end%>
-		        	<%= link_to "Back to inventory", :back, :class => "btn btn-default" %>
-		     </div>
-	</div>
-<%end%>
-<%end%>
-		  </div>  
+			        	<%= link_to "Back to inventory", :back, :class => "btn btn-default" %>
+			     </div>
+		</div>
+<%end%><!--End of Form-->
+</div>  
 		
 	
