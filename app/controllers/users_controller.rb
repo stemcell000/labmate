@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update, :destroy, :editadmin, :show]
+  before_action :set_user, only: [:edit, :edit_hr, :update, :destroy, :editadmin, :show]
   before_action :set_option, only: [:index]
+  before_action :set_roles, only: [:edit, :edit_hr]
    
   #Smart_listing
   include SmartListing::Helper::ControllerExtensions
@@ -17,6 +18,36 @@ class UsersController < ApplicationController
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+  
+   def index
+   
+    @departments = Department.all.order(name: "asc").uniq.map{ |obj| [obj['name'], obj['id']]}
+    @teams = Team.where.not(name: 'Public').order(name: "asc").uniq.map{ |obj| [obj['name'], obj['id']] }
+    @q = User.ransack(params[:q])
+    
+    if can? :manage, User
+      @my_selection = "Display all"
+      if @option.display_all_users
+        @users = @q.result.includes(:teams, :location, :departments).where.not(role: ['superadmin'])
+      else
+        @users = @q.result.includes(:teams, :location, :departments).where.not(role: ['superadmin', 'former_employee'])
+      end
+    else
+      @my_selection = "My team(s) only"
+      @users = @q.result.includes(:teams, :location, :departments).where.not(role: ['superadmin', 'former_employee'])
+   
+      if @option.display_all_users
+        @users = @users.joins(:teams).where(:teams=>{:id => current_user.teams.ids})
+      end
+    end
+
+    
+     #Config de l'affichage des résultats.
+      @users = smart_listing_create(:users, @users, partial: "users/smart_listing/list",
+                                                  default_sort: {lastname: "asc"},
+                                                  page_sizes: [ 10, 20, 30, 50, 100])
+ end
+ 
   
   def new
     @user = User.new
@@ -44,6 +75,9 @@ class UsersController < ApplicationController
   def edit
   end
   
+  def edit_hr
+  end
+  
   def update
     @user.update_attributes(user_params)
     if @user.valid?
@@ -55,7 +89,7 @@ class UsersController < ApplicationController
         end
         set_adds(@user)
       end
-      redirect_to users_path
+      redirect_to user_path
     else
       render :action => :edit
     end
@@ -70,11 +104,21 @@ class UsersController < ApplicationController
     @departments = Department.all.order(name: "asc").uniq.map{ |obj| [obj['name'], obj['id']]}
     @teams = Team.where.not(name: 'Public').order(name: "asc").uniq.map{ |obj| [obj['name'], obj['id']] }
     @q = User.ransack(params[:q])
-    @users = @q.result.includes(:teams, :location, :departments).where.not(role: 'superadmin')
- 
-    if @option.display_all_users
-      @users = @users.joins(:teams).where(:teams=>{:id => current_user.teams.ids})
+    
+    if can? :manage, User
+      if @option.display_all_users
+        @users = @q.result.includes(:teams, :location, :departments).where.not(role: ['superadmin'])
+      else
+        @users = @q.result.includes(:teams, :location, :departments).where.not(role: ['superadmin', 'former_employee'])
+      end
+    else
+      @users = @q.result.includes(:teams, :location, :departments).where.not(role: ['superadmin', 'former_employee'])
+   
+      if @option.display_all_users
+        @users = @users.joins(:teams).where(:teams=>{:id => current_user.teams.ids})
+      end
     end
+
     
      #Config de l'affichage des résultats.
       @users = smart_listing_create(:users, @users, partial: "users/smart_listing/list",
@@ -83,12 +127,15 @@ class UsersController < ApplicationController
  end
  
  def destroy
-   @user.role = 'quit'
+   @user.role = 'former_employee'
+   #
    if @user.items.exists
      @user.items.each do |item|
        item.generate_recap
      end
    end
+   #
+   @user.items.delete
  end
     
   
@@ -100,11 +147,11 @@ class UsersController < ApplicationController
   
  def user_params
     params.require(:user).permit(:username, :email, :firstname, :lastname, :location_id, :role, :login, :recap, :password, :password_confirmation,
-    :tel1, :tel2,
+    :tel1, :tel2, :start_date, :end_date,
     team_ids: [], teams_attributes: [:id, :name],
     location_attributes: [:id, :name, :building_id],
     position_ids: [], position_attributes: [:id, :name],
-    options_attributes: [:dispay_all])
+    options_attributes: [:display_all])
  end
  
  def set_option
@@ -118,4 +165,23 @@ class UsersController < ApplicationController
    user.create_option
  end
  
+ def set_roles
+     roles_list = [["superadmin", t('roles.superadmin')],
+      ["administrator", t('roles.administrator')],
+      ["HR_administrator", t('roles.hr_administrator')],
+      ["inventory_manager", t('roles.inventory_manager')],
+      ["team_leader" , t('roles.team_leader')],
+      ["user" , t('roles.user')],
+      ["former_employee" , t('roles.former_employee')],
+      ]
+        if ['superadmin'].include? current_user.role
+            @roles_list = roles_list
+        elsif ['administrator', 'HR_administrator'].include? current_user.role
+            @roles_list = roles_list.slice(1)
+        elsif ['HR_administrator'].include? current_user.role
+            @roles_list = roles_list.slice(1, 2, 3, 4)
+        elsif ['inventory_manager'].include? current_user.role
+          roles_list = roles_list.slice(1, 2, 3, -1)
+        end 
+ end
 end

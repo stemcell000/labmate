@@ -3,6 +3,7 @@ class Attachment < ActiveRecord::Base
  
  belongs_to :item
  belongs_to :contract
+ belongs_to :users
  
  #La ligne suivante permet de supprimer l'enregistrement de l'attachement (attachment) lorsqu'un fichier est supprimé
  #dans le formulaire. En son absence, seul le fichier est supprimé et la valeur d'":attachement" effacée.

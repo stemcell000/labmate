@@ -19,7 +19,7 @@
 					<strong>Attached files: </strong>none<br />
 				<% else %>
 					<strong>Attached files: </strong><br />	
-					<% @contract.attachments.each do |clone_attachment|%>
+					<% @contract.attachments.each do |attachment|%>
 							<%= link_to File.basename(attachment.attachment.path), attachment.attachment.to_s, :target => "_blank"%><br />
 					<%end%>
 				<%end%>

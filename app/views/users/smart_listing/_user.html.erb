@@ -3,7 +3,7 @@
 <td ><small><%= object.tel1 unless object.tel1.nil?%> <%= object.tel2 unless object.tel2.nil?%></small></td>
 <td ><small><%= object.location.name unless object.location.nil?%></small></td>
 <td ><small>
-	<%if can? :manage, Department %>
+	<%if ["superadmin", "administrator", "HR_administrator"].include? object.role  %>
 		-
 	<%else%>
 	<%= object.teams.pluck(:name).to_sentence unless object.teams.nil? %>
@@ -11,15 +11,7 @@
 	</small>
 </td>
 <td class="actions">
-	<%if can? :crud, :manage, object %>
 			<%= smart_listing_item_actions [
-			 {name: :custom, url: edit_user_path(object),
-	  		method: :get, 
-  			icon: 'fa fa-pencil-square-o', 
-  			title: "Edit user"},
+			 {name: :show, url: user_path(object),title: "show user", icon: 'fa fa-eye'}
 				]%>
-		<%= smart_listing_item_actions [
-			{name: :destroy, url: user_path(object), title: "Destroy", :confirmation => "Are you sure you want to delete this user ?"}
-			]%>
-	<%end%>
 </td>

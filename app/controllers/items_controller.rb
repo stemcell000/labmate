@@ -51,8 +51,6 @@ class ItemsController < InheritedResources::Base
       @items = @items.joins(:items_teams).where(:items_teams => {team_id: current_user.team_ids}).where.not('status_id' => 5)
     end
     
-
-     
       #
       #Config de l'affichage des résultats.
       @items = smart_listing_create(:items, @items, partial: "items/smart_listing/listing",

@@ -15,26 +15,26 @@
     <% isAdmin = can? :manage, Organization %>
      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <%= content_tag(:li, link_to( t('global.menu.inventory'), root_path, class: "nav-link"), class: cp(root_path), remote: true)%>
-        <%= content_tag(:li, link_to( t('global.menu.categories'), categories_path, class: "nav-link"), class: cp(categories_path), remote: true)%>
-        <%= content_tag(:li, link_to( t('global.menu.maintenance'), contracts_path, class: "nav-link"), class: cp(contracts_path), remote: true)%>
-        <%= content_tag(:li, link_to( t('global.menu.brands'), brands_path, class: "nav-link"), remote: true)%>
-        <%= content_tag(:li, link_to( t('global.menu.providers'), providers_path, class: "nav-link"), remote: true)%>
+        <%= content_tag(:li, link_to( t('menu.inventory'), root_path, class: "nav-link"), class: cp(root_path), remote: true)%>
+        <%= content_tag(:li, link_to( t('menu.categories'), categories_path, class: "nav-link"), class: cp(categories_path), remote: true)%>
+        <%= content_tag(:li, link_to( t('menu.maintenance'), contracts_path, class: "nav-link"), class: cp(contracts_path), remote: true)%>
+        <%= content_tag(:li, link_to( t('menu.brands'), brands_path, class: "nav-link"), remote: true)%>
+        <%= content_tag(:li, link_to( t('menu.providers'), providers_path, class: "nav-link"), remote: true)%>
         <li class="dropdown">
-        		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%=t('global.menu.utilities')%><span class="caret"></span></a>
+        		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%=t('menu.utilities')%><span class="caret"></span></a>
           <ul class="dropdown-menu">
           	<%if can? :manage, Organization%>
-            		<%= content_tag(:li, link_to( t('global.menu.organization'), organizations_path, class: "nav-link"), remote: true)%>
-            		<%= content_tag(:li, link_to( t('global.menu.owners'), owners_path, class: "nav-link"), remote: true)%>
+            		<%= content_tag(:li, link_to( t('menu.organization'), organizations_path, class: "nav-link"), remote: true)%>
+            		<%= content_tag(:li, link_to( t('menu.owners'), owners_path, class: "nav-link"), remote: true)%>
             <%end%>
             <%if can? :manage, Building %>
-            		<%= content_tag(:li, link_to( t('global.menu.buildings'), teams_path, class: "nav-link"), remote: true)%>
+            		<%= content_tag(:li, link_to( t('menu.buildings'), teams_path, class: "nav-link"), remote: true)%>
             	<%end%>
-            <%= content_tag(:li, link_to( t('global.menu.departments'), departments_path, class: "nav-link"), remote: true, if: isAdmin)%>
-            <%= content_tag(:li, link_to( t('global.menu.teamss'), teams_path, class: "nav-link"), remote: true)%>
-            <%= content_tag(:li, link_to( t('global.menu.locations'), teams_path, class: "nav-link"), remote: true)%>
+            <%= content_tag(:li, link_to( t('menu.departments'), departments_path, class: "nav-link"), remote: true, if: isAdmin)%>
+            <%= content_tag(:li, link_to( t('menu.teamss'), teams_path, class: "nav-link"), remote: true)%>
+            <%= content_tag(:li, link_to( t('menu.locations'), teams_path, class: "nav-link"), remote: true)%>
             <li role="separator" class="divider"></li>
-            <%= content_tag(:li, link_to( t('global.menu.users'), users_path, class: "nav-link"), remote: true)%>
+            <%= content_tag(:li, link_to( t('menu.users'), users_path, class: "nav-link"), remote: true)%>
           </ul>
          </li>
 		</ul>
@@ -42,7 +42,7 @@
 	      	<li>
 	     		<span class="navbar-text">
 				<% if signed_in? %>
-	    				<%=t('global.menu.sign_in_as')%> : <strong><%= current_user.full_name %></strong> - <%=t('global.menu.status')%> : <strong><%=current_user.role.gsub('_', ' ').humanize %></strong>
+	    				<%=t('menu.sign_in_as')%> : <strong><%= current_user.full_name %></strong> - <%=t('global.menu.status')%> : <strong><%=current_user.role.gsub('_', ' ').humanize %></strong>
 		    			<%= link_to user_path(current_user.id), method: :get do %>
 					 		<i class="fa fa-user"></i>
 					<%end%>

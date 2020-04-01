@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
         n_orphans = orphans.size
         orphans_bc = orphans.pluck(:barcode)
         if n_orphans > 0
-          flash.now[:error] = "<small>#{t('global.flash_orphans')} #{t('global.items.orphan_item', count: n_orphans)} : #{orphans_bc.to_sentence}</small>".html_safe
+          flash.now[:error] = "<small>#{t('items.flash_orphans')} #{t('items.orphan_item', count: n_orphans)} : #{orphans_bc.to_sentence}</small>".html_safe
         end
       end
      end
@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
          if tender.teams & current_user.teams 
            #check if the current user's teams items categories are concerned by the on going tender
             if tender.categories & @current_teams_categories
-              flash.now[:success] = t('global.flash_tender', category:tender.categories.pluck(:name).to_sentence.humanize)
+              flash.now[:success] = t('items.flash_tender', category:tender.categories.pluck(:name).to_sentence.humanize)
             end
           end
          end

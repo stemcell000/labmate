@@ -41,9 +41,7 @@ class Ability
             c.teams.exists? user.teams
           end
         #Inventory manager can only manage user who belongs to his/her team(s)
-          can :crud, User do |u|
-            user.teams.exists? u.teams
-          end
+          can :index, User
         #Inventory manager can create and update brands and providers
           can :crud, Brand
           can :crud, Provider
@@ -52,17 +50,14 @@ class Ability
           can :read, :all
        #Team Leader can only manage users who belongs to his/her team(s)
           can :index, User
-          can :manage, User, user: {team_users: {team_id: user.team_ids}}
         #Team Leader can only manage items that belongs to his/her team(s)
           can :cru, Item do |item|
             user.teams.exists? item.teams
           end
         #Team Leader can only manage user who belongs to his/her team(s)
-          can :crud, User do |u|
-            user.teams.exists? u.teams
-          end
+          can :index, User
         #Team Leader can only manage his/her teams
-          can :index, read, Team
+          can :index, :read, Team
           can :update, Team, team: {team_users: {user_id: user.id}}
         #Team Leader can only manage contracts that belongs to his/her team(s) or public tender  
           can :cru, Contract do |c|

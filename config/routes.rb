@@ -47,6 +47,7 @@ Rails.application.routes.draw do
       patch :display_all_contracts_switch, on: :member
       patch :add_to_queue, on: :member
     end
+   get :edit_hr, on: :member
   end
   
   resource :items do
