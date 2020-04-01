@@ -111,10 +111,6 @@ gem 'nprogress-rails'
   #Sortable table
   gem "smart_listing"
   
-  
-  #recherche
-  gem 'acts-as-taggable-on'
-  
   #Mise en forme de masques de saisie pour bootstrap
   gem 'jasny-bootstrap-rails'
   
