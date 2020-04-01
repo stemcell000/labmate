@@ -2,7 +2,7 @@
 		<div class="form-group row">
 			
 				<div class="col-lg-6 col-md-6">
-					<%= f.label t('global.menu.teams')%>
+					<%= f.label t('menu.teams')%>
 						<%= f.select :teams_id_in, @teams, {:include_blank => " "}, {:class => "select2-select"}%>
 				</div>
 				
@@ -13,51 +13,51 @@
 				
 		</div>
 		
-		<h6> <strong>t('global.menu.installation_date')</strong></h6>
+		<h6> <strong>t('menu.installation_date')</strong></h6>
 		
 		<div class="form-group row">
 			
 				<div class="col-md-5 col-sm-4" >
-					<%= f.label t('global.menu.starting_date') %>
+					<%= f.label t('menu.starting_date') %>
 					<%= f.search_field :installation_date_gteq, value: @installation_date_date_gteq_with_proper_format, 'data-behaviour' => 'datepicker', placeholder: "Starting date",  class: "col-md-12"%>
 				</div>
 			
 				<div class="col-md-5 col-sm-4" >
-					<%= f.label t('global.menu.ending_date') %>
+					<%= f.label t('menu.ending_date') %>
 					<%= f.search_field :installation_date_gteq, value: @installation_date_date_lteq_with_proper_format, 'data-behaviour' => 'datepicker', input_html: { class: "datepicker"}, placeholder: "Ending date", class: "col-md-12" %>
 				</div>
 		</div>
 		
 		<div class="form-group row">
 				<div class="col-lg-6 col-md-6">
-					<%= f.label t('global.menu.category')%>
+					<%= f.label t('menu.category')%>
 					<%= f.select(:category_id_in, @categories, {include_blank: " "}, {:class => "select2-select"})%>
 				</div>
 
 				<div class="col-lg-4 col-md-4">
-					<%= f.label t('global.menu.location')%>
+					<%= f.label t('menu.location')%>
 					<%= f.select(:location_id_in, @locations, {include_blank: " "}, {:class => "select2-select"})%>
 				</div>
 		</div>
 		
 		<div class="form-group row">
 				<div class="col-md-6">
-					<%= f.label t('global.menu.provider')%>
+					<%= f.label t('menu.provider')%>
 					<%= f.select(:provider_id_in, @providers, {include_blank: " "}, {:class => "select2-select"})%>
 				</div>
 				<div class="col-md-6">
-					<%= f.label t('global.menu.brand')%>
+					<%= f.label t('menu.brand')%>
 					<%= f.select(:brand_id_in, @brands, {include_blank: " "}, {:class => "select2-select"})%>
 				</div>
 		</div>
 			
 		<div class="form-group row">
 				<div class="col-md-6">
-					<%= f.label t('global.menu.owner')%>
+					<%= f.label t('menu.owner')%>
 					<%= f.select(:owner_id_in, @owners, {include_blank: " "}, {:class => "select2-select"})%>
 				</div>
 				<div class="col-md-6">
-					<%= f.label t('global.menu.status')%>
+					<%= f.label t('menu.status')%>
 					<%= f.select(:status_id_in, @statuses, {include_blank: " "}, {:class => "select2-select"})%>
 				</div>
 		</div>
