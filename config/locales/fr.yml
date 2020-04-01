@@ -24,7 +24,7 @@ fr:
   roles:
     superadmin: "Superadmin"
     administrator: "Administrateur"
-    hr_administrator: "HR administrateur"
+    hr_administrator: "Responsable RH"
     inventory_manager: "Responsable inventaire"
     team_leader: "Chef d'équipe"
     user: "Utilisateur"

@@ -13,7 +13,6 @@ class CreateContracts < ActiveRecord::Migration
       t.string :number
       t.boolean :registered
       t.timestamps null: false
-      add_column :attachments, :contract_id, :integer
     end
   end
 end
