@@ -128,6 +128,7 @@ gem 'nprogress-rails'
     gem 'rails_12factor'
     ruby '2.3.0'
     gem 'foreman'
+    gem 'actioncable'
   end
   
   #Sécurise les données sensibles comme les mots de passe
