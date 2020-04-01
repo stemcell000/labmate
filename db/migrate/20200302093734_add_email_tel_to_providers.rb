@@ -1,4 +1,4 @@
-class AddEmailTelToProviders < ActiveRecord::Migration[5.0]
+class AddEmailTelToProviders < ActiveRecord::Migration
   def change
     add_column :providers, :email, :string
     add_column :providers, :tel, :integer
