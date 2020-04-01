@@ -1,7 +1,6 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    actioncable (0.0.0)
     actionmailer (4.2.2)
       actionpack (= 4.2.2)
       actionview (= 4.2.2)
@@ -362,7 +361,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  actioncable
   actionpack
   active_admin_import
   activeadmin
