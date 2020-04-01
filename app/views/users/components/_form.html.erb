@@ -55,13 +55,13 @@
 		</div>
   </div>
   
-  <% roles_list = [["superadmin", "Superadmin"],
-      ["administrator", "Administrator"],
-      ["HR_administrator", "HR administrator"],
-      ["inventory_manager", "Inventory manager"],
-      ["team_leader" , "Team leader"],
-      ["guest" , "Guest"],
-      ["user" , "User"]
+  <% roles_list = [["superadmin", t('global.roles.superadmin')],
+      ["administrator", t('global.roles.administrator')],
+      ["HR_administrator", t('global.roles.hr_administrator')],
+      ["inventory_manager", t('global.roles.inventory_manager')],
+      ["team_leader" , t('global.roles.team_leader')],
+      ["user" , t('global.roles.user')],
+      ["former_employee" , t('global.roles.former_employee')]
       ]%>
   <% if ['superadmin'].include? current_user.role
       roles_list = roles_list

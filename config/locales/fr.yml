@@ -21,6 +21,15 @@ fr:
     createdm: "créé"
     updatedf: "modifiée"
     updatedm: "modifié"
+  roles:
+    superadmin: "Superadmin"
+    administrator: "Administrateurr"
+    hr_administrator: "HR administrateurr"
+    inventory_manager: "Responsable inventaire"
+    team_leader: "Chef d'équipe"
+    user: "Utilisateurs"
+    former_employee: "Ancien employee"
+  items:
     orphan_item:
       one: "1 objet orphelin"
       other: "%{count} objets orphelins"
@@ -34,7 +43,7 @@ fr:
     password: "Mot de passe"
     enter_password: "Mot de passe (entrez votre mot de passe ou choisissez en un nouveau.)"
     change_password: "Changez le mot de passe"
-    menu:
+  menu:
       item: "Objet"
       inventory: "Inventaire"
       maintenance: "Maintenance"

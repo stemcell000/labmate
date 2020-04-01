@@ -7,6 +7,7 @@ gem 'rails', '4.2.2'
 #gem 'sqlite3'
 gem 'pg', '0.20.0'
 gem 'rake','13.0.1'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

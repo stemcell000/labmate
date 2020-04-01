@@ -18,7 +18,6 @@ function toggleChevron(e) {
         .toggleClass('fa-chevron-down fa-chevron-right');
 	};
 	
-		
 	$('[data-toggle="popover"]').popover({html:true});
 		
 	$(document).on("focus", "[data-behaviour~='datepicker']", function(e){

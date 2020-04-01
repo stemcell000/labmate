@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
         n_orphans = orphans.size
         orphans_bc = orphans.pluck(:barcode)
         if n_orphans > 0
-          flash.now[:error] = "<small>#{t('global.flash_orphans')} #{t('global.orphan_item', count: n_orphans)} : #{orphans_bc.to_sentence}</small>".html_safe
+          flash.now[:error] = "<small>#{t('global.flash_orphans')} #{t('global.items.orphan_item', count: n_orphans)} : #{orphans_bc.to_sentence}</small>".html_safe
         end
       end
      end

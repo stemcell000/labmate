@@ -96,12 +96,10 @@ class Ability
           can :cru, Brand
           can :cru, Provider
           
-      elsif user.role? :guest
-         can :index, :read, Item
-         can :index, :read, User
-      end
+      elsif user.role? :out
+         cannot :manage, :all
+       end
     end
-    
    ActiveAdmin::ResourceController.class_eval do
     protected
   

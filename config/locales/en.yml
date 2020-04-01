@@ -21,6 +21,17 @@ en:
     createdm: "created"
     updatedf: "updated"
     updatedm: "updated"
+    
+  roles:
+    superadmin: "Superadmin"
+    administrator: "Administrator"
+    hr_administrator: "HR administrator"
+    inventory_manager: "Inventory manager"
+    team_leader: "Team leader"
+    user: "User"
+    former_employee: "Former employee"
+   
+  items: 
     orphan_item:
       one: "1 orphan item"
       other: "%{count} orphan items"
@@ -35,7 +46,8 @@ en:
     enter_password: "Enter password (actual or new one)"
     change_password: "Change password"
     back: "Back"
-    menu:
+  
+  menu:
       item: "Instrument"
       inventory: "Inventory"
       maintenance: "Maintenance"

@@ -83,7 +83,7 @@ class UsersController < ApplicationController
  end
  
  def destroy
-   @user.destroy
+   @user.role = 'quit'
    if @user.items.exists
      @user.items.each do |item|
        item.generate_recap
