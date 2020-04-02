@@ -1,6 +1,6 @@
 class AddSuperadmin < ActiveRecord::Migration
   def up    
-         u = User.new
+          u = User.new
           u.email     = 'marc.lechuga@inserm.fr'
           u.username = 'mlechuga'
           u.firstname = 'Marc'
@@ -8,9 +8,12 @@ class AddSuperadmin < ActiveRecord::Migration
           u.encrypted_password   = 'stemcell'
           u.password = 'stemcell'
           u.password_confirmation = 'stemcell'
-          u.role = 'administrator'
+          u.role = 'superadmin'
           u.save!(validate: false)
           u.options.create(display_all: false)
+          t = Team.new(name: "System", type_id: 3, acronym: "SYS")
+          t.save!(validate: false)
+          u.teams << t
   end
   
   def down

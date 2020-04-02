@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%=t('global.menu.organization')%</h1>
+<h1><%=t('menu.organization')%</h1>
 
 <% if Organization.first.nil? %>
-	<%= link_to t('global.new_organization'), new_organization_path %>
+	<%= link_to t('new_organization'), new_organization_path %>
 <%else%>
 <div class="row">
 	<div class="col-lg-7 offset-lg-2">

@@ -41,18 +41,20 @@
 	      <ul class="nav navbar-nav navbar-right">
 	      	<li>
 	     		<span class="navbar-text">
+	     		<small>
 				<% if signed_in? %>
-	    				<%=t('menu.sign_in_as')%> : <strong><%= current_user.full_name %></strong> - <%=t('global.menu.status')%> : <strong><%=current_user.role.gsub('_', ' ').humanize %></strong>
+	    				<%=t('menu.sign_in_as')%> : <strong><%= current_user.full_name %></strong> - <%=role_set(current_user.role)%>
 		    			<%= link_to user_path(current_user.id), method: :get do %>
 					 		<i class="fa fa-user"></i>
 					<%end%>
 		    			<%= link_to destroy_user_session_path, method: :get do %>
 					 		<i class="fa fa-sign-out-alt"></i>
 					<%end%>
-				<% if !isAdmin%>
+				<% unless isAdmin%>
 	    				<br /><strong><%=current_user.teams.pluck(:name).to_sentence%> </strong>
 	    			<%end%>
 	    			<%end%>
+	    			</small>
 	     		</span>
 	     	</li>
 	     	<li>

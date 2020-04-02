@@ -1,5 +1,5 @@
-GMAIL_USERNAME: 'marclechuga74@gmail.com'
-GMAIL_PASSWORD: 'miszigmswwtwpkfq'
+GMAIL_USERNAME: 'mailer.idv@gmail.com'
+GMAIL_PASSWORD: 'azurwyhsgmcdqhnn'
 
 development:
   SECRET_KEY_DEV: 6c1211c5e6baaad1a42c5db7248c8ce502ba6b7b36cf95c1b6577cd214d94d7a6237a071b34863e77d0b4ce5f5f4ebc244d1c99d9fc8c3bebba0f33ea05574b8

@@ -1,4 +1,3 @@
-systemadmin = Position.create(name: 'System Administrator')
 Team.create(name: 'System', acronym: 'SYS', type_id: 3)
 Status.create(name: 'unknown')
 Status.create(name: 'lost')
@@ -12,4 +11,3 @@ Type.create(name: 'Facility')
 Type.create(name: 'System')
 Team.create(name: 'All')
 Department.create(name: 'system', organization_id: 1)
-User.first.positions << systemadmin

@@ -3,15 +3,15 @@
     <div class="container">
    <div class="row">
    		<div class="col-md-5 col-sm-4">
-    			<%=f.input :firstname, label: t('global.users.firstname'), required: true%>
+    			<%=f.input :firstname, label: t('users.firstname'), required: true%>
    	 	</div>
    	 	<div class="col-md-5 col-sm-4">
-    			<%=f.input :lastname, label: t('global.users.lastname'), required: true%>
+    			<%=f.input :lastname, label: t('users.lastname'), required: true%>
     		</div>
   </div>
    <div class="row">
    		<div class="col-md-12 col-sm-12">
-    			<%= f.association :teams, label:t('global.menu.teams'),
+    			<%= f.association :teams, label:t('menu.teams'),
     									collection: current_user.teams,
 									label_method: lambda { |team| "#{team.name}"},
 									prompt: 'Select a team.',
@@ -41,7 +41,7 @@
   </div>
    <div class="row">
    		<div class="col-md-12 col-sm-12">
-   			<%= f.association :positions, :label => t('global.users.position'),
+   			<%= f.association :positions, :label => t('users.position'),
 												label_method: lambda { |position| "#{position.name}"},
 												prompt: 'Select a position.',
 												disabled: !isManager,
@@ -53,7 +53,7 @@
   </div>
     <div class="row">
   		<div class="col-md-5 col-sm-4">
-   			<%= f.association :location, :label => t('global.menu.location'),
+   			<%= f.association :location, :label => t('menu.location'),
 												label_method: lambda { |location| "#{location.name}"},
 												value_method: :id,
 												prompt: 'Select a location.',
@@ -66,7 +66,7 @@
 
  <div class="row">
 		<div class="col-md-6 col-lg-6 col-sm-6">
-		  	<%= f.input :role, label: t('global.menu.role'),
+		  	<%= f.input :role,
 		  	:collection => @roles_list,
 			label_method: :second, value_method: :first,
 		  	required: true, 

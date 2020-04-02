@@ -184,4 +184,5 @@ class UsersController < ApplicationController
           roles_list = roles_list.slice(1, 2, 3, -1)
         end 
  end
+ 
 end
