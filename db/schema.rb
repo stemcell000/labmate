@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200401155029) do
+ActiveRecord::Schema.define(version: 20200402122648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,10 +20,10 @@ ActiveRecord::Schema.define(version: 20200401155029) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
     t.text     "body"
-    t.string   "resource_type"
     t.integer  "resource_id"
-    t.string   "author_type"
+    t.string   "resource_type"
     t.integer  "author_id"
+    t.string   "author_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -42,12 +42,6 @@ ActiveRecord::Schema.define(version: 20200401155029) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
-
-  create_table "ar_internal_metadata", primary_key: "key", force: :cascade do |t|
-    t.string   "value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "attachments", force: :cascade do |t|
     t.integer  "item_id"
@@ -91,20 +85,6 @@ ActiveRecord::Schema.define(version: 20200401155029) do
 
   add_index "categories_contracts", ["category_id"], name: "index_categories_contracts_on_category_id", using: :btree
   add_index "categories_contracts", ["contract_id"], name: "index_categories_contracts_on_contract_id", using: :btree
-
-  create_table "contacts", force: :cascade do |t|
-    t.string   "firstname"
-    t.string   "lastname"
-    t.string   "email"
-    t.string   "tel_fix"
-    t.string   "mobile"
-    t.text     "address"
-    t.string   "zipcode"
-    t.string   "city"
-    t.string   "country"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "contracts", force: :cascade do |t|
     t.string   "name"
@@ -172,14 +152,6 @@ ActiveRecord::Schema.define(version: 20200401155029) do
 
   add_index "departments_users", ["team_id"], name: "index_departments_users_on_team_id", using: :btree
   add_index "departments_users", ["user_id"], name: "index_departments_users_on_user_id", using: :btree
-
-  create_table "item_attachments", force: :cascade do |t|
-    t.integer  "item_id"
-    t.string   "name"
-    t.string   "attachment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "items", force: :cascade do |t|
     t.string   "barcode"
@@ -329,35 +301,6 @@ ActiveRecord::Schema.define(version: 20200401155029) do
     t.datetime "updated_at"
   end
 
-  create_table "taggings", force: :cascade do |t|
-    t.integer  "tag_id"
-    t.string   "taggable_type"
-    t.integer  "taggable_id"
-    t.string   "tagger_type"
-    t.integer  "tagger_id"
-    t.string   "context",       limit: 128
-    t.datetime "created_at"
-  end
-
-  add_index "taggings", ["context"], name: "index_taggings_on_context", using: :btree
-  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
-  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "taggings_taggable_context_idx", using: :btree
-  add_index "taggings", ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy", using: :btree
-  add_index "taggings", ["taggable_id"], name: "index_taggings_on_taggable_id", using: :btree
-  add_index "taggings", ["taggable_type"], name: "index_taggings_on_taggable_type", using: :btree
-  add_index "taggings", ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type", using: :btree
-  add_index "taggings", ["tagger_id"], name: "index_taggings_on_tagger_id", using: :btree
-
-  create_table "tags", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "taggings_count", default: 0
-  end
-
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
-
   create_table "teams", force: :cascade do |t|
     t.string   "name"
     t.string   "topic"
@@ -415,5 +358,4 @@ ActiveRecord::Schema.define(version: 20200401155029) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "taggings", "tags"
 end
