@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Labmate <%= Organization.nil? ? "" : Organization.first.acronym %></a>
+      <a class="navbar-brand" href="#">Labmate <%= Organization.first.acronym unless Organization.first.nil? %></a>
     </div>
     <% if current_user%>
     <% isAdmin = can? :manage, Organization %>
