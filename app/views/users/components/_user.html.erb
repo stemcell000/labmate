@@ -3,7 +3,10 @@
 <div class='row'><strong><%= t("users.position") %> : </strong> <%=user.positions.nil? ? "-" : user.positions.pluck(:name).to_sentence %> </div>
 <div class='row'><strong><%= t("users.role") %> : </strong> <%=role_set(user.role) %> </div>
 <div class='row'><strong><%= t("users.localisation") %> : </strong> <%=user.location.nil? ? "-" : user.location.name %> </div>
-<div class='row'><strong>Tel1. : </strong> <%=user.tel1.nil? ? "NC": num_to_phone(user.tel1) %> </div>
-<div class='row'><strong>Tel2. : </strong> <%=user.tel2.nil? ? "NC": Phonelib.parse(user.tel2, 'FR') %> </div>
+<div class='row'><strong>Tel1. : </strong> <%=user.tel1.nil? ? "-": num_to_phone(user.tel1) %> </div>
+<div class='row'><strong>Tel2. : </strong> <%=user.tel2.nil? ? "-": Phonelib.parse(user.tel2, 'FR') %> </div>
 <div class='row'><strong><%= t("users.start_date") %> : </strong><%= user.start_date.blank? ? "-" :  @contract.start_date.strftime("%B %e, %Y") %></div>
-<div class='row'><strong><%= t("users.end_date") %> : </strong><%=user.end_date.blank? ? "-" :  @contract.end_date.strftime("%B %e, %Y") %></div>
+<div class='row'><strong><%= t("users.end_date") %> : </strong><%= user.end_date.blank? ? "-" :  @contract.end_date.strftime("%B %e, %Y") %></div>
+<%if can? :manage, User %>
+<div class='row'><strong><%= t("users.active_status") %> : </strong><%= user.active_status.nil? ? "-" : t("global.#{user.active_status}") %></div>
+<%end%>

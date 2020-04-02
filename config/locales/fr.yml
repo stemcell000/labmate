@@ -1,5 +1,7 @@
 fr:
   global:
+    "true": Oui
+    "false": Non
     search_any_term: "Recherche"
     fine_search: "Recherche avancée"
     clear_search: "Effacer"
@@ -28,7 +30,6 @@ fr:
     inventory_manager: "Responsable inventaire"
     team_leader: "Chef d'équipe"
     user: "Utilisateur"
-    former_employee: "Ancien employee"
     unknown: "Inconnu"
   items:
     orphan_item:
@@ -46,6 +47,7 @@ fr:
     change_password: "Changez le mot de passe"
     start_date: "Date d'arrivée"
     end_date: "Date de départ"
+    active_status: "Actif"
   menu:
     item: "Objet"
     inventory: "Inventaire"
@@ -69,7 +71,7 @@ fr:
     category: "Categorie"
     categories: "Categories"
     location: "Local"
-    locations: "locaux"
+    locations: "Locaux"
     owner: "Propriétaire"
     owners: "Tutelles"
     role: "Rôle"

@@ -73,6 +73,14 @@
 		  	input_html:  {class: "select2-select"},
 		  	disabled: !isManager %>
   		</div>
+		<div class="col-md-6 col-lg-6 col-sm-6">
+		  	<%= f.input :active_status,
+		  	:collection => [[true, t("global.yes")],[false, t("global.no")] ],
+			label_method: :second, value_method: :first,
+		  	required: true, 
+		  	input_html:  {class: "select2-select"},
+		  	disabled: !isManager %>
+  		</div>
  </div>
  
 <div class="panel panel-primary">

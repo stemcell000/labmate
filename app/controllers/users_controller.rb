@@ -147,7 +147,7 @@ class UsersController < ApplicationController
   
  def user_params
     params.require(:user).permit(:username, :email, :firstname, :lastname, :location_id, :role, :login, :recap, :password, :password_confirmation,
-    :tel1, :tel2, :start_date, :end_date,
+    :tel1, :tel2, :start_date, :end_date, :active_status,
     team_ids: [], teams_attributes: [:id, :name],
     location_attributes: [:id, :name, :building_id],
     position_ids: [], position_attributes: [:id, :name],
@@ -171,9 +171,8 @@ class UsersController < ApplicationController
       ["HR_administrator", t('roles.hr_administrator')],
       ["inventory_manager", t('roles.inventory_manager')],
       ["team_leader" , t('roles.team_leader')],
-      ["user" , t('roles.user')],
-      ["former_employee" , t('roles.former_employee')],
-      ]
+      ["user" , t('roles.user')]]
+      
         if ['superadmin'].include? current_user.role
             @roles_list = roles_list
         elsif ['administrator', 'HR_administrator'].include? current_user.role

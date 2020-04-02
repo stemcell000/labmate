@@ -1,5 +1,7 @@
 en:
   global:
+    "true": "Yes"
+    "false": "No"
     search_any_term: "Search any term"
     fine_search: "Fine search"
     clear_search: "Clear search"
@@ -21,7 +23,6 @@ en:
     createdm: "created"
     updatedf: "updated"
     updatedm: "updated"
-    
   roles:
     superadmin: "Superadmin"
     administrator: "Administrator"
@@ -29,7 +30,6 @@ en:
     inventory_manager: "Inventory manager"
     team_leader: "Team leader"
     user: "User"
-    former_employee: "Former employee"
     unknown: "Unknown"
   items: 
     orphan_item:
@@ -48,6 +48,7 @@ en:
     back: "Back"
     start_date: "Start date"
     end_date: "End date"
+    active_status: "Active"
   menu:
     item: "Instrument"
     inventory: "Inventory"

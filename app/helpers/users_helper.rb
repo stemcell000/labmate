@@ -23,8 +23,6 @@ def role_set(name)
      t("roles.team_leader")
    when "user"
      t("roles.user")
-   when "former_employee"
-     t("roles.former_employee")
    else
      t("role.unknown")
   end

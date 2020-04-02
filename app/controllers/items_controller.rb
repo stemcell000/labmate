@@ -169,10 +169,10 @@ class ItemsController < InheritedResources::Base
     @brands = Brand.all.order(name: "asc")
     @currencies = Currency.all.order(name: "asc")
     
-     @user_status = ['superadmin', 'administrator'].include? current_user.role
+    @user_status = ['superadmin', 'administrator'].include? current_user.role
      
-            @teams = current_user.teams
-            @users = User.by_teams(current_user.team_ids)
+    @teams = current_user.teams
+    @users = User.by_teams(current_user.team_ids).where(active_status: true)
     @teams =  @teams.order(name: "asc").map{ |obj| [obj['name'], obj['id']] }
     @users = @users.order(lastname: "asc").map{ |obj| [(obj['firstname']+" "+obj['lastname']), obj['id']] }
       
