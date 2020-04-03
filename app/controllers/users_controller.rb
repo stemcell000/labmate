@@ -25,20 +25,17 @@ class UsersController < ApplicationController
     @teams = Team.where.not(name: 'Public').order(name: "asc").uniq.map{ |obj| [obj['name'], obj['id']] }
     @q = User.ransack(params[:q])
     
-    if can? :manage, User
-      @my_selection = "Display all"
-      if @option.display_all_users
-        @users = @q.result.includes(:teams, :location, :departments).where.not(role: ['superadmin'])
-      else
-        @users = @q.result.includes(:teams, :location, :departments).where.not(role: ['superadmin', 'former_employee'])
-      end
+    results = @q.result.includes(:teams, :location, :departments)
+    
+      
+    if !@option.display_all_users
+        @users = results.where.not(role: 'superadmin', active_status: false)
+    elsif can? :manage, User
+        @my_selection = "Display all"
+        @users = results.where.not(role: 'superadmin')
     else
-      @my_selection = "My team(s) only"
-      @users = @q.result.includes(:teams, :location, :departments).where.not(role: ['superadmin', 'former_employee'])
-   
-      if @option.display_all_users
+        @my_selection = "My team(s) only"
         @users = @users.joins(:teams).where(:teams=>{:id => current_user.teams.ids})
-      end
     end
 
     

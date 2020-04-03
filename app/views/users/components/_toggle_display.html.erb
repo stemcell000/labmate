@@ -1,7 +1,7 @@
 		<%= simple_nested_form_for @option, url: display_all_users_switch_option_path(@option),  html: { class: 'form-inline' }, :remote=> true do |f| %>
 			<div class="form-group">
 				<div class=" pull-right">
-		  				<div class= "row"> <%= f.input :display_all_users, :as => :boolean, :label =>@my_selection, :input_html => {:onclick => "$('#option_display_all_users*').submit();"}%></div>
+		  				<div class= "row"><%= display_label_set%> <%= f.input :display_all_users, :as => :boolean, label: false, :input_html => {:onclick => "$('#option_display_all_users*').submit();"}%></div>
 		  		</div>
 	  		</div>
 		<%end%>

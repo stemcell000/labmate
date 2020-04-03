@@ -27,4 +27,13 @@ def role_set(name)
      t("role.unknown")
   end
   end
+ 
+ def display_label_set
+     if can? :manage, :User
+       mylabel = "Display all members"
+     else
+       mylabel = "Display my team(s) only"
+     end
+   return mylabel
+ end
 end
