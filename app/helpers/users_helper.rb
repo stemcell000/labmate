@@ -4,7 +4,7 @@ def num_to_phone(num)
 end
 
 def invcolor(obj)
-    if obj.role == "former_employee"
+    if obj.active_status == false
       "danger"
     end
   end
