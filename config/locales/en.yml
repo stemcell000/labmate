@@ -23,6 +23,9 @@ en:
     createdm: "created"
     updatedf: "updated"
     updatedm: "updated"
+ submit:
+    create: 'Create'
+    update: 'Update'
   roles:
     superadmin: "Superadmin"
     administrator: "Administrator"
