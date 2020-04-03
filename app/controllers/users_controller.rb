@@ -38,8 +38,7 @@ class UsersController < ApplicationController
         @users = @users.joins(:teams).where(:teams=>{:id => current_user.teams.ids})
     end
 
-    
-     #Config de l'affichage des résultats.
+    #Config de l'affichage des résultats.
       @users = smart_listing_create(:users, @users, partial: "users/smart_listing/list",
                                                   default_sort: {lastname: "asc"},
                                                   page_sizes: [ 10, 20, 30, 50, 100])
@@ -136,22 +135,12 @@ class UsersController < ApplicationController
  end
  
  def set_roles
-     roles_list = [["superadmin", t('roles.superadmin')],
+     @roles_list = [["superadmin", t('roles.superadmin')],
       ["administrator", t('roles.administrator')],
       ["HR_administrator", t('roles.hr_administrator')],
       ["inventory_manager", t('roles.inventory_manager')],
       ["team_leader" , t('roles.team_leader')],
       ["user" , t('roles.user')]]
-      
-        if ['superadmin'].include? current_user.role
-            @roles_list = roles_list
-        elsif ['administrator', 'HR_administrator'].include? current_user.role
-            @roles_list = roles_list.slice(1)
-        elsif ['HR_administrator'].include? current_user.role
-            @roles_list = roles_list.slice(1, 2, 3, 4)
-        elsif ['inventory_manager'].include? current_user.role
-          roles_list = roles_list.slice(1, 2, 3, -1)
-        end 
  end
  
 end

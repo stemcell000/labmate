@@ -36,4 +36,20 @@ def role_set(name)
      end
    return mylabel
  end
+ 
+  def set_roles(user)
+       if can? :manage, :all
+             roles_list = [["superadmin", t('roles.superadmin')],
+              ["administrator", t('roles.administrator')],
+              ["HR_administrator", t('roles.hr_administrator')],
+              ["inventory_manager", t('roles.inventory_manager')],
+              ["team_leader" , t('roles.team_leader')],
+              ["user" , t('roles.user')]]
+        elsif can? :manage, User
+            roles_list = roles_list.slice(1, 2, 3, 4)
+        elsif can? :update, user
+            roles_list = roles_list.slice(1, 2, 3, -1)
+        end
+        return roles_list
+ end
 end

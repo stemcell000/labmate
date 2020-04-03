@@ -67,7 +67,7 @@
  <div class="row">
 		<div class="col-md-6 col-lg-6 col-sm-6">
 		  	<%= f.input :role,
-		  	:collection => @roles_list,
+		  	:collection => set_roles(@roles_list),
 			label_method: :second, value_method: :first,
 		  	required: true, 
 		  	input_html:  {class: "select2-select"},
