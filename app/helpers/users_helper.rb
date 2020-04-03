@@ -30,7 +30,7 @@ def role_set(name)
  
  def display_label_set
      if can? :manage, :User
-       mylabel = "Display all members"
+       mylabel = t("users.display_all_users")
      else
        mylabel = "Display my team(s) only"
      end

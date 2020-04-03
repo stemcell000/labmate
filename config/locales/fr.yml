@@ -48,6 +48,8 @@ fr:
     start_date: "Date d'arrivée"
     end_date: "Date de départ"
     active_status: "Actif"
+    display_all_users: "Afficher tout le personnel (actif ou non)"
+    displat_my_teams_only: "Afficher mes contacts"
   menu:
     item: "Objet"
     inventory: "Inventaire"

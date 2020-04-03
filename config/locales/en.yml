@@ -49,6 +49,8 @@ en:
     start_date: "Start date"
     end_date: "End date"
     active_status: "Active"
+    display_all_users: "Display all members (active or not)"
+    displat_my_teams_only: "Display my contacts"
   menu:
     item: "Instrument"
     inventory: "Inventory"
