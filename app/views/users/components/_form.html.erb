@@ -1,5 +1,10 @@
 <%= simple_form_for @user, remote: false do |f| %>
     <%= f.error_notification %>
+    <ul>
+    <% @user.errors.full_messages.each do |message| %>
+    <li class="text-danger"><%= message %></li>
+    <% end %>
+  </ul>
     <div class="container">
    <div class="row">
    		<div class="col-md-5 col-sm-4">
