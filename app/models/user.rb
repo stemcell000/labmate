@@ -31,9 +31,9 @@ class User < ApplicationRecord
   devise :database_authenticatable,:rememberable, :trackable, :confirmable, 
          :validatable
   
-  validates :tel1, phone: { possible: true, allow_blank: true, types: [:voip, :mobile]}
-  validates :tel2, phone: { possible: true, allow_blank: true, types: [:voip, :mobile]}
-  validates :email, uniqueness: true
+  #validates :tel1, phone: { possible: true, allow_blank: true, types: [:voip, :mobile]}
+  #validates :tel2, phone: { possible: true, allow_blank: true, types: [:voip, :mobile]}
+  #validates :email, uniqueness: true
   #validates :location, presence: true
   #validates :teams, presence: true
 
