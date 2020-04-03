@@ -63,6 +63,7 @@ class UsersController < ApplicationController
           @user.teams << team
          end
       end
+      @user.generate_recap
     else
       render :action => :new
     end
@@ -85,6 +86,7 @@ class UsersController < ApplicationController
         end
         set_adds(@user)
       end
+      @user.generate_recap
       redirect_to user_path
     else
       render :action => :edit

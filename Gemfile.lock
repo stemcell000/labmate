@@ -418,6 +418,7 @@ DEPENDENCIES
   flag-icons-rails
   font-awesome-rails
   foreman
+  formtastic (~> 3.0)
   haml
   haml-rails
   jasny-bootstrap-rails
