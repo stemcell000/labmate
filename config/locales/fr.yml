@@ -23,9 +23,6 @@ fr:
     createdm: "créé"
     updatedf: "modifiée"
     updatedm: "modifié"
-  submit:
-    create: 'Create'
-    update: 'Update'
   roles:
     superadmin: "Superadmin"
     administrator: "Administrateur"
