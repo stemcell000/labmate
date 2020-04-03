@@ -96,33 +96,6 @@ class UsersController < ApplicationController
     
   end
   
- def index
-   
-    @departments = Department.all.order(name: "asc").uniq.map{ |obj| [obj['name'], obj['id']]}
-    @teams = Team.where.not(name: 'Public').order(name: "asc").uniq.map{ |obj| [obj['name'], obj['id']] }
-    @q = User.ransack(params[:q])
-    
-    if can? :manage, User
-      if @option.display_all_users
-        @users = @q.result.includes(:teams, :location, :departments).where.not(role: ['superadmin'])
-      else
-        @users = @q.result.includes(:teams, :location, :departments).where.not(role: ['superadmin', 'former_employee'])
-      end
-    else
-      @users = @q.result.includes(:teams, :location, :departments).where.not(role: ['superadmin', 'former_employee'])
-   
-      if @option.display_all_users
-        @users = @users.joins(:teams).where(:teams=>{:id => current_user.teams.ids})
-      end
-    end
-
-    
-     #Config de l'affichage des résultats.
-      @users = smart_listing_create(:users, @users, partial: "users/smart_listing/list",
-                                                  default_sort: {lastname: "asc"},
-                                                  page_sizes: [ 10, 20, 30, 50, 100])
- end
- 
  def destroy
    @user.role = 'former_employee'
    #
