@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
   
   def configure_permitted_parameters
-    added_attrs = [:username, :email, :firstname, :lastname, :location_id, :recap, :role, :password, :password_confirmation, :remember_me, {team_ids: []}, {position_ids: []}, teams_attributes:[:id, :name, :acronym], positions_attributes:[:id, :name]]
+    added_attrs = [:username, :email, :encrypted_password, :firstname, :lastname, :location_id, :recap, :role, :password, :password_confirmation, :remember_me, {team_ids: []}, {position_ids: []}, teams_attributes:[:id, :name, :acronym], positions_attributes:[:id, :name]]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :sign_in, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
