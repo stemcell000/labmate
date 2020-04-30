@@ -30,7 +30,7 @@
   </div>
   <div class="row">
 		<div class="col-lg-5 col-md-5 col-sm-4">
-    			<%= f.input :email, label: "E-mail", required: true%>
+    			<%= f.input :email, label: "E-mail", required: true, disabled: !isAdmin%>
     			<%= f.input :tel1, label: "Tel1"%>
     			<%= f.input :tel2, label: "Tel2"%>
     		</div>
