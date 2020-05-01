@@ -42,7 +42,7 @@
 	     		<span class="navbar-text">
 	     		<small>
 				<% if signed_in? %>
-	    				<%=t('menu.sign_in_as')%> : <strong><%= current_user.full_name %></strong> - <%=role_set(current_user.role)%>
+	    				<small><%=t('menu.sign_in_as')%> : <strong><%= current_user.full_name %></strong> - <%=role_set(current_user.role)%></small>
 		    			<%= link_to user_path(current_user.id), method: :get do %>
 					 		<i class="fa fa-user"></i>
 					<%end%>
