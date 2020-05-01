@@ -61,7 +61,6 @@
 		  			<div class="btn-group">
 		  				<% if can? :manage, User%>
 		  					<%=link_to "Administration", edit_hr_user_path(@user), class: 'btn btn-default' %>
-		  					<%=link_to "Edit Profile", edit_user_path(@user), class: 'btn btn-default' %>
 		  				<%elsif can? :cru, @user%>
 		  					<%=link_to "Edit Profile", edit_user_path(@user), class: 'btn btn-default' %>
 		  				<%end%>
