@@ -23,6 +23,7 @@ fr:
     createdm: "créé"
     updatedf: "modifiée"
     updatedm: "modifié"
+    inventory: "Inventaire"
   roles:
     superadmin: "Superadmin"
     administrator: "Administrateur"

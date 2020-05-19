@@ -130,13 +130,12 @@ load_and_authorize_resource
   
   def set_collections
      @providers = Provider.all
-     @teams = Team.all.where.not(name: 'system')
     if ['superadmin', 'administrator'].include? current_user.role
       @categories = Category.all.order(name: "asc")
-      @teams = Team.all
+      @teams = Team.all.order(name: "asc")
     else
       items = Item.by_teams(current_user.teams.ids)
-      @teams = Team.all.where.not(name: ['system', 'all'])
+      @teams = current_user.teams.order(name: "asc")
       @categories = Category.belongs_to_items_coll(items.pluck(:id)).order(name: "asc").uniq.map{|obj| [obj['name'], obj['id']]}
     end
    

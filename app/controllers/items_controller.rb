@@ -94,7 +94,7 @@ class ItemsController < InheritedResources::Base
   def update
     @item.update_attributes(item_params)
     if @item.valid?
-      flash.keep[:success] = t('global.menu.inventory')+" "+t('global.updatedm')
+      flash.keep[:success] = t('global.inventory')+" "+t('global.updatedm')
       @item.generate_recap
       redirect_to item_path(@item)
       return

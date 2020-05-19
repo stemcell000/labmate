@@ -10,7 +10,7 @@
 					<%= f.input :name%>
 				</div>
 				<div class="col-lg-2 col-md-4 col-sm-4">
-					<%= f.input :tender, disabled: !isAdmin %>
+					<%= f.input :tender, disabled: isManager %>
 				</div>
 				<div class="col-lg-2 col-md-4 col-sm-4">
 					<%= f.input :locked %>

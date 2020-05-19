@@ -33,19 +33,14 @@ class Ability
       elsif user.role? :inventory_manager
           can :read, :all
         #Inventory manager can only manage items that belongs to his/her team(s)
-          can :crud, Item do |item|
-            user.teams.exists? item.teams
-          end
+          can :crud, Item, id: Item.by_teams(user.team_ids).map { |item| item.id }
         #Inventory manager can only manage contracts that belongs to his/her team(s)
-          can :manage, Contract do |c|
-            c.teams.exists? user.teams
-          end
+          can :manage, Contract
         #Inventory manager can only manage user who belongs to his/her team(s)
           can :index, User
         #Inventory manager can create and update brands and providers
           can :crud, Brand
           can :crud, Provider
-       ####
      elsif user.role? :team_leader
           can :read, :all
        #Team Leader can only manage users who belongs to his/her team(s)
@@ -74,9 +69,7 @@ class Ability
           can :update, User, id: user.id
         #User can only manage items that belongs to his/her team(s)
           #can :cru, Item, item: {item_teams: {team_id: user.team_ids}}
-          can :cru, Item do |item|
-            #user.teams.exists?(item.team_ids)
-            user.teams.exists? item.teams
+          can :cru, Item, id: Item.is_managed_by(user.id).map { |item| item.id }
           end
         #User can only manage contracts that belongs to his/hers or public tender 
           can :create, Contract
@@ -90,10 +83,6 @@ class Ability
         #User can create and update brands and providers
           can :cru, Brand
           can :cru, Provider
-          
-      elsif user.role? :out
-         cannot :manage, :all
-       end
     end
    ActiveAdmin::ResourceController.class_eval do
     protected

@@ -9,7 +9,7 @@
 		</div>
 	</div>
 </div>
-<%if can? :manage, Item %>
+<%if can? :create, Item %>
 <div class="row">
 	<div class="col-lg-12 col-md-12 col-sm-12">
 		<%= link_to t('global.new_item'), new_item_path, class: "btn btn-default" %>

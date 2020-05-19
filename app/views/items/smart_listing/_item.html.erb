@@ -72,7 +72,7 @@
   			icon: 'fa fa-sticky-note', 
   			title: "Show item"}]%>
   			
-	<% if can? :cru, object %>
+	<% if can? :update, object %>
 	  	<%= smart_listing_item_actions [
   	  		{name: :custom,    url: edit_item_path(object),
 	  		method: :get, 

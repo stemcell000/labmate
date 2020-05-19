@@ -15,7 +15,7 @@
 		<%= link_to "Print tracking sheet (PDF)", generate_tracking_sheet_item_path(@item, format: "pdf"), target: "_blank", :class => "btn btn-default"  %>
 		<%= link_to "Print label", print_label_items_path(:id => @item.id), :class => "btn btn-default", method: :post, remote: true, title: "Print label"%>
 	<%end%>
-	<%= link_to "Back to inventory", :items, :class => "btn btn-default" %>
+	<%= link_to "Back", :back, :class => "btn btn-default"%>
 </div>
 </div><!--End of container-->
 </div><!--End of jumbotron-->

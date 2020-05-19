@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   scope :orphan, -> {joins("LEFT JOIN items_users ON items.id = items_users.item_id").where("items_users.item_id IS NULL")}
   scope :without_team, -> {joins("LEFT JOIN items_teams ON items.id = items_teams.item_id").where("items_teams.item_id IS NULL")}
   scope :by_teams,  ->(team_id) { joins(:teams).where(teams: { id: team_id }).order(:id) }
-  scope :is_managed_by, ->(user_id){ joins(:items_users).where(:items_users => {user_id: user_id})}
+  scope :is_managed_by, ->(user_id){ joins(:item_users).where(:items_users => {user_id: user_id})}
   
   has_many :item_users
   has_many :occurances
