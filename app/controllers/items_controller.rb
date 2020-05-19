@@ -1,6 +1,5 @@
 class ItemsController < InheritedResources::Base
   
-  load_and_authorize_resource
   before_action :set_item, only: [:edit,:destroy, :update, :set_item_parameters, :print_label, :show, :format_attributes, :printable_show]
   before_action :set_item_parameters, only: [:new, :edit, :show, :printable_show]
   before_action :set_option, only: [:index]
@@ -54,7 +53,7 @@ class ItemsController < InheritedResources::Base
       #
       #Config de l'affichage des résultats.
       @items = smart_listing_create(:items, @items, partial: "items/smart_listing/listing",
-                                                  default_sort: {name: "asc"},
+                                                  default_sort: {id: "desc"},
                                                   page_sizes: [ 10, 20, 30, 50, 100])
   end
   

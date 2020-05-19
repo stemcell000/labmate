@@ -20,7 +20,6 @@ class UsersController < ApplicationController
   end
   
    def index
-   
     @departments = Department.all.order(name: "asc").uniq.map{ |obj| [obj['name'], obj['id']]}
     @teams = Team.where.not(name: 'Public').order(name: "asc").uniq.map{ |obj| [obj['name'], obj['id']] }
     @q = User.ransack(params[:q])
@@ -118,7 +117,7 @@ class UsersController < ApplicationController
   
  def user_params
     params.require(:user).permit(:username, :email, :firstname, :lastname, :location_id, :role, :login, :recap, :password, :password_confirmation,
-    :tel1, :tel2, :start_date, :end_date, :active_status,
+    :tel1, :tel2, :start_date, :end_date, :active_status, :location_id, :unconfirmed_email,
     team_ids: [], teams_attributes: [:id, :name],
     location_attributes: [:id, :name, :building_id],
     position_ids: [], position_attributes: [:id, :name],

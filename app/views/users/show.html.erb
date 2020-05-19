@@ -59,12 +59,14 @@
 <div class="row">
 				<div class="col-md-12 col-sm-12">
 		  			<div class="btn-group">
-		  				<% if can? :manage, User%>
+		  				<%if (can? :manage, :all)%>
+		  					<%=link_to "Administration", edit_user_path(@user), class: 'btn btn-default' %>
+		  				<% elsif can? :manage, User%>
 		  					<%=link_to "Administration", edit_hr_user_path(@user), class: 'btn btn-default' %>
-		  				<%elsif can? :cru, @user%>
-		  					<%=link_to "Edit Profile", edit_user_path(@user), class: 'btn btn-default' %>
+		  				<%elsif (can? :cru, @user)%>
+		  					<%=link_to "Edit my profile", edit_user_path(@user), class: 'btn btn-default' %>
 		  				<%end%>
-		  				<%= link_to "Back to list", users_path, class: 'btn btn-default' %>
+		  				<%= link_to t(".back"), users_path, class: 'btn btn-default' %>
 					</div>
 				</div>
 </div>
