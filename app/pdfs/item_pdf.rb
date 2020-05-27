@@ -60,7 +60,6 @@ class ItemPdf
         transparent(0.0) { stroke_bounds }
            pad_bottom(10) { text att['barcode'] }
       end
-
   end
   
   def info_block(att)

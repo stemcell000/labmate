@@ -24,7 +24,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :positions
   accepts_nested_attributes_for :options
   accepts_nested_attributes_for :contracts
-  accepts_nested_attributes_for :attachments
+  accepts_nested_attributes_for :attachments, :allow_destroy => true, :reject_if => :all_blank
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

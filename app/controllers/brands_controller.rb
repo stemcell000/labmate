@@ -9,8 +9,7 @@ class BrandsController < InheritedResources::Base
   #Index
  def index
     
-    @superadmin = Team.where(name: "system admin")
-    @option = current_user.options.first
+      @option = current_user.options.first
     
       @q = Brand.ransack(params[:q])
       @brands = @q.result(distinct: true)

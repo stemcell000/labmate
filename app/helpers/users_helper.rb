@@ -39,19 +39,19 @@ def role_set(name)
  
   def set_roles_list(user)
     
-       if user.role == 'superadmin'
-             roles_list = [["superadmin", t('roles.superadmin')],
-              ["administrator", t('roles.administrator')],
-              ["HR_administrator", t('roles.hr_administrator')],
-              ["inventory_manager", t('roles.inventory_manager')],
-              ["team_leader" , t('roles.team_leader')],
-              ["user" , t('roles.user')]]
-        elsif user.role =='administrator' || 'HR_administrator'
-          roles_list = [["team_leader" , t('roles.team_leader')],
-              ["user" , t('roles.user')]]
+       if user.role == "superadmin"
+             roles_list = [["superadmin", t("roles.superadmin")],
+              ["administrator", t("roles.administrator")],
+              ["HR_administrator", t("roles.hr_administrator")],
+              ["inventory_manager", t("roles.inventory_manager")],
+              ["team_leader" , t("roles.team_leader")],
+              ["user" , t("roles.user")]]
+        elsif user.role =="administrator" || user.role == "HR_administrator"
+          roles_list = [["team_leader" , t("roles.team_leader")],
+              ["user" , t("roles.user")]]
         elsif can? :update, user
-          roles_list = [["inventory_manager", t('roles.inventory_manager')],
-              ["team_leader" , t('roles.team_leader')]]
+          roles_list = [["inventory_manager", t("roles.inventory_manager")],
+              ["team_leader" , t("roles.team_leader")]]
         end
         return roles_list
  end

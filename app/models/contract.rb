@@ -1,6 +1,6 @@
 class Contract < ActiveRecord::Base
-  scope :belongs_to_category, -> categories_array {joins(:categories).where(:categories => {id: categories_array})}
-  scope :belongs_to_teams, -> teams_array {joins(:teams).where(:teams => {id: teams_array})}
+  scope :belongs_to_teams, -> teams_array {joins(:contracts_teams).where(:contracts_teams => {team_id: teams_array})}
+  scope :belongs_to_categories, -> categories_array {joins(:contracts_teams).where(:contracts_teams => {category_id: categories_array})}
  
   has_and_belongs_to_many :items, join_table: "contracts_items"
   has_and_belongs_to_many :categories, join_table: "categories_contracts"
@@ -15,7 +15,7 @@ class Contract < ActiveRecord::Base
   accepts_nested_attributes_for :categories
   accepts_nested_attributes_for :currency
   accepts_nested_attributes_for :teams
-  accepts_nested_attributes_for :attachments
+  accepts_nested_attributes_for :attachments, :allow_destroy => true, :reject_if => :all_blank
   accepts_nested_attributes_for :provider
   
 

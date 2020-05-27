@@ -1,17 +1,21 @@
 fr:
+  "true": Oui
+  "false": Non
   global:
-    "true": Oui
-    "false": Non
     search_any_term: "Recherche"
     fine_search: "Recherche avancée"
     clear_search: "Effacer"
     my_teams_inventory_only: "Afficher l'inventaire de mon équipe"
     new_item: "Créer un objet"
+    add_items: "Ajouter des objets"
+    add_files: "Ajouter un fichier"
+    remove: "Supprimer"
     new_user: "Nouvel utilisateur"
     new_contract: "Nouveau contract"
     new_brand: "Nouvelle marque"
     new_provider: "Nouveau fournisseur"
     new_category: "Nouvelle catégorie"
+    contract: "contrat"
     edit: "Modifier"
     acronym: "Acronyme"
     save: "Sauvegarder"
@@ -24,6 +28,15 @@ fr:
     updatedf: "modifiée"
     updatedm: "modifié"
     inventory: "Inventaire"
+    maintenance_contracts: "Contrats de maintenance"
+    tender: "Appel d'offre"
+    locked: "fermé"
+    files: "fichiers"
+    associated_items: "objets associés"
+    contract_locked: "Ce contrat est fermé. Vous ne pouvez pas ajouter de nouveaux objets."
+    obsolete_contract: "Ce contrat est obsolète"
+    none: "aucun"
+    export: "exporter"
   roles:
     superadmin: "Superadmin"
     administrator: "Administrateur"

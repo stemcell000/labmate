@@ -1,19 +1,21 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @location.name %>
-</p>
-
-<p>
-  <strong>Building:</strong>
-  <%= @location.building_id %>
-</p>
-
-<p>
-  <strong>Floor:</strong>
-  <%= @location.floor_id %>
-</p>
-
-<%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>
+<div class="jumbotron">
+	<div class="container">
+	<div class="panel panel-primary">
+		<div class="panel-heading"><%=t('menu.location')%></div>
+	  <div class="panel-body">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-6">
+						<span><strong><%=t('global.nom')%> : </strong><%=@location.name%></span><br />
+						<span><strong><%=t('global.menu.building')%> : </strong><%=@location.building.name%></span><br />
+					</div>
+				</div>
+			</div>	
+		</div>
+	</div>
+</div>
+	<div class="row">
+		<%= link_to t('global.edit'), edit_location_path(@location), :class => "btn btn-default" %>
+		<%= link_to t('global.back'), :locations, :class => "btn btn-default" %>
+	</div>
+</div>

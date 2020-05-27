@@ -1,7 +1,7 @@
   <table class="table table-hover">
     <thead>
 	      <tr>
-	        <th class="col-lg-10 col-sm-10 col-md-10" ><%= smart_listing.sortable t('global.name'), :name %></th>
+	        <th class="col-lg-10 col-sm-10 col-md-10" ><%= sort_link(@q, :name, t('menu.name'), default_order: :desc) %></th>
 			<th class="col-lg-2 col-sm-2 col-md-2"></th>
 	      </tr>
     </thead>
@@ -13,6 +13,9 @@
         </tr>
       	<% end %>
 	<% end %>
+		 <% if can? :manage, Brand%>
+	     	<%= smart_listing.item_new colspan: 9, link: new_brand_path() %>
+	     <%end%>
     </tbody>
   </table>
   <%= smart_listing.paginate %>

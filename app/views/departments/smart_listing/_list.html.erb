@@ -1,18 +1,22 @@
 	  <table  class="table table-striped">
 	    <thead>
 		    <th class="col-lg-6 center">
-		        <%= smart_listing.sortable "Name", :name %>
+		        <%= sort_link( @q, :name, t('menu.name'), default_order: :desc) %>
 		    </th>
 		    </th>
 		  	<th class="col-lg-2 center center"></th>
 	    </thead>
 	    <tbody>
+	    	<% unless smart_listing.empty? %>  
 		  	<% smart_listing.collection.each do |p| %>
 	      		<tr class="editable" data-id = "<%= p.id %>">
 					<%= smart_listing.render object: p, partial: "departments/smart_listing/department", locals: {object: p} %>
 	        		</tr>
 	      	<% end %>
-	     <%= smart_listing.item_new colspan: 9, link: new_department_path(:object) %>
+	     <%end%>
+	     <% if can? :manage, Department%>
+	     	<%= smart_listing.item_new colspan: 9, link: new_department_path(:object) %>
+	     <%end%>
 	    </tbody>
 	  </table>
 	  <%= smart_listing.paginate %>

@@ -1,31 +1,30 @@
-<% color= object.end_date <= DateTime.now ? "":"bg bg-success" %>
 <td class="<%=set_contract_row_color(object)%>"><%= object.id.nil? ? "unknown" : object.id %></td>
 <td class="<%=set_contract_row_color(object)%>"><small><%= object.name.nil? ? "unknown" : object.name %></small></td>
 <td class="<%=set_contract_row_color(object)%>"><small><%= object.provider.nil? ? "unknown" : object.provider.name %></small></td>
 <td class="<%=set_contract_row_color(object)%>"><small><%=  object.categories.pluck(:name).to_sentence%></small></td>
 <td class="<%=set_contract_row_color(object)%>"><small><%= object.start_date.nil? ? "unknown" : object.start_date.strftime("%b %e, %Y") %></small></td>
 <td class="<%=set_contract_row_color(object)%>"><small><%= object.end_date.nil? ? "unknown" : object.end_date.strftime("%b %e, %Y") %></small></td> 
-<td class="<%=set_contract_row_color(object)%> actions">
-<%if can? :manage, Contract %>	
-	<%= smart_listing_item_actions [
-		{name: :custom,    url: edit_contract_path(object),
-	  		method: :get, 
-  			icon: 'fa fa-pencil-square-o', 
-  			title: "Add items to this contract"},
-  			{name: :destroy, url: contract_path(object), title: "Destroy",
-			confirmation: "Are you sure you want to delete this?",
-			placement:"left"}]%>
-<%end%>
- <%if can? :edit, Item %>		
-  	<%= smart_listing_item_actions [
-  		  {name: :custom,    url: add_to_queue_contract_path(object),
-	  		method: :get, 
-  			icon: 'fa fa-plus-circle', 
-  			title: "Add items to this contract"},
-  		{name: :custom, url: contract_path(object),
+<td actions">
+  
+  <%= smart_listing_item_actions [{name: :custom, url: contract_path(object),
   			method: :get,
   			icon: 'fa fa-eye',
-  			title: "Show contract"}]%>
+  			title: "Show contract"}]
+  %>
+  <%if can? :add_to_queue, Contract %>	
+	<%= smart_listing_item_actions [
+  		{name: :custom,    url: add_to_queue_contract_path(object),
+	  		method: :get, 
+  			icon: 'fa fa-plus-circle', 
+  			title: "Add items to this contract"},]
+  			%>
+  	<%end%>
+  	 <%if can? :update, object %>		
+  	<%= smart_listing_item_actions [
+  		{name: :custom,    url: edit_contract_path(object),
+  		method: :get, 
+		icon: 'fa fa-pencil-square-o', 
+		title: "Edit contract"}
+	]%>
   <%end%>
-  	
  </td>

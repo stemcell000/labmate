@@ -6,36 +6,37 @@
 		<ul class="errors"></ul>
 		<div class="container">	
 			<div class="row inline">
-				<div class="col-lg-2 col-md-4 col-sm-4">
-					<%= f.input :name%>
-				</div>
-				<div class="col-lg-2 col-md-4 col-sm-4">
-					<%= f.input :tender, disabled: isManager %>
-				</div>
-				<div class="col-lg-2 col-md-4 col-sm-4">
-					<%= f.input :locked %>
-				</div>
-				
 				<div class="col-lg-6 col-md-6 col-sm-6">
-					<%= f.association :teams, label: "Teams", collection: @teams, input_html: { class:"select2-select" } %>
+					<%= f.input :name, label: t('menu.name')%>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6">
+					<%= f.association :teams, label: t('menu.teamss'), collection: @teams, input_html: { class:"select2-select" } %>
+				</div>
+			</div>
+			<div class="row inline">
+				<div class="col-lg-2 col-md-4 col-sm-4">
+					<%= f.input :tender, label: t('global.tender'), disabled: !isManager %>
+				</div>
+				<div class="col-lg-2 col-md-4 col-sm-4">
+					<%= f.input :locked, label: t('global.locked').capitalize %>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12">
-					<%= f.association :categories, label: "Category", collection: @categories, input_html: { class:"select2-select" } %>
+					<%= f.association :categories, label: "Categories", collection: @categories, input_html: { class:"select2-select" } %>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-md-12">
-					<%= f.association :provider, label: "Provider", collection: @providers, input_html: { class:"select2-select" } %>
+					<%= f.association :provider, label: t('menu.providers'), collection: @providers, input_html: { class:"select2-select" } %>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-5 col-md-5 col-sm-5">	
-					<%=f.input :start_date, :label => "Start", :as => :string, :input_html => { :value => (f.object.start_date.strftime("%B %e, %Y") if f.object.start_date), "data-behaviour" => "datepicker" } %>
+					<%=f.input :start_date, label: t('menu.starting_date'), :as => :string, :input_html => { :value => (f.object.start_date.strftime("%B %e, %Y") if f.object.start_date), "data-behaviour" => "datepicker" } %>
 				</div>
 				<div class="col-lg-5 col-md-5 col-sm-5">	
-					<%=f.input :end_date, :label => "End", :as => :string, :input_html => { :value => (f.object.end_date.strftime("%B %e, %Y") if f.object.end_date), "data-behaviour" => "datepicker" } %>
+					<%=f.input :end_date, label: t('menu.ending_date'), :as => :string, :input_html => { :value => (f.object.end_date.strftime("%B %e, %Y") if f.object.end_date), "data-behaviour" => "datepicker" } %>
 				</div>
 			</div>
 			<div class="row">
@@ -45,11 +46,11 @@
 							<div class="col-lg-12 vcenter">
 								<%= link_to File.basename(a.object.attachment.to_s ), a.object.attachment.to_s, :target => "_blank"%>
 						       		<%= a.input_field :attachment, :as => :file, :title => "Search for a file to add"%>
-						       		<%= a.link_to_remove "remove", :class => "btn btn-xs btn-danger"%>
+						       		<%= a.link_to_remove t('remove'), :class => "btn btn-xs btn-danger"%>
 							</div>
 						</div>
 					<% end %>
-							<%= f.link_to_add "Add a file", :attachments %>
+							<%= f.link_to_add t('global.add_files'), :attachments %>
 				</div>
 			</div>
 
@@ -57,8 +58,8 @@
 	<div class="row">
 		<div class="btn-group" role="group" aria-label="...">
 			<div class="col-md-12">
-					<%= f.submit "Save", :class => "btn btn-primary" %>
-					<%= link_to "Cancel", :back, :class => "btn btn-default" %>
+					<%= f.submit t('global.save'), :class => "btn btn-primary" %>
+					<%= link_to t('global.cancel'), :back, :class => "btn btn-default" %>
 	        </div>
 		</div>
 	</div>

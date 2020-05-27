@@ -68,6 +68,7 @@
 				<div class="col-md-12 col-sm-12">
 		  			<div class="btn-group">
 		  				<%if (can? :manage, :all)%>
+		  					<%=link_to "Administration HR", edit_hr_user_path(@user), class: 'btn btn-default' %>
 		  					<%=link_to "Administration", edit_user_path(@user), class: 'btn btn-default' %>
 		  				<% elsif can? :manage, User%>
 		  					<%=link_to "Administration", edit_hr_user_path(@user), class: 'btn btn-default' %>

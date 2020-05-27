@@ -1,12 +1,15 @@
 en:
+  "true": "Yes"
+  "false": "No"
   global:
-    "true": "Yes"
-    "false": "No"
     search_any_term: "Search any term"
     fine_search: "Fine search"
     clear_search: "Clear search"
     my_teams_inventory_only: "My team's inventory"
     new_item: "New item"
+    add_items: "Add items"
+    add_files: "Add files"
+    remove: "Remove"
     new_user: "New user"
     new_contract: "New contract"
     new_brand: "New brand"
@@ -23,6 +26,15 @@ en:
     createdm: "created"
     updatedf: "updated"
     updatedm: "updated"
+    maintenance_contracts: "Maintenance contract"
+    tender: "tender"
+    locked: "closed"
+    files: "files"
+    associated_items: "associated items"
+    contract_locked: "Ce contrat est fermé. Vous ne pouvez pas ajouter de nouveaux objets."
+    obsolete_contract: "Ce contrat est obsolète"
+    none: "none"
+    export: "export"
   roles:
     superadmin: "Superadmin"
     administrator: "Administrator"
@@ -81,5 +93,9 @@ en:
     building: "Building"
     buildings: "Buildings"
     name: "Name"
-    
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      long: "%e %B %Y"
+      short: "%e %b"
     

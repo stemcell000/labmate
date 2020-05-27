@@ -33,7 +33,7 @@ class TeamsController < InheritedResources::Base
   end
  
  def index
-    @teams = smart_listing_create(:teams, Team.all, partial: "teams/smart_listing/list", default_sort: {name: "asc"},  page_sizes: [10, 20, 30, 50, 100])   
+    @teams = smart_listing_create(:teams, Team.all.where.not(name: ['All', 'System']), partial: "teams/smart_listing/list", default_sort: {name: "asc"},  page_sizes: [10, 20, 30, 50, 100])   
  end
  
  def destroy

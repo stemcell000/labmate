@@ -14,6 +14,9 @@
         </tr>
       	<% end %>
 	<% end %>
+	<% if can? :manage, Category%>
+	     	<%= smart_listing.item_new colspan: 9, link: new_category_path() %>
+	     <%end%>
     </tbody>
   </table>
   <%= smart_listing.paginate %>

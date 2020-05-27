@@ -1,6 +1,10 @@
-<h1>Editing Location</h1>
-
-<%= render 'form', location: @location %>
-
-<%= link_to 'Show', @location %> |
-<%= link_to 'Back', locations_path %>
+<% isAdmin = can? :manage, Organization %>
+<% isManager= ['superadmin', 'administrator', 'inventory_manager'].include? current_user.role%>
+<div class="row">
+	<h2>Edit location</h2>
+</div>
+<div class="row">
+	<div class="col-lg-12 col-md-12 col-sm-12">
+		<%= render 'locations/components/form', locals: {isAdmin: isAdmin, isManager: isManager}%>
+	</div>
+</div>

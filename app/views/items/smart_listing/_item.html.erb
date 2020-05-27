@@ -56,11 +56,10 @@
 			<%else%>
 				<span class= "<%= object.users.where(id: current_user.id).exists? ? 'fa fa-user text-success':'fa fa-user'%>"></span>
 			<%end%>
-			
-			<% unless object.teams.merge(current_user.teams).empty? %>
-				<% if Contract.any? {|contract| contract.categories.include? object.category } %>
-					<span class="'fa fa-user text-success'"></span>
-				<%end%>
+			<% if (current_user.teams - object.teams).empty?%>
+				<% unless object.contracts.where("end_date>?", Date.today).empty?%>
+					<span class="fab fa-maxcdn", title= "Maintained"></span>
+			<%end%>
 			<%end%>
 	</a>
 	

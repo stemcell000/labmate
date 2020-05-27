@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
    ActiveRecord::Base.connection.reset_pk_sequence!(t)
   end
   
+  def access_denied(exception)
+    redirect_to root_path, alert: exception.message
+  end
+  
   def configure_permitted_parameters
     added_attrs = [:username, :email, :encrypted_password, :firstname, :lastname, :location_id, :recap, :role, :password, :password_confirmation, :remember_me, {team_ids: []}, {position_ids: []}, teams_attributes:[:id, :name, :acronym], positions_attributes:[:id, :name]]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
@@ -64,6 +68,19 @@ class ApplicationController < ActionController::Base
       format.html { redirect_to main_app.root_url, notice: exception.message }
       format.js   { head :forbidden, content_type: 'text/html' }
     end
+  end
+  
+  # restrict access to admin module for non-admin users
+  def authenticate_admin_user!
+    raise SecurityError unless current_user.role.try(:superadmin?)
+    rescue_from SecurityError do |exception|
+      redirect_to root_url
+    end
+  end
+  
+  # path for redirection after user sign_in, depending on user role
+  def after_sign_in_path_for(user)
+   user.role == "superadmin"? admin_dashboard_path : root_path 
   end
 
 private

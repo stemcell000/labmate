@@ -5,6 +5,9 @@ class Item < ApplicationRecord
   scope :without_team, -> {joins("LEFT JOIN items_teams ON items.id = items_teams.item_id").where("items_teams.item_id IS NULL")}
   scope :by_teams,  ->(team_id) { joins(:teams).where(teams: { id: team_id }).order(:id) }
   scope :is_managed_by, ->(user_id){ joins(:item_users).where(:items_users => {user_id: user_id})}
+  scope :without_contract, ->{joins("LEFT JOIN contracts_items ON items.id = contracts_items.item_id").where("contracts_items.item_id IS NULL")}
+  scope :by_contract, ->(contract_id){joins(:contracts).where(contracts: {id: contract_id}).order(:name)}
+  scope :by_obsolete_contract, ->{joins(:contracts).where("end_date<?", Date.today).order(:name)}
   
   has_many :item_users
   has_many :occurances
@@ -24,6 +27,7 @@ class Item < ApplicationRecord
   
   accepts_nested_attributes_for :teams
   accepts_nested_attributes_for :users
+  accepts_nested_attributes_for :contracts
   accepts_nested_attributes_for :owner
   accepts_nested_attributes_for :category
   accepts_nested_attributes_for :location

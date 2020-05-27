@@ -1,6 +1,6 @@
 class ItemsController < InheritedResources::Base
   
-  before_action :set_item, only: [:edit,:destroy, :update, :set_item_parameters, :print_label, :show, :format_attributes, :printable_show]
+  before_action :set_item, only: [:edit,:destroy, :update, :set_item_parameters, :print_label, :show, :format_attributes, :printable_show, :generate_tracking_sheet]
   before_action :set_item_parameters, only: [:new, :edit, :show, :printable_show]
   before_action :set_option, only: [:index]
   before_action :format_attributes, only: [:show, :printable_show]
@@ -230,9 +230,9 @@ class ItemsController < InheritedResources::Base
       
       :attachments_attributes =>[:id, :item_id, :doc_type, :name, :attachment, :_destroy],
       
-      user_ids: [], team_ids: [], teams_attributes: [:id, :name], locations_attributes: [:id, :name], users_attributes: [:id, :firstname, :lastname, :email, :full_name, :display],
+      users_ids: [], teams_ids: [], contract_ids: [], teams_attributes: [:id, :name], locations_attributes: [:id, :name], users_attributes: [:id, :firstname, :lastname, :email, :full_name, :display],
       category_attributes: [:id, :name, :acronym], provider_attributes: [:id, :name ], brand_attributes: [:id, :name], owners_attributes: [:id, :name],
-      occurances_attributes: [:id, :name, :done, :item_id, :comment, :_destroy,
+      occurances_attributes: [:id, :name, :done, :item_id, :comment, :_destroy, contracts_attributes: [:id, :name],
       days_attributes: [:id, :date, :_destroy]]
       ) 
     end
