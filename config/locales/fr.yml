@@ -1,6 +1,94 @@
 fr:
   "true": Oui
   "false": Non
+  "team": "équipe"
+  "platform": plateforme
+  "teacher-researcher": "enseignant(e)-chercheur"
+  "professor": "professeur"
+  "support" : "support"
+  "platform leader" : "responsable de plateforme"
+  "researcher" : "chercheur"
+  "master student" : "étudiant en master"
+  "team leader" : "chef d'équipe"
+  "post-doctoral fellow" : "post-doc"
+  "research assistant" : "Assistant(e) ingénieur"
+  "manager" : "manager"
+  "director": "director"
+  activerecord:
+    models:
+      item: 
+        one: objet
+        other: objets
+      team: 
+        one: Equipe
+        other: Equipes
+      location:
+        one: local
+        other: locaux
+      brand:
+         one: marque
+         other: marques
+      category:
+         one: catégorie
+         other: catégories
+      owner:
+         one: propriétaire
+         other: propriétaire
+      user:
+         one: contact
+         other: contacts
+      provider:
+         one: fournisseur
+         other: fournisseur
+      contract:
+         one: Contrat de maintenance
+         other: Contrats de maintenance
+      currency: 
+        one: Devise
+        other: Devises
+      attachment:
+        one: Fichier
+        other: Fichiers
+      item_attachment:
+        one: Fichier
+        other: Fichiers
+      occurance:
+        one: Evènement
+        other: Evènements
+    attributes:
+      item:
+        name: "Nom"
+        barcode: "Code-barre"
+        serial_number: "N° de série"
+        owner_inventory: "N° inventaire propriétaire"
+        intallation_date: "Date d'installation"
+        price: "Prix"
+        residue: "Résidu"
+        interval: "Intervalle"
+        duration: "Duration"
+        amortization: "Amortissement"
+        folder: "Dossier"
+        registered: "Enregistré"
+        order: "Commande"
+        order_note: "Notes sur la commande"
+        invoice: "Notes sur la facture"
+        comment: "Commentaires"
+        deleted: "Détruit"
+        date_of_deletion: "Date de destruction"
+        donation: "Don"
+      occurance:
+        name: "Nom"
+        done: "Tâche exécutée"
+        comment: "Commentaires"
+      attachment: 
+        doc_type: "Type de document"
+        attachment: "Attachement"
+      item_attachment: 
+        doc_type: "Type de document"
+        attachment: "Attachement"
+      user_attachment:
+        doc_type: "Type de document"
+        attachment: "Attachement"  
   global:
     search_any_term: "Recherche"
     fine_search: "Recherche avancée"
@@ -8,13 +96,15 @@ fr:
     my_teams_inventory_only: "Afficher l'inventaire de mon équipe"
     new_item: "Créer un objet"
     add_items: "Ajouter des objets"
-    add_files: "Ajouter un fichier"
+    add_file: "Ajouter un fichier"
     remove: "Supprimer"
     new_user: "Nouvel utilisateur"
     new_contract: "Nouveau contract"
     new_brand: "Nouvelle marque"
     new_provider: "Nouveau fournisseur"
     new_category: "Nouvelle catégorie"
+    new_building: "Nouveau bâtiment"
+    new_location: "Nouveau local"
     contract: "contrat"
     edit: "Modifier"
     acronym: "Acronyme"
@@ -37,6 +127,13 @@ fr:
     obsolete_contract: "Ce contrat est obsolète"
     none: "aucun"
     export: "exporter"
+    add_occurance: "Ajouter un évènement"
+    remove_occurance: "Supprimer l'évènement"
+    add_date: "Ajouter une date pour cet évènement"
+    remove_date: "Supprimer la date"
+    remove: "Supprimer"
+    events: "Evènement"
+    administration_hr: "Administration RH"
   roles:
     superadmin: "Superadmin"
     administrator: "Administrateur"
@@ -63,7 +160,7 @@ fr:
     end_date: "Date de départ"
     active_status: "Actif"
     display_all_users: "Afficher tout le personnel (actif ou non)"
-    displat_my_teams_only: "Afficher mes contacts"
+    display_my_teams_only: "Afficher mes contacts"
   menu:
     item: "Objet"
     inventory: "Inventaire"

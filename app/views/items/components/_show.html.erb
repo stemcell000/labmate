@@ -1,73 +1,71 @@
-<div class="jumbotron">
-<div class="container">
 <div class="panel panel-primary">
   		<div class="panel-body">
 			<div class="row">
 				<div class="col-lg-3 col-md-3 col-sm-3">
-					<strong>Barcode : </strong><%= @barcode %>
+					<strong><%=Item.human_attribute_name("barcode")%> : </strong><%= @barcode %>
 				</div>
 				<div class="col-lg-9 col-md-9 col-sm-9">
-					<strong>Name : </strong><span><%= @name.upcase%></span>
+					<strong><%=Item.human_attribute_name("name")%> : </strong><span><%= @name.upcase%></span>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-5 col-md-5 col-sm-5">
-					<strong><%='Team'.pluralize(@item.teams.count)%> : </strong> <%=@team_name %>
+					<strong><%=Team.model_name.human(count: 2).capitalize%> : </strong> <%=@team_name %>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-3 col-md-3 col-md-3">
-					<strong> Serial number : </strong><%= @serial_number %>
+					<strong> <%=Item.human_attribute_name("serial_number")%> : </strong><%= @serial_number %>
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-2">
-					<strong> date : </strong><%= @installation_date %>
+					<strong> <%=Item.human_attribute_name("installation_date")%> : </strong><%= @installation_date %>
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-4">
-					<strong>Location : </strong><%= @location_name%>
+					<strong><%=Location.model_name.human(count: 2).capitalize%> : </strong><%= @location_name%>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12">
-						<strong><%='Contact'.pluralize(@item.users.count)+' : '%></strong><%=@full_name.html_safe %>
+						<strong><%=User.model_name.human(count: 2).capitalize%> : </strong><%=@full_name.html_safe %>
 				</div>
 			</div>
 			<hr />
 			<div class="row">
 				<div class="col-lg-4 col-md-4 col-md-4">
-					<strong>Provider : </strong> <%= @provider_name%>
+					<strong><%=Provider.model_name.human(count: 2).capitalize%> : </strong> <%= @provider_name%>
 				</div>
 				<div class="col-lg-4 col-md-4 col-md-4">
-					<strong>Brand : </strong><%= @brand_name%>
+					<strong><%=Brand.model_name.human(count: 2).capitalize%> : </strong><%= @brand_name%>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-8 col-md-8 col-sm-8">
-					<strong>Category : </strong> <%= @category_name%>
+					<strong><%=Category.model_name.human(count: 2).capitalize%> : </strong> <%= @category_name%>
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-3">
-					<strong>Status : </strong><%= @item_status%>
+					<strong><%=Status.model_name.human(count: 2).capitalize%> : </strong><%= @item_status%>
 				</div>
 			</div>
 			<hr />
 			<div class="row">
 				<div class="col-lg-3 col-md-3 col-sm-3">
-					<strong>Owner : </strong><%=@owner_name%>
+					<strong><%=Owner.model_name.human(count: 2).capitalize%> : </strong><%=@owner_name%>
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-3">
-					<strong>Owner inventory ID : </strong><%= @owner_inventory%>
+					<strong><%=Item.human_attribute_name("owner_id")%> : </strong><%= @owner_inventory%>
 				</div>
 				<div class="col-md-3 col-md-3 col-sm-3">
-					<strong>Folder : </strong><%= @folder_number%>
+					<strong><%=Item.human_attribute_name("folder")%> : </strong><%= @folder_number%>
 				</div>
 			</div>
 	
 		<hr />
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12">
-					<strong>Attached file(s): </strong><br />
-					<% unless @item.attachments.empty? %>
-						<% @item.attachments.each do |attachment|%>
-							<%= link_to attachment.doc_type, attachment.attachment.to_s, :target => "_blank"%><br />
+					<strong><%= t('global.files').capitalize%> : </strong><br />
+					<% unless @item.item_attachments.empty? %>
+						<% @item.item_attachments.each do |item_attachment|%>
+							<%= link_to item_attachment.doc_type, item_attachment.attachment.to_s, :target => "_blank"%><br />
 						<%end%>
 					<%else%>
 						<em>No file attached</em>
@@ -80,53 +78,54 @@
 	<hr />
 			<div class="row">
 				<div class="col-lg-3 col-md-3 col-sm-3">
-					<strong>Order : </strong><%= @order%>
+					<strong><%=Item.human_attribute_name("order")%> : </strong><%= @order%>
 				</div>
 				<div class="col-lg-5 col-md-5 col-sm-5">
-					<strong>Order note: </strong><%= @order_note%>
+					<strong><%=Item.human_attribute_name("order_note")%> : </strong><%= @order_note%>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-3 col-md-3 col-sm-3">
-					<strong>Invoice : </strong><%= @invoice%>
+					<strong><%=Item.human_attribute_name("invoice_id")%> : </strong><%= @invoice%>
 				</div>
 				<div class="col-lg-5 col-md-5 col-sm-5">
-					<strong>Invoice note: </strong><%= @invoice_note%>
+					<strong><%=Item.human_attribute_name("invoice_note")%> : </strong><%= @invoice_note%>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-3 col-md-3 col-sm-3">
-					<strong>Price : </strong><%= @price +" "+@currency_price_name %> 
+					<strong><%=Item.human_attribute_name("price")%> : </strong><%= @price +" "+@currency_price_name %> 
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-3">
-					<strong>Residue : </strong><%= @residue +" "+@currency_residue_name %> 
+					<strong><%=Item.human_attribute_name("residue")%> : </strong><%= @residue +" "+@currency_residue_name %> 
 				</div>
 				<div class="col-lg-2 col-md-2 col-sm-3">
-					<strong>Donation : </strong><%= @donation %>
+					<strong><%=Item.human_attribute_name("donation")%> : </strong><%= @donation %>
 				</div>
 			</div>
 			<hr />
 			<div class="row">
 				<div class="col-lg-5 col-md-5 col-sm-5">
-					<strong>Current maintenance contract : </strong><%= @item.contracts.where("end_date>?", Date.today).pluck(:name).to_sentence%>
+					<strong><%= Contract.model_name.human(count: 2).capitalize %> : </strong><%= @item.contracts.where("end_date>?", Date.today).pluck(:name).to_sentence%>
 				</div>
 			</div>
 	<%end%>
 	<hr />
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12">
-					<strong>Comment : </strong><%= @comment%> 
+					<strong><%=Item.human_attribute_name("comment")%> : </strong><%= @comment%> 
 				</div>
 			</div>	
 	<hr />
 <div class="row">
-<%unless @item.occurances.empty?%>			
+<%unless @item.occurances.empty?%>
+<div class="col-lg-12">	
 		<table class="table table-small table-hover table-bordered">
 			<%  @item.occurances.each do |e| %>
 			<tr>
-				<th>Event's name</th>
-				<th>Status</th>
-				<th>Comment</th>
+				<th><%=Occurance.human_attribute_name("name")%></th>
+				<th><%=Occurance.human_attribute_name("done")%></th>
+				<th><%=Occurance.human_attribute_name("comment")%></th>
 				<th>Dates</th>
 			</tr>
 			<tr>
@@ -137,11 +136,8 @@
 			</tr>
 			<%end%>
 		</table>
-<%else%>
-		<div class="col-lg-12 col-md-12 col-sm-12">
-			<strong>Events : </strong><br />
-				<em>No event</em>
-		</div>
 <%end%>
+</div>
 </div><!--End of occurances row-->
+</div>
 </div>

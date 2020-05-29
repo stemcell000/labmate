@@ -87,7 +87,7 @@ class ItemsController < InheritedResources::Base
   end
   
   def edit
-    @contracts = Contract.belongs_to_teams(current_user.teams.ids).uniq
+    @contracts = Contract.belongs_to_teams(current_user.team_ids).belongs_to_categories(@item.category.id).uniq
     @events = @item.occurances
   end
   
@@ -227,13 +227,11 @@ class ItemsController < InheritedResources::Base
       :id, :barcode, :name, :serial_number, :owner_inventory, :installation_date, :price, :residue, :interval, :duration, :amortization, :folder, :registered, :order, :order_note,
       :invoice, :invoice_note, :comment, :status_id, :deleted, :date_of_deletion, :created_at, :update_at, :currency, :location_id, :category_id, :provider_id,
       :brand_id, :owner_id, :donation,
-      
-      :attachments_attributes =>[:id, :item_id, :doc_type, :name, :attachment, :_destroy],
-      
+      item_attachments_attributes: [:id, :item_id, :attachment, :doc_type, :_destroy],
       users_ids: [], teams_ids: [], contract_ids: [], teams_attributes: [:id, :name], locations_attributes: [:id, :name], users_attributes: [:id, :firstname, :lastname, :email, :full_name, :display],
       category_attributes: [:id, :name, :acronym], provider_attributes: [:id, :name ], brand_attributes: [:id, :name], owners_attributes: [:id, :name],
-      occurances_attributes: [:id, :name, :done, :item_id, :comment, :_destroy, contracts_attributes: [:id, :name],
-      days_attributes: [:id, :date, :_destroy]]
+      occurances_attributes: [:id, :name, :done, :item_id, :comment, :_destroy, days_attributes: [:id, :date, :_destroy]],
+      contracts_attributes: [:id, :name]
       ) 
     end
 

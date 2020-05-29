@@ -13,116 +13,128 @@
 				<div class="col-lg-4 col-md-4 col-sm-4">
 					<%= f.input :name %>
 				</div>
-				<div class="col-lg-5 col-md-5 col-sm-5">
-					<%= f.association :teams, label: "Team", collection: @teams, input_html: { class:"select2-select"} %>
+				<div class="col-lg-8 col-md-8 col-sm-8">
+					<%= f.association :teams, label: Team.model_name.human(count: 2).capitalize, collection: @teams, input_html: { class:"select2-select"} %>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-lg-3 col-md-4 col-md-4">
-					<%= f.input :serial_number, label: "Serial number" %>
+				<div class="col-lg-3 col-md-4 col-sm-4">
+					<%= f.input :serial_number %>
 				</div>
 				<div class="col-lg-2 col-md-2 col-sm-2">
-					<%= f.input :installation_date, :label => "Installation on:", as: :string, input_html: { class: "datepicker"} %>
+					<%= f.input :installation_date, as: :string, input_html: { class: "datepicker"} %>
 				</div>
 				<div class="col-lg-2 col-md-3 col-sm-4">
-					<%= f.association :location, label: "Location", collection: @locations, input_html: { class:"select2-select"} %>
+					<%= f.association :location, label: Location.model_name.human(count: 2).capitalize, collection: @locations, input_html: { class:"select2-select"} %>
 				</div>
 				<div class="col-lg-5 col-md-5 col-sm-5">
-					<%= f.association :users, label: "Contact", collection: @users, input_html: { class:"select2-select" } %>
+					<%= f.association :users, collection: @users, label: User.model_name.human(count: 2).capitalize, input_html: { class:"select2-select" } %>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-lg-4 col-md-4 col-md-4">
-					<%= f.association :provider, label: "Provider", collection: @providers, input_html: { class: "select2-select"} %>
+				<div class="col-lg-4 col-md-4 col-sm-4">
+					<%= f.association :provider, label: Provider.model_name.human(count: 2).capitalize, collection: @providers, input_html: { class: "select2-select"} %>
 				</div>
 				<div class="col-lg-4 col-md-4 col-md-4">
-					<%= f.association :brand, label: "Brand", collection: @brands, input_html: { class: "select2-select"} %>
+					<%= f.association :brand, label: "Brand", collection: @brands, label: Brand.model_name.human(count: 2).capitalize, input_html: { class: "select2-select"} %>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-8 col-md-8 col-sm-8">
-					<%= f.association :category, label: "Category", collection: @categories, input_html: { class:"select2-select" } %>
+					<%= f.association :category, label: Category.model_name.human(count: 2).capitalize, collection: @categories, input_html: { class:"select2-select" } %>
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-3">
-					<%= f.association :status, label: "Status", collection: @statuses, input_html: { class:"select2-select" } %>
+					<%= f.association :status, label: Status.model_name.human(count: 2).capitalize, collection: @statuses, input_html: { class:"select2-select" } %>
 				</div>
 			</div>
 			
 			<div class="row">
 				<div class="col-lg-3 col-md-3 col-sm-3">
-					<%= f.association :owner, label: "Owner", collection: @owners, input_html: { class:"select2-select" } %>
+					<%= f.association :owner, label: Owner.model_name.human(count: 2).capitalize, collection: @owners, input_html: { class:"select2-select" } %>
 				</div>
 				<div class="col-lg-2 col-md-2 col-sm-2">
-					<%= f.input :owner_inventory, label: "Owner ID"%>
+					<%= f.input :owner_inventory %>
 				</div>
 				<div class="col-md-3 col-md-3 col-sm-3">
-					<%= f.input :folder, label: "Folder #" %>
+					<%= f.input :folder %>
 				</div>
 			</div>
 			
 			<div class="row">
 				<div class="col-lg-3 col-md-3 col-sm-3">
-					<%= f.input :price, label: "Price" %> 
+					<%= f.input :price%> 
 				</div>
-				<div class="col-lg-2 col-md-2 col-sm-2">
-					<%= f.association :currency, label: "Currency", collection: @currencies, input_html: { class:"select2-select col-lg-12" }%>
+				<div class="col-lg-3 col-md-3 col-sm-3">
+					<%= f.association :currency, label: Currency.model_name.human, collection: @currencies, input_html: { class:"select2-select col-lg-12" }%>
 				</div>
 				<div class="col-lg-2 col-md-2 col-sm-3">
-					<%= f.label "Donation" %>
+					<%= f.label Item.human_attribute_name(:donation)%>
 					<%= f.select(:donation, [['Yes', true], ['No', false]], {:include_blank => " "}, { class:"select2-select col-lg-12 col-md-12 col-sm-12" })%>
 				</div>
 			</div>
+			<%if params[:action]== 'edit'%>
 			<div class="row">
 				<div class="col-lg-5 col-md-5 col-sm-5">
-					<%= f.association :contracts, label: "Maintenance contract", collection: @contracts, input_html: { class:"select2-select col-lg-12" }%>
+					<%= f.association :contracts, label: Contract.model_name.human(count: 2).capitalize, collection: @contracts, label_method: -> (contract) {"#{contract.name} #{contract.team_ids.to_sentence}"}, input_html: { class:"select2-select col-lg-12" }%>
 				</div>
 			</div>
+			<%end%>
 			
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12">
-					<%= f.input :comment, label: "Comment" %> 
+					<%= f.input :comment %> 
 				</div>
 			</div>	
 <div class="panel panel-primary">
 	<div class="panel-heading">
-			<h3 class="panel-title">Files</h3>
+			<h3 class="panel-title"><%= t('global.files').capitalize%></h3>
 	</div>
 	<div class="panel-body">			
-		<div id="attachments_container" class="col-lg-12">
-				<%= f.simple_fields_for :attachments do |a| %>
-					<div class="row">	
-						<div class="col-lg-4 col-md-4 col-sm-4 vcenter pull-left">
-							<%=a.label 'Name of the document'%>
-							<%= a.input_field :doc_type %>
-							<%=a.label 'File'%>
+		<div id="attachments_container" class="col-lg-12 col-md-12 col-sm-12">
+				<%= f.simple_fields_for :item_attachments do |a| %>
 							<%= File.basename(a.object.attachment.to_s)%>
-					       	<%= a.input_field :attachment, :as => :file, :title => "Search for a file to add"%>
-					    </div>
-					    <div class="col-lg-2 col-md-2 col-sm-2 vcenter">
-									<%= a.link_to_remove "<span class='fa fa-times'></span>".html_safe%>
-						</div>
+							<%= a.label ItemAttachment.human_attribute_name("doc_type")%>
+							<%= a.input_field :doc_type %>
+							<%= a.label ItemAttachment.human_attribute_name("attachment")%>
+					       	<%= a.input_field :attachment, :as => :file%>
+					       	<%= a.link_to_remove t('global.remove'), class: "btn bth-xs-danger" %>
 				<% end %>
-				
-						<%= f.link_to_add "Add a file", :attachments, :class => "btn btn-xs btn-primary pull-right" %>
-				</div>
+						<%= f.link_to_add t('global.add_file'), :item_attachments, :class => "btn btn-xs btn-primary pull-right" %>
 			</div>
 	  </div>
-
+</div>
 <div class="panel panel-success">
 	<div class="panel-heading">
-			<h3 class="panel-title">Events</h3>
+			<h3 class="panel-title"><%=t(Occurance.model_name.human(count: 2).capitalize)%></h3>
 	</div>
 	<div class="panel-body">			
-		<div id="events_container" class="col-lg-12">
 				<%= f.simple_fields_for :occurances do |ff| %>
-						<%= render partial: 'items/components/form_event', locals: {:ff => ff}%>
+					<%=ff.input :name%>
+					<%=ff.input :done,
+								as: :select, 
+								collection: [['No',false], ['Yes',true]],
+								input_html: { class: "select2-select"},
+								 include_blank: true%>
+					<%=ff.input :comment%>
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<%= ff.simple_fields_for :days do |fff| %>
+							<div class="row">
+										<%= fff.input :date, as: :string, input_html: { class: "datepicker"} %>
+										<%= fff.link_to_remove t('global.remove_date'), class: "btn btn-xs btn-warning pull-right" %>
+							</div>
+							<%end%>
+									<%= ff.link_to_add t("global.add_date"), :days, :class => "btn btn-xs btn-default" %>
+						</div>
+					</div>
+						<%= ff.link_to_remove t('global.remove_occurance'), class: "btn btn-xs btn-danger"%>
 				<%end%>
-				<%= f.link_to_add "Add an event", :occurances, :class => "btn btn-xs btn-success pull-right" %>
-			</div>
-			</div>
+				<%= f.link_to_add t('global.add_occurance'), :occurances, :class => "btn btn-xs btn-success pull-right" %>
 	</div>
-	</div>
-	</div>
+</div>
+
+</div>
+</div>
 </small>
 	<div class="row">
 				<div class="col-md-12">
@@ -131,6 +143,5 @@
 			     </div>
 		</div>
 <%end%><!--End of Form-->
-</div>  
 		
 	

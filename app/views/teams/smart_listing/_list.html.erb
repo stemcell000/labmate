@@ -1,13 +1,13 @@
 	  <table  class="table table-striped table-small">
 	    <thead>
 	    		<th class="col-lg-3 center">
-		        <%= smart_listing.sortable(t('menu.acronym'), :acronym) %>
+		        <%= smart_listing.sortable(t('global.acronym'), :acronym) %>
 		    </th>
 		    <th class="col-lg-3 center">
 		        <%= smart_listing.sortable(t('menu.name'), :name) %>
 		    </th>
 		    <th class="col-lg-3 center">
-		        <%= smart_listing.sortable( t('menu.department'), :departement_id) %>
+		        <%= smart_listing.sortable( t('menu.departments').singularize, :departement_id) %>
 		    </th>
 		    <th class="col-lg-1 center">
 		        <%= smart_listing.sortable "Type", :type_name %>

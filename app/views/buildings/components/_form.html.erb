@@ -1,0 +1,21 @@
+<small>
+<%= simple_nested_form_for( @building, html: { class: 'form-vertical' }) do |f|  %>
+		<%= f.error_notification %>
+		<ul class="errors"></ul>
+		<div class="container">	
+			<div class="row inline">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<%= f.input :name, label: t('global.name')%>
+				</div>
+		</div>
+</small>	
+	<div class="row">
+		<div class="btn-group" role="group" aria-label="...">
+			<div class="col-md-12">
+					<%= f.submit t('global.save'), :class => "btn btn-primary" %>
+					<%= link_to t('global.cancel'), :back, :class => "btn btn-default" %>
+	        </div>
+		</div>
+	</div>
+	</div>
+<%end%>

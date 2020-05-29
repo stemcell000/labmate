@@ -27,11 +27,11 @@
             		<%= content_tag(:li, link_to( t('menu.owners'), owners_path, class: "nav-link"), remote: true)%>
             <%end%>
             <%if can? :manage, Building %>
-            		<%= content_tag(:li, link_to( t('menu.buildings'), teams_path, class: "nav-link"), remote: true)%>
+            		<%= content_tag(:li, link_to( t('menu.buildings'), buildings_path, class: "nav-link"), remote: true)%>
             	<%end%>
+            	<%= content_tag(:li, link_to( t('menu.locations'), locations_path, class: "nav-link"), remote: true)%>
             <%= content_tag(:li, link_to( t('menu.departments'), departments_path, class: "nav-link"), remote: true, if: isAdmin)%>
             <%= content_tag(:li, link_to( t('menu.teamss'), teams_path, class: "nav-link"), remote: true)%>
-            <%= content_tag(:li, link_to( t('menu.locations'), locations_path, class: "nav-link"), remote: true)%>
             <li role="separator" class="divider"></li>
             <%= content_tag(:li, link_to( t('menu.users'), users_path, class: "nav-link"), remote: true)%>
           </ul>

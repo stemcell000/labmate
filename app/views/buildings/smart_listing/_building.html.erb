@@ -1,0 +1,10 @@
+<td class="col-lg-5 col-md-5 col-sm-5"><small><%= object.name.nil? ? "unknown" : object.name %></small></td>
+<td class="col-lg-2 col-md-2 col-sm-5 actions">
+<%if can? :cru, building %>	
+	<%= smart_listing_item_actions [
+		{name: :custom,    url: edit_building_path(object),
+	  		method: :get, 
+  			icon: 'fa fa-pencil-square-o', 
+  			title: "Edit"}]%>
+<%end%>
+ </td>

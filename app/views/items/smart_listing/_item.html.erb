@@ -23,10 +23,10 @@
 			<% if can? :manage, object %>
 					<%= object.recap_conf %>	
 			<%end%>
-					<% unless object.attachments.empty? %>
+					<% unless object.item_attachments.empty? %>
 						<div class="row">
 							<strong>note : </strong><br />
-							<%object.attachments.each do |o|%>
+							<%object.item_attachments.each do |o|%>
 								<%= link_to o.doc_type.nil? ? o.attachment.to_s : o.doc_type, File.basename(o.attachment.to_s), :target => "_blank" %><br />
 							<%end%>
 						</div>

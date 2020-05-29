@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :user_attachments
+  resources :item_attachments
   devise_for :users do
     get "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
   end
@@ -32,6 +34,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :organizations
   resources :departments
+  resources :buildings
   resources :locations
   resources :teams
   resources :utilities

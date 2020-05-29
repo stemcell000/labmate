@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     @teams = Team.where.not(name: 'All').order(name: "asc").uniq.map{ |obj| [obj['name'], obj['id']] }
     @q = User.ransack(params[:q])
     
-    results = @q.result.includes(:teams, :location, :departments)
+    results = @q.result.includes(:teams, :location, :departments).uniq
     
       
     if !@option.display_all_users
@@ -119,8 +119,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :email, :firstname, :lastname, :location_id, :role, :login, :recap, :password, :password_confirmation,
     :tel1, :tel2, :start_date, :end_date, :active_status, :location_id, :unconfirmed_email,
     team_ids: [], teams_attributes: [:id, :name],
-    attachment_ids: [],
-    attachments_attributes: [:id, :user_id, :attachment, :remove_attachment, :doc_type, :_destroy],
+    user_attachments_attributes: [:id, :user_id, :attachment, :remove_attachment, :doc_type, :_destroy],
     location_attributes: [:id, :name, :building_id],
     position_ids: [], position_attributes: [:id, :name],
     options_attributes: [:display_all])

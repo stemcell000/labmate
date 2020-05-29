@@ -1,0 +1,21 @@
+<div class="jumbotron">
+	<div class="container">
+	<div class="panel panel-primary">
+		<div class="panel-heading"><%=t('menu.building')%></div>
+	  <div class="panel-body">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-6">
+						<span><strong><%=t('global.nom')%> : </strong><%=@building.name%></span><br />
+						<span><strong><%=t('global.menu.building')%> : </strong><%=@building.building.name%></span><br />
+					</div>
+				</div>
+			</div>	
+		</div>
+	</div>
+</div>
+	<div class="row">
+		<%= link_to t('global.edit'), edit_building_path(@building), :class => "btn btn-default" %>
+		<%= link_to t('global.back'), :buildings, :class => "btn btn-default" %>
+	</div>
+</div>

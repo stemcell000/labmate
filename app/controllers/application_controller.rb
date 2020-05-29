@@ -70,14 +70,6 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  # restrict access to admin module for non-admin users
-  def authenticate_admin_user!
-    raise SecurityError unless current_user.role.try(:superadmin?)
-    rescue_from SecurityError do |exception|
-      redirect_to root_url
-    end
-  end
-  
   # path for redirection after user sign_in, depending on user role
   def after_sign_in_path_for(user)
    user.role == "superadmin"? admin_dashboard_path : root_path 

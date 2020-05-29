@@ -1,7 +1,7 @@
-<td ><small><%= object.acronym%></small></td>
+<td ><small><%= object.acronym unless object.acronym.nil?%></small></td>
 <td ><small><%= object.name%></small></td>
 <td ><small><%= object.department.name unless object.department.nil?%></small></td>
-<td ><small><%= object.type.name unless object.type.nil? %></small></td>
+<td ><small><%= t(object.type.name) unless object.type.nil? %></small></td>
 <td class="actions">
 <%if can? :manage, :all %>
 	<%= smart_listing_item_actions [
