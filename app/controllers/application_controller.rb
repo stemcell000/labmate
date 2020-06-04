@@ -53,7 +53,8 @@ class ApplicationController < ActionController::Base
          on_going_tenders.each do |tender|
          if tender.teams & current_user.teams 
            #check if the current user's teams items categories are concerned by the on going tender
-            if tender.categories & @current_teams_categories
+           condition = tender.categories & @current_teams_categories
+            unless condition.empty?
               flash.now[:success] = t('items.flash_tender', category:tender.categories.pluck(:name).to_sentence.humanize)
             end
           end
@@ -61,6 +62,7 @@ class ApplicationController < ActionController::Base
          end
          end
        end
+      
   
    rescue_from CanCan::AccessDenied do |exception|
     respond_to do |format|

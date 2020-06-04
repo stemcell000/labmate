@@ -60,7 +60,7 @@ class ContractsController < InheritedResources::Base
       current_user.contracts << @contract
       if @contract.teams.pluck(:name).any? {|name| name == 'All'}
         @contract.teams.destroy_all
-        Team.all.where.not(name: ['system', 'all']).all.each do |team|
+        Team.all.where.not(name: ['system', 'all']).each do |team|
           @contract.teams << team
         end
       end
@@ -113,7 +113,7 @@ class ContractsController < InheritedResources::Base
     format.xlsx{
       response.headers[
         'Content-Disposition'
-      ] = "attachment; filename='items.xlsx'"
+      ] = "attachment; filename=items.xlsx"
     }
   end
   end

@@ -30,7 +30,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,:rememberable, :trackable, :confirmable, 
          :validatable
-  
   #validates :tel1, phone: { possible: true, allow_blank: true, types: [:voip, :mobile]}
   #validates :tel2, phone: { possible: true, allow_blank: true, types: [:voip, :mobile]}
   #validates :email, uniqueness: true

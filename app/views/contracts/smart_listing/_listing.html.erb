@@ -1,26 +1,25 @@
+  <% unless smart_listing.empty? %> 
   <table class="table table-hover">
     <thead>
 	      <tr>
-	        <th class="col-lg-1 col-sm-1 col-md-1" ><%= smart_listing.sortable "Number", :id %></th>
-	        <th class="col-lg-2 col-sm-2 col-md-2" ><%= smart_listing.sortable "Name", :name %></th>
-	        <th class="col-lg-2 col-sm-2 col-md-2" ><%= smart_listing.sortable "Provider", :Provider %></th>
-	        <th class="col-lg-3 col-sm-3 col-md-3" ><%= smart_listing.sortable "Category", :Categories %></th>
-			<th class="col-lg-1 col-sm-1 col-md-1" ><%= smart_listing.sortable "Start", :start %></th>
-			<th class="col-lg-1 col-sm-1 col-md-1" ><%= smart_listing.sortable "End", :end %></th>
+	        <th class="col-lg-1 col-sm-1 col-md-1" ><%= smart_listing.sortable t("global.number"), :id %></th>
+	        <th class="col-lg-2 col-sm-2 col-md-2" ><%= smart_listing.sortable t("menu.name"), :name %></th>
+	        <th class="col-lg-2 col-sm-2 col-md-2" ><%= smart_listing.sortable Provider.model_name.human.capitalize, :Provider %></th>
+	        <th class="col-lg-3 col-sm-3 col-md-3" ><%= smart_listing.sortable Category.model_name.human.capitalize, :Categories %></th>
+			<th class="col-lg-1 col-sm-1 col-md-1" ><%= smart_listing.sortable t("menu.starting_date"), :start %></th>
+			<th class="col-lg-1 col-sm-1 col-md-1" ><%= smart_listing.sortable t("menu.ending_date"), :end %></th>
 			<th class="col-lg-1 col-sm-1 col-md-1"></th>
 	      </tr>
     </thead>
     <tbody>
-    	<% unless smart_listing.empty? %>  
       <% smart_listing.collection.each do |contract| %>
         <tr class="editable" data-id = "<%= contract.id %>" >
          	<%= smart_listing.render object: contract, partial: "contracts/smart_listing/contract", locals: {object: contract} %>
         </tr>
       	<% end %>
-	<% end %>
     </tbody>
   </table>
   <%= smart_listing.paginate %>
   <%= smart_listing.pagination_per_page_links %>
-
+<% end %>
 

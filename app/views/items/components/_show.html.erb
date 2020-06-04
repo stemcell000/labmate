@@ -1,10 +1,12 @@
-<div class="panel panel-primary">
+<div class="panel panel-default">
   		<div class="panel-body">
 			<div class="row">
-				<div class="col-lg-3 col-md-3 col-sm-3">
+				<div class="col-lg-12 col-md-12 col-sm-12" >
 					<strong><%=Item.human_attribute_name("barcode")%> : </strong><%= @barcode %>
 				</div>
-				<div class="col-lg-9 col-md-9 col-sm-9">
+			</div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
 					<strong><%=Item.human_attribute_name("name")%> : </strong><span><%= @name.upcase%></span>
 				</div>
 			</div>

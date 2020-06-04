@@ -36,9 +36,12 @@ class Ability
       elsif user.role? :inventory_manager
           can :read, :all
         #Inventory manager can only manage items that belongs to his/her team(s)
-          can :crud, Item, id: Item.by_teams(user.team_ids).map{ |item| item.id }
+          can :cru, Item, id: Item.by_teams(user.team_ids).map{ |item| item.id }
         #Inventory manager can only manage contracts that belongs to his/her team(s)
-          can :manage, Contract, id: Contract.belongs_to_teams(user.team_ids).map{|contract| contract.id}
+          can :create, Contract
+          can :read, Contract
+          can :update, Contract, id: Contract.is_not_tender.belongs_to_teams(user.team_ids).map{|contract| contract.id}
+          can :add_to_queue, Contract, id: Contract.belongs_to_teams(user.team_ids).map{|contract| contract.id}
           can :index, User
         #Inventory manager can create and update brands and providers
           can :cru, Brand
@@ -73,7 +76,7 @@ class Ability
         #User can only manage items that belongs to his/her team(s)
           #can :cru, Item, item: {item_teams: {team_id: user.team_ids}}
           can :create, Item
-          can :update, :destroy, Item, Item, id: Item.is_managed_by(user.id).map { |item| item.id }
+          can :update, Item, id: Item.is_managed_by(user.id).map { |item| item.id }
         #User can only manage contracts that belongs to his/hers or public tender 
           can :create, Contract
           can :update, Contract, user_id: user.id

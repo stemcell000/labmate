@@ -14,6 +14,10 @@ fr:
   "research assistant" : "Assistant(e) ingénieur"
   "manager" : "manager"
   "director": "director"
+  "On-going contracts only" : "Afficher les contrats en cours seuls."
+  "Print (PDF)" : "Imprimer"
+  "Print tracking sheet (PDF)" : "Fiche de suivi"
+  "Print label" : "Imprimer l'étiquette"
   activerecord:
     models:
       item: 
@@ -99,7 +103,7 @@ fr:
     add_file: "Ajouter un fichier"
     remove: "Supprimer"
     new_user: "Nouvel utilisateur"
-    new_contract: "Nouveau contract"
+    new_contract: "Nouveau contrat"
     new_brand: "Nouvelle marque"
     new_provider: "Nouveau fournisseur"
     new_category: "Nouvelle catégorie"
@@ -134,6 +138,7 @@ fr:
     remove: "Supprimer"
     events: "Evènement"
     administration_hr: "Administration RH"
+    number: "N°"
   roles:
     superadmin: "Superadmin"
     administrator: "Administrateur"
@@ -147,7 +152,7 @@ fr:
       one: "1 objet orphelin"
       other: "%{count} objets orphelins"
     flash_orphans: "Votre inventaire contient"
-    flash_tender: "Un appel d'offre public a été édité pour certains des objets de votre équipe (cat.%{category}). Vérifiez sur la page Maintenance."
+    flash_tender: "Un appel d'offre public a été édité pour certains des objets de votre équipe (catégories : %{category}). Vérifiez sur la page Maintenance."
     barcode: "Code-barre"
   users:
     firstname: "Prénom"
@@ -191,3 +196,8 @@ fr:
     building: "Bâtiment"
     buildings: "Bâtiments"
     name: "Nom"
+support:
+  array:
+    words_connector: ", "
+    two_words_connector: " et "
+    last_word_connector: ", et "

@@ -1,6 +1,6 @@
 <div class='row'> <strong>Email : </strong> <a href = 'mailto:#{self.email}'><%=user.email%></a> </div>
 <div class='row'><strong><%= t("menu.teams") %> : </strong> <%=user.teams.pluck(:name).to_sentence %></div>
-<div class='row'><strong><%= t("users.position") %> : </strong> <%=user.positions.nil? ? "-" : t(user.position.name).capitalize %> </div>
+<div class='row'><strong><%= t("users.position") %> : </strong> <%=user.positions.empty? ? "-" : t(user.positions.first.name).capitalize %> </div>
 <div class='row'><strong><%= t("users.role") %> : </strong> <%=role_set(user.role) %> </div>
 <div class='row'><strong><%= t("users.localisation") %> : </strong> <%=user.location.nil? ? "-" : user.location.name %> </div>
 <div class='row'><strong>Tel1. : </strong> <%=user.tel1.nil? ? "-": user.tel1 %> </div>

@@ -56,6 +56,7 @@ en:
       export: "export"
       add_occurance: "Ajouter un évènement"
       remove: "Remove"
+      number: "number"
     roles:
       superadmin: "Superadmin"
       administrator: "Administrator"

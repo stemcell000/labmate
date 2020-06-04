@@ -16,7 +16,7 @@ class ProvidersController < InheritedResources::Base
       @providers = @q.result(distinct: true)
       #Config de l'affichage des résultats.
       @providers = smart_listing_create(:providers, @providers, partial: "providers/smart_listing/listing",
-                                                  default_sort: {id: "asc"},
+                                                  default_sort: {name: "asc"},
                                                   page_sizes: [ 10, 20, 30, 50])
   end  
 

@@ -1,7 +1,7 @@
 		<%= simple_nested_form_for @option, url: display_all_contracts_switch_option_path(@option),  html: { class: 'form-inline' }, :remote=> true do |f| %>
 			<div class="form-group">
 				<div class=" pull-right">
-		  				<div class= "row">On-going contracts only <%= f.input :display_all_contracts, :as => :boolean, :label =>false, :input_html => {:onclick => "$('#option_display_all_contracts*').submit();"}%></div>
+		  				<div class= "row"><%=t('On-going contracts only')%> <%= f.input :display_all_contracts, :as => :boolean, :label =>false, :input_html => {:onclick => "$('#option_display_all_contracts*').submit();"}%></div>
 		  		</div>
 	  		</div>
 		<%end%>

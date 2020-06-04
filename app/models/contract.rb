@@ -2,7 +2,9 @@ class Contract < ActiveRecord::Base
   scope :belongs_to_teams, -> teams_array {joins(:teams).where(:teams => {id: teams_array})}
   scope :belongs_to_categories, -> categories_array {joins(:categories).where(:categories => {id: categories_array})}
   scope :belongs_to_items, -> items_array {joins(:contracts_items).where(:contracts_items=> {item_id: items_array})}
- 
+  scope :is_tender, -> {where(tender: true)}
+  scope :is_not_tender, -> {where(tender: false)}
+  
   has_and_belongs_to_many :items, join_table: "contracts_items"
   has_and_belongs_to_many :categories, join_table: "categories_contracts"
   has_and_belongs_to_many :teams, join_table: "contracts_teams"

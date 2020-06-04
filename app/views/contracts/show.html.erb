@@ -7,8 +7,8 @@
 		<div class="container">
 			<div class="col-lg-6 col-md-6 col-sm-6">
 				<span><strong><%=t('menu.name')%> : </strong><%=@contract.name%></span><br />
-				<span><strong><%=t('global.tender')%> : </strong><%=t(@contract.tender) unless @contract.nil?%></span><br />
-				<span><strong><%=t('global.locked').capitalize%> : </strong></strong><%=t(@contract.tender)%></span><br />
+				<span><strong><%=t('global.tender')%> : </strong><%=@contract.tender.nil? ? "-":t(@contract.tender)%></span><br />
+				<span><strong><%=t('global.locked').capitalize%> : </strong></strong><%=@contract.locked.nil? ? "-":t(@contract.locked)%></span><br />
 				<span><strong><%=t('menu.teamss')%> : </strong><%=@teams.map{|t| t.name}.to_sentence%></span><br />
 			</div>
 			<div class="col-lg-6 col-md-6 col-sm-6">
@@ -59,8 +59,10 @@
 </div>
 <div class="row">
 	<%= link_to t('global.edit'), edit_contract_path(@contract), :class => "btn btn-default" %>
-	<%= link_to t('global.back'), :contracts, :class => "btn btn-default" %>
+	<%= link_to t('global.back'), contracts_path, :class => "btn btn-default" %>
+	<%unless @contract.items.empty? %>
 	<%= link_to t('global.export').capitalize, contract_path(format: "xlsx"), :class => "btn btn-default" %>
+	<%end%>
 	<%if can? :update, @contract %>
 		<%= link_to t('global.destroy'), @contract, method: :delete, :class => "btn btn-danger" %>
 	<%end%>

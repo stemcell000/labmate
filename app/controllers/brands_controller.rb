@@ -15,7 +15,7 @@ class BrandsController < InheritedResources::Base
       @brands = @q.result(distinct: true)
       #Config de l'affichage des résultats.
       @brands = smart_listing_create(:brands, @brands, partial: "brands/smart_listing/listing",
-                                                  default_sort: {id: "asc"},
+                                                  default_sort: {name: "asc"},
                                                   page_sizes: [ 10, 20, 30, 50])
   end  
 
