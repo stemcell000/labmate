@@ -56,6 +56,7 @@ Rails.application.routes.draw do
   resource :items do
     post :print_label, on: :member
     post :remove, on: :member
+    post :export_xlsx
   end
   
    ActiveAdmin.routes(self)

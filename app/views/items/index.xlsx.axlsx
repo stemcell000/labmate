@@ -1,0 +1,10 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Items") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row %w(id name SN brand Team(s))
+  
+  # each user is a row on your spreadsheet
+  @q.result.includes([ :teams, :location, :users, :category, :status, :owner, :provider, :brand, :currency ]).each do |item|
+    sheet.add_row [item.id, item.name, item.serial_number, item.brand.name, item.brand.name item.teams.map{|t| t.name}.to_sentence]
+  end
+end

@@ -5,6 +5,5 @@ active_admin_import validate: true,
               before_batch_import: ->(importer) {
                  Brand.where(id: importer.values_at('id')).delete_all
                },
-               batch_size: 1000 
-
+               batch_size: 1000
 end

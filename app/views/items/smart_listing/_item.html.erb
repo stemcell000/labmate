@@ -1,5 +1,6 @@
 <td><%= object.barcode %></td>
 <td><%= object.name %></td>
+<td><%= object.location.nil? ? "unknown" : object.location.name %></td>
 <td><small><%= object.category.nil? ? "unknown" : object.category.acronym %></small></td>
 <td><small><%= object.teams.pluck(:name).to_sentence %></small></td>
 

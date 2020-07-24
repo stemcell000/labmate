@@ -12,7 +12,7 @@ class CategoriesController < InheritedResources::Base
     @option = current_user.options.first
     
       @q = Category.ransack(params[:q])
-      @categorys = @q.result(distinct: true)
+      @categories = @q.result(distinct: true)
       #Config de l'affichage des résultats.
       @categories = smart_listing_create(:categories, @categories, partial: "categories/smart_listing/listing",
                                                   default_sort: {name: "asc"},

@@ -11,8 +11,11 @@
 </div>
 <%if can? :create, Item %>
 <div class="row">
-	<div class="col-lg-12 col-md-12 col-sm-12">
+	<div class="col-lg-3 col-md-3 col-sm-3">
 		<%= link_to t('global.new_item'), new_item_path, class: "btn btn-default" %>
+	</div>
+	<div class="col-lg-3 col-md-3 col-sm-3">
+	<a href="/items.csv"><button class="btn btn-success">export all</button></a>
 	</div>
 </div>
 <%end%>

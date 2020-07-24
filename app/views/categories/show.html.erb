@@ -14,7 +14,9 @@
 	</div>
 </div>
 	<div class="row">
-		<%= link_to t('global.edit'), edit_category_path(@category), :class => "btn btn-default" %>
+		<% if can? :manage, Category%>
+			<%= link_to t('global.edit'), edit_category_path(@category), :class => "btn btn-default" %>
+		<%end%>
 		<%= link_to t('global.back'), :categories, :class => "btn btn-default" %>
 	</div>
 </div>

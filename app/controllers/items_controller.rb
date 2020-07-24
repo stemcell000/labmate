@@ -43,19 +43,26 @@ class ItemsController < InheritedResources::Base
       
       @q = Item.ransack(params[:q])
       @items = @q.result.includes([ :teams, :location, :users, :category, :status, :owner, :provider, :brand, :currency ])
-   
+
     if @option.display_all == false
       @items = @items.where.not('status_id' => 5)
     else
       @items = @items.joins(:items_teams).where(:items_teams => {team_id: current_user.team_ids}).where.not('status_id' => 5)
     end
-    
-      #
       #Config de l'affichage des résultats.
-      @items = smart_listing_create(:items, @items, partial: "items/smart_listing/listing",
+      smart_listing_create(:items, @items, partial: "items/smart_listing/listing",
                                                   default_sort: {id: "desc"},
                                                   page_sizes: [ 10, 20, 30, 50, 100])
+      
+    respond_to do |format|
+      format.html
+      format.js
+      #format.csv { send_data @items.to_csv, filename: "items-#{Date.today}.csv" }
+      format.csv { render text: Item.to_csv(@items) }
+    end
+                                            
   end
+  
   
   def select_contract
     team_ids = current_user.ids

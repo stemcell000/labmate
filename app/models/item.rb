@@ -48,7 +48,22 @@ class Item < ApplicationRecord
   end
   
   validates :name, presence: true
-  
+ 
+  def self.to_csv(list)
+    CSV.generate(headers: true) do |csv|
+      csv << column_names
+      list.each do |item|
+        location_name = item.location.nil? ? "" : item.location.name
+        category_name = item.category.nil? ? "" : item.category.name
+        provider_name = Provider.find(item.provider_id).name unless Provider.find(item.provider_id).name.nil?
+        brand_name = Brand.find(item.brand_id).name unless Brand.find(item.brand_id).name.nil?
+        owner_name = Owner.find(item.owner_id).name unless Owner.find(item.owner_id).name.nil?
+        csv << [item.id, item.barcode, item.name, item.serial_number, item.owner_inventory, item.installation_date, item.price,
+                 item.amortization, item.residue, item.duration, item.folder, item.order, item.order_note, item.invoice_note, item.comment,
+                 item.deleted, item.date_of_deletion]
+      end
+    end
+  end
   
   def generate_recap
     

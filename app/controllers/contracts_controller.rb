@@ -1,4 +1,5 @@
 class ContractsController < InheritedResources::Base
+ 
  #Smart_listing
   include SmartListing::Helper::ControllerExtensions
   helper  SmartListing::Helper
@@ -109,13 +110,13 @@ class ContractsController < InheritedResources::Base
   
   def show
   respond_to do |format|
-    format.html
-    format.xlsx{
-      response.headers[
-        'Content-Disposition'
-      ] = "attachment; filename=items.xlsx"
-    }
-  end
+      format.html
+      format.xlsx{
+        response.headers[
+          'Content-Disposition'
+        ] = "attachment; filename=#{@contract.name}.xlsx"
+      }
+    end
   end
 
   def destroy
