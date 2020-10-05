@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :reports
   resources :user_attachments
   resources :item_attachments
   devise_for :users do

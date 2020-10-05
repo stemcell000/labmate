@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200529094522) do
+ActiveRecord::Schema.define(version: 20200724083127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -203,6 +203,16 @@ ActiveRecord::Schema.define(version: 20200529094522) do
 
   add_index "items", ["deleted_at"], name: "index_items_on_deleted_at", using: :btree
 
+  create_table "items_reports", force: :cascade do |t|
+    t.integer  "item_id"
+    t.integer  "report_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "items_reports", ["item_id"], name: "index_items_reports_on_item_id", using: :btree
+  add_index "items_reports", ["report_id"], name: "index_items_reports_on_report_id", using: :btree
+
   create_table "items_teams", force: :cascade do |t|
     t.integer  "item_id"
     t.integer  "team_id"
@@ -293,6 +303,14 @@ ActiveRecord::Schema.define(version: 20200529094522) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "language"
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.string   "name"
+    t.date     "date"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sessions", force: :cascade do |t|

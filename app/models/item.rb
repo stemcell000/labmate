@@ -15,6 +15,7 @@ class Item < ApplicationRecord
   has_and_belongs_to_many :teams, join_table: "items_teams"
   has_many :item_attachments, :dependent => :destroy
   has_and_belongs_to_many :contracts, join_table: "contracts_items"
+  has_and_belongs_to_many :reports
   
   belongs_to :brand
   belongs_to :category
@@ -34,6 +35,7 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :currency
   accepts_nested_attributes_for :item_attachments, :allow_destroy => true, reject_if: :all_blank
   accepts_nested_attributes_for :occurances, :allow_destroy => true, reject_if: :all_blank
+  accepts_nested_attributes_for :reports
   
   def check_manager(user_id)
     self.users.where(user_id).exists?

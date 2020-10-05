@@ -1,4 +1,5 @@
-<td class="col-lg-10 col-md-10 col-sm-10"><small><%= category.name.nil? ? "unknown" : category.name %></small></td>
+<td class="col-lg-6 col-md-6 col-sm-6"><small><%= category.name.nil? ? "unknown" : category.name %></small></td>
+<td class="col-lg-4 col-md-4 col-sm-4"><small><%= category.acronym.nil? ? "unknown" : category.acronym %></small></td>
 <td class="col-lg-2 col-md-10 col-sm-10 actions">
 <%if can? :manage, Category %>	
 	<%= smart_listing_item_actions [

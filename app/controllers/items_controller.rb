@@ -49,18 +49,11 @@ class ItemsController < InheritedResources::Base
     else
       @items = @items.joins(:items_teams).where(:items_teams => {team_id: current_user.team_ids}).where.not('status_id' => 5)
     end
+    
       #Config de l'affichage des résultats.
       smart_listing_create(:items, @items, partial: "items/smart_listing/listing",
                                                   default_sort: {id: "desc"},
                                                   page_sizes: [ 10, 20, 30, 50, 100])
-      
-    respond_to do |format|
-      format.html
-      format.js
-      #format.csv { send_data @items.to_csv, filename: "items-#{Date.today}.csv" }
-      format.csv { render text: Item.to_csv(@items) }
-    end
-                                            
   end
   
   
@@ -109,11 +102,11 @@ class ItemsController < InheritedResources::Base
       render :action => :edit
     end
   end
+
   
   def show
    respond_to do |format|
      format.html { render :show }
-     
      format.pdf do
         pdf = ItemPdf.new(@item, current_user, Organization.last)
         send_data pdf.render,

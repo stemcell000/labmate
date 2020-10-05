@@ -79,10 +79,10 @@ class ItemPdf
     y_position = cursor-20
      bounding_box([0, y_position], :width => 400, :height =>100) do
         transparent(0.0) { stroke_bounds }
-           pad_bottom(5) { text 'Provider : '+ att['provider_name'] }
-           pad_bottom(5) { text 'Brand : '+ att['brand_name'] }
-           pad_bottom(5) { text 'Category : '+ att['category_name'] }
-           pad_bottom(5) { text 'Status : '+ att['status_name'] }
+           pad_bottom(5) { text 'Provider : '+ att['provider_name'].encode("UTF-8", "Windows-1252") }
+           pad_bottom(5) { text 'Brand : '+ att['brand_name'].encode("UTF-8", "Windows-1252") }
+           pad_bottom(5) { text 'Category : '+ att['category_name'].encode("UTF-8", "Windows-1252") }
+           pad_bottom(5) { text 'Status : '+ att['status_name'].encode("UTF-8", "Windows-1252") }
       end
   end
   
@@ -90,7 +90,7 @@ class ItemPdf
     y_position = cursor-20
      bounding_box([0, y_position], :width => 400, :height =>70) do
         transparent(0.0) { stroke_bounds }
-           pad_bottom(5) { text 'Administrative owner : '+ att['owner_name'] }
+           pad_bottom(5) { text 'Administrative owner : '+ att['owner_name'].encode("UTF-8", "Windows-1252") }
            pad_bottom(5) { text 'Inventory number : '+ att['owner_inventory'] }
            pad_bottom(5) { text 'Folder : '+ att['folder_number'] }
       end
