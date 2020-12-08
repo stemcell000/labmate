@@ -1,10 +1,9 @@
 	  <table  class="table table-striped">
 	    <thead>
-		    <th class="col-lg-6 center">
-		        <%= sort_link( @q, :name, t('menu.name'), default_order: :desc) %>
-		    </th>
-		    </th>
-		  	<th class="col-lg-2 center center"></th>
+	      <tr>
+	        <th class="col-lg-10 col-sm-10 col-md-10" ><%= sort_link(@q, :name, t('menu.name'), default_order: :desc) %></th>
+			<th class="col-lg-2 col-sm-2 col-md-2"></th>
+	      </tr>
 	    </thead>
 	    <tbody>
 	    	<% unless smart_listing.empty? %>  
@@ -13,9 +12,6 @@
 					<%= smart_listing.render object: p, partial: "departments/smart_listing/department", locals: {object: p} %>
 	        		</tr>
 	      	<% end %>
-	     <%end%>
-	     <% if can? :manage, Department%>
-	     	<%= smart_listing.item_new colspan: 9, link: new_department_path(:object) %>
 	     <%end%>
 	    </tbody>
 	  </table>

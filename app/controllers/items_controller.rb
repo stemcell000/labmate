@@ -14,7 +14,7 @@ class ItemsController < InheritedResources::Base
     check_for_tenders
     @superadmin = Team.where(name: "system admin")
     @currencies = Currency.all
-    @users = User.all.where.not(role: 'superadmin').order(lastname: "asc").map{ |obj| [(obj['firstname']+" "+obj['lastname']), obj['id']] }
+    @users = User.all.uniq!.where.not(role: 'superadmin').order(lastname: "asc")
     @categories = Category.all.order(name: "asc").uniq.map{|obj| [obj['name'], obj['id']]}
     @owners = Owner.all.order(name: "asc").uniq.map{|obj| [obj['name'], obj['id']]}
     @locations = Location.all.order(name: "asc").uniq.map{|obj| [obj['name'], obj['id']]}
@@ -52,7 +52,7 @@ class ItemsController < InheritedResources::Base
     
       #Config de l'affichage des résultats.
       smart_listing_create(:items, @items, partial: "items/smart_listing/listing",
-                                                  default_sort: {id: "desc"},
+                                                  default_sort: {id: "asc"},
                                                   page_sizes: [ 10, 20, 30, 50, 100])
   end
   
@@ -173,7 +173,7 @@ class ItemsController < InheritedResources::Base
     @teams = current_user.teams
     @users = User.by_teams(current_user.team_ids).where(active_status: true)
     @teams =  @teams.order(name: "asc").map{ |obj| [obj['name'], obj['id']] }
-    @users = @users.order(lastname: "asc").map{ |obj| [(obj['firstname']+" "+obj['lastname']), obj['id']] }
+    @users = @users.uniq!.order(lastname: "asc")
       
     org_acronym = !Organization.all.nil? ? "UKN" : Organization.first.acronym
     number = Item.all.nil? ?  Item.last.id : 1 

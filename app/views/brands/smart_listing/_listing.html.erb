@@ -13,9 +13,6 @@
         </tr>
       	<% end %>
 	<% end %>
-		 <% if can? :manage, Brand%>
-	     	<%= smart_listing.item_new colspan: 9, link: new_brand_path() %>
-	     <%end%>
     </tbody>
   </table>
   <%= smart_listing.paginate %>

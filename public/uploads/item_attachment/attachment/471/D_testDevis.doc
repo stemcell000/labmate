@@ -1,0 +1,1218 @@
+
+<!-- saved from url=(0073)file:///U:/Christelle02062015/COMMANDES%202017/Dell%2001022017/Devis.html -->
+<html xmlns:fo="http://www.w3.org/1999/XSL/Format"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>
+        Devis
+      </title>
+    
+    <style>
+          body
+          {
+          font-family: Arial;
+          }
+
+          th
+          {
+          border-bottom: 1px solid black;
+          border-collapse: collapse;
+          margin: 0px;
+          padding: 0px;
+          text-align: left;
+          font-size: 0.8em;
+          color: #006699;
+          }
+
+          #orderdetails
+          {
+
+          border-collapse: collapse;
+          margin: 0px;
+          padding: 0px;
+
+          }
+
+          #orderdetails td
+          {
+          border-collapse: collapse;
+          font-size: 0.8em;
+          }
+
+          .sellerblock
+          {
+          vertical-align:top;
+          font-style: italic;
+          font-size: 0.8em;
+          }
+
+          .shiptoblock
+          {
+          margin-left: 20px;
+          margin-top: 20px;
+
+          }
+
+          .billtoblock
+          {
+          margin-top: 20px;
+
+          }
+          .test
+          {
+          color: #006699;
+          font-weight: bold;
+          }
+
+          .boldblock
+          {
+          margin: 5px;
+          font-weight: bold;
+          color: #006699;
+          font-family: Verdana,Arial,Helvetica,sans-serif;
+
+          }
+
+          #poblock
+          {
+          width: 300px;
+          font-weight: bold;
+          font-size: 1.2em;
+          padding: 10px;
+          border: 2px solid black;
+          text-align: center;
+          vertical-align: middle;
+          }
+
+          #ecotable{
+          font-size:0.8em;
+          border-collapse:collapse;
+          }
+
+          #ecotable td{
+          padding:6px;
+          }
+        </style>
+  </head>
+  <body>
+    <table width="100%">
+      <tbody><tr>
+        <td width="220" valign="top"><img alt="Dell" src="./testDevis_files/Dell-logo.jpg"></td>
+        <td width="500" valign="top">
+          <div class="sellerblock"></div>
+        </td>
+        <td width="500" valign="top">
+          <div class="sellerblock"></div>
+        </td>
+        <td align="right" valign="top">
+          <div id="poblock">
+        Devis
+      </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <table width="100%">
+            <tbody><tr>
+              <td width="50%" valign="top">
+                <div class="shiptoblock">
+                  <div class="test">
+        Adresse de livraison:
+      </div><br><br></div>
+              </td>
+              <td width="50%" valign="top">
+                <div class="billtoblock">
+                  <div class="test">
+        Adresse de facturation:
+      </div><br><br><strong></strong></div>
+              </td>
+            </tr>
+            <tr>
+              <td width="50%" valign="top">
+                <div class="shiptoblock"></div>
+              </td>
+              <td width="50%" valign="top">
+                <div class="billtoblock"></div>
+              </td>
+            </tr>
+          </tbody></table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" style="padding-top:20px;">
+          <table width="100%" style="border:1px solid black;">
+            <tbody><tr>
+              <td class="boldblock" width="33%">
+        Code client:
+       </td>
+              <td class="boldblock" width="33%">
+        Date:
+       07-02-2017</td>
+              <td class="boldblock" width="34%">
+        N° de Devis
+       100000270167</td>
+            </tr>
+          </tbody></table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <table width="100%">
+            <tbody><tr>
+              <td style="margin-right:20px" width="50%" valign="top">
+        Entité:
+       <br>
+        Numéro de marché:
+       <br>
+        Références:
+        / <br>
+        Numéro du bon de commande:
+       <br>
+        Fin de validité du devis:
+       08-05-2017</td>
+              <td width="50%" valign="top">
+        Demandeur:
+       TAKLIFI benjamin<br>
+        Tel:
+      0153462517<br>
+        e-mail:
+      benjamin.taklifi@inserm.fr<br></td>
+            </tr>
+          </tbody></table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" style="padding-top:25px;">
+          <table id="orderdetails" width="100%">
+            <tbody><tr>
+              <th width="100">
+        Ref.
+      </th>
+              <th>
+        Description
+      </th>
+              <th width="100">
+        Quantité
+      </th>
+              <th width="100">
+        Prix Unit. HT
+      </th>
+              <th width="100">
+        Total HT
+      </th>
+              <th width="100">
+        Taux TVA
+      </th>
+            </tr>
+            <tr>
+              <td colspan="6"><br></td>
+            </tr>
+            <tr>
+              <td>210-AFLX</td>
+              <td><strong><h3>
+                    <div class="test">Cat 2 - Configuration 4 -  Optiplex 7440 AIO</div>
+                  </h3></strong></td>
+              <td>1</td>
+              <td>563.00</td>
+              <td>563.00</td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>1-2-1-399</td>
+              <td>Passage au Processeur Intel® Core&nbsp;i7-6700 (quatre coeurs HT, 8&nbsp;Mo, 3,40&nbsp;GHz Turbo)</td>
+              <td>1</td>
+              <td>210.00</td>
+              <td>210.00</td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>1-1-3-382</td>
+              <td>Microsoft Windows 10 downgrade vers Windows 7 Pro, 64 bits Français (sans contrat Microsoft VLA)</td>
+              <td>1</td>
+              <td>121.00</td>
+              <td>121.00</td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>1-2-2-106</td>
+              <td>Passage au DD 1To 7200 tr/min 2.5 Pouces</td>
+              <td>1</td>
+              <td>30.00</td>
+              <td>30.00</td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>1-2-3-1</td>
+              <td>OptiPlex&nbsp;7440&nbsp;AIO, XCTO</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>NADDHD</td>
+              <td>Pas de disque dur supplémentaire</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>810898</td>
+              <td>Sans RAID</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>8G1DR4</td>
+              <td>8 Go en 1x8Go DDR 4 en 2133MHz</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>INT</td>
+              <td>Carte graphique intégrée Intel® HD Graphics -Port 1 HDMI 1 Diplay</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>8DROM</td>
+              <td>Lecteur DVD 8x</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>956543</td>
+              <td>Clavier multimédia&nbsp;Dell-KB216, français (AZERTY) noir</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>794300</td>
+              <td>3&nbsp;ans de garantie de base - Intervention le jour ouvré suivant</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>957183</td>
+              <td>Souris optique&nbsp;Dell&nbsp;MS116, noire</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>521880</td>
+              <td>Cordon d'alimentation&nbsp;: européen</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>790677</td>
+              <td>Non sélectionné dans cette configuration</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>NOWRLS</td>
+              <td>Pas de fonctionnalité sans fil</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>NOWRLS</td>
+              <td>Pas de fonctionnalité sans fil</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>NOIRS</td>
+              <td>Pas de technologie Intel&nbsp;Rapid&nbsp;Start ni Smart&nbsp;Connect</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>529459</td>
+              <td>Documentation d'expédition&nbsp;: anglais, français, allemand, italien, néerlandais</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>790677</td>
+              <td>Non sélectionné dans cette configuration</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>NONTCH</td>
+              <td>Écran non tactile&nbsp;WLED Full&nbsp;HD 23&nbsp;pouces pour modèle tout-en-un</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>552690</td>
+              <td>Emballage et étiquettes, modèle OptiPlex&nbsp;7440&nbsp;All-in-One</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>552851</td>
+              <td>ENERGY&nbsp;STAR version&nbsp;6.0, 7440 AIO</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>CI3SML</td>
+              <td>Étiquette de processeur Intel Core&nbsp;i3</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>FG0008</td>
+              <td>7440_Configuration personnalisée&nbsp;BTO/BTO</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>NOVPRO</td>
+              <td>Aucune gestion des systèmes hors bande</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>552838</td>
+              <td>Guide d'installation et des fonctionnalités&nbsp;: anglais, français, allemand, italien, néerlandais</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>867578</td>
+              <td>Commande&nbsp;Dell</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>799217</td>
+              <td>Aucun logiciel de productivité</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>537519</td>
+              <td>Applications&nbsp;Dell pour série&nbsp;N</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>CNTUPL</td>
+              <td>Écran non tactile 23,8Pouces FHD pour modèle&nbsp;7440&nbsp;AIO avec webcam, carte graphique intégrée, bloc d'alimentation&nbsp;Platinum</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>794307</td>
+              <td>ProSupport 3 ans, intervention sur site Jet1: support professionnel de niveau 2 comprenant matériel et logiciel, 24H/24, 7j/7 
+IT Advisory: disponibilité d'un Technical Account Manager (TAM) dédié exclusivement à MATINFO 3 pour la gestion des escalades et du reporting</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>OPDVNO</td>
+              <td>Aucun support CD de diagnostic/récupération</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>786806</td>
+              <td>Support OS-Windows non inclus pour la série&nbsp;N</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>808917</td>
+              <td>Logiciel PowerDVD non inclus pour les modèles sans système d'exploitation</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>790677</td>
+              <td>Non sélectionné dans cette configuration</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>790677</td>
+              <td>Non sélectionné dans cette configuration</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>HAS</td>
+              <td>Socle Ajustable intégré de base</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>553965</td>
+              <td>Étiquette de conformité, modèle&nbsp;7440&nbsp;AIO non tactile</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>TPM</td>
+              <td>TPM</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>834999</td>
+              <td>Ordinateur de bureau - Expédition standard</td>
+              <td>1</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td colspan="6"><br></td>
+            </tr>
+            <tr>
+              <td colspan="4"></td>
+              <td><strong>
+        Sous-total H.T.
+      </strong></td>
+              <td><strong>924.00</strong></td>
+            </tr>
+            <tr>
+              <td colspan="6"><br></td>
+            </tr>
+            <tr>
+              <td>DWC</td>
+              <td><strong><h3>
+                    <div class="test">Barre son externe pour écran Dell Ultrasharp AX510</div>
+                  </h3></strong></td>
+              <td>2</td>
+              <td>15.00</td>
+              <td>30.00</td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>1-0-0-28</td>
+              <td>Barre son externe AX510 - pour écrans Dell U2412M / U2913WM / U3014</td>
+              <td>2</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td colspan="6"><br></td>
+            </tr>
+            <tr>
+              <td colspan="4"></td>
+              <td><strong>
+        Sous-total H.T.
+      </strong></td>
+              <td><strong>30.00</strong></td>
+            </tr>
+            <tr>
+              <td colspan="6"><br></td>
+            </tr>
+            <tr>
+              <td>210-AFOQ</td>
+              <td><strong><h3>
+                    <div class="test">Moniteur 19,5"Ecran panoramique Professionnel - P2016 Noir - 1680 X 1050 - connexion VGA/ Display P</div>
+                  </h3></strong></td>
+              <td>2</td>
+              <td>131.00</td>
+              <td>262.00</td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>1-0-0-359</td>
+              <td>Moniteur 19,5PoucesEcran panoramique Professionnel - P2016 Noir - Dalle IPS 1680 X 1050 - Hauteur ajustable  Connecteurs VGA/DP - Cable fourni : DP</td>
+              <td>2</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>948098</td>
+              <td>Service d'échange d'écran Premium de 3&nbsp;ans</td>
+              <td>2</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td>372390</td>
+              <td>Commande de logiciels et périphériques&nbsp;: EMEA</td>
+              <td>2</td>
+              <td></td>
+              <td></td>
+              <td>20.00</td>
+            </tr>
+            <tr>
+              <td colspan="6"><br></td>
+            </tr>
+            <tr>
+              <td colspan="4"></td>
+              <td><strong>
+        Sous-total H.T.
+      </strong></td>
+              <td><strong>262.00</strong></td>
+            </tr>
+            <tr>
+              <td colspan="6"><br></td>
+            </tr>
+          </tbody></table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <table width="100%">
+            <tbody><tr>
+              <td></td>
+              <td>
+                <div align="right" width="300" style="margin-right:50px;margin-top:20px;">
+                  <table>
+                    <tbody><tr>
+                      <td>
+        Sous-total H.T.
+      </td>
+                      <td align="right"><strong>1216.00EUR</strong></td>
+                    </tr>
+                    <tr>
+                      <td>
+        TVA
+      </td>
+                      <td align="right"><strong>243.20EUR</strong></td>
+                    </tr>
+                    <tr>
+                      <td>
+        Total T.T.C.
+      </td>
+                      <td align="right"><strong>1459.20EUR</strong></td>
+                    </tr>
+                  </tbody></table>
+                </div>
+              </td>
+            </tr>
+          </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    <div style="text-align:center"><em>
+        Offre soumise aux Conditions Générales de Vente et de Services Dell
+      </em></div>
+    <div style="margin-top:72px;">
+      <p style="font-style:italic;font-size:0.8em">
+            En application des décrets n°2005-829 du 20 juillet 2005 relatif à la composition des équipements électriques et électroniques ménagers et à l'élimination des déchets issus de ces équipements (Eco contribution)  et n° 2014-928  du 19 août 2014 précisant  le champ d’application de la réglementation DEEE, votre facture Dell tiendra compte du montant de cette Eco contribution, ne figurant pas sur les devis réalisés sur le site Matinfo.<br>
+            Cette Eco contribution apparaîtra en sus du montant hors taxes et sera soumise à la TVA. Pour information, veuillez trouver ci-dessous le barème de calcul de cette Eco contribution établi par l’organisme Ecologic, agréé par l’Etat à cette fin
+
+          </p>
+      <table border="1" id="ecotable" style="width:50%">
+        <tbody><tr>
+          <td colspan="5" style="font-weight:bold">
+                Tarif HT 1<sup>er</sup> Juillet 2016 de la contribution environnementale par produit suivant barème Ecologic
+              </td>
+        </tr>
+        <tr>
+          <td colspan="5">
+                Conformément à l'article 17 du décret n°2005-829 du 20 juillet 2005 relatif à la composition des équipements électriques et électroniques ménagers et à l'élimination des déchets issus de ces équipements.
+              </td>
+        </tr>
+        <tr style="border-top:solid 2px #000">
+          <td>
+                Matériels électriques et électroniques
+              </td>
+          <td>
+                Code bareme
+              </td>
+          <td>
+                ...&gt;Kg
+              </td>
+          <td>
+                ≤ Kg
+              </td>
+          <td>
+                € HT*
+              </td>
+        </tr>
+        <tr>
+          <td rowspan="4" valign="middle">
+                Ordinateur portable, tablette
+              </td>
+          <td>
+                PTB01
+              </td>
+          <td style="text-align:right">
+                0.000
+              </td>
+          <td style="text-align:right">
+                0.500
+              </td>
+          <td style="text-align:right">
+                0.05
+              </td>
+        </tr>
+        <tr>
+          <td>
+                PTB02
+              </td>
+          <td style="text-align:right">
+                0.500
+              </td>
+          <td style="text-align:right">
+                1.000
+              </td>
+          <td style="text-align:right">
+                0.08
+              </td>
+        </tr>
+        <tr>
+          <td>
+                PTB03
+              </td>
+          <td style="text-align:right">
+                1.000
+              </td>
+          <td style="text-align:right">
+                2.000
+              </td>
+          <td style="text-align:right">
+                0.15
+              </td>
+        </tr>
+        <tr>
+          <td>
+                PTB04
+              </td>
+          <td style="text-align:right">
+                2.000
+              </td>
+          <td style="text-align:right">
+                -
+              </td>
+          <td style="text-align:right">
+                0.29
+              </td>
+        </tr>
+        <tr>
+          <td rowspan="5" valign="middle">
+               écran
+              </td>
+          <td>
+                MNT01
+              </td>
+          <td style="text-align:right">
+                0.000
+              </td>
+          <td style="text-align:right">
+                3.000
+              </td>
+          <td style="text-align:right">
+                1.00
+              </td>
+        </tr>
+        <tr>
+          <td>
+                MNT02
+              </td>
+          <td style="text-align:right">
+                3.000
+              </td>
+          <td style="text-align:right">
+                6.000
+              </td>
+          <td style="text-align:right">
+                1.00
+              </td>
+        </tr>
+        <tr>
+          <td>
+                MNT03
+              </td>
+          <td style="text-align:right">
+                6.000
+              </td>
+          <td style="text-align:right">
+                10.000
+              </td>
+          <td style="text-align:right">
+                1.83
+              </td>
+        </tr>
+        <tr>
+          <td>
+                MNT04
+              </td>
+          <td style="text-align:right">
+                10.000
+              </td>
+          <td style="text-align:right">
+                15.000
+              </td>
+          <td style="text-align:right">
+                1.83
+              </td>
+        </tr>
+        <tr>
+          <td>
+                MNT05
+              </td>
+          <td style="text-align:right">
+                15.000
+              </td>
+          <td style="text-align:right">
+                -
+              </td>
+          <td style="text-align:right">
+                1.83
+              </td>
+        </tr>
+        <tr>
+          <td rowspan="6" valign="middle">
+                Télévision
+              </td>
+          <td>
+                TVN01
+              </td>
+          <td style="text-align:right">
+                0.000
+              </td>
+          <td style="text-align:right">
+                3.000
+              </td>
+          <td style="text-align:right">
+                1.00
+              </td>
+        </tr>
+        <tr>
+          <td>
+                TVN02
+              </td>
+          <td style="text-align:right">
+                3.000
+              </td>
+          <td style="text-align:right">
+                6.000
+              </td>
+          <td style="text-align:right">
+                1.67
+              </td>
+        </tr>
+        <tr>
+          <td>
+                TVN03
+              </td>
+          <td style="text-align:right">
+                6.000
+              </td>
+          <td style="text-align:right">
+                10.000
+              </td>
+          <td style="text-align:right">
+                2.67
+              </td>
+        </tr>
+        <tr>
+          <td>
+                TVN04
+              </td>
+          <td style="text-align:right">
+                10.000
+              </td>
+          <td style="text-align:right">
+                14.000
+              </td>
+          <td style="text-align:right">
+                3.83
+              </td>
+        </tr>
+        <tr>
+          <td>
+                TVN05
+              </td>
+          <td style="text-align:right">
+                14.000
+              </td>
+          <td style="text-align:right">
+                18.000
+              </td>
+          <td style="text-align:right">
+                5.33
+              </td>
+        </tr>
+        <tr>
+          <td>
+                TVN06
+              </td>
+          <td style="text-align:right">
+                18.000
+              </td>
+          <td style="text-align:right">
+                -
+              </td>
+          <td style="text-align:right">
+                8.75
+              </td>
+        </tr>
+        <tr>
+          <td rowspan="10" valign="middle">
+                carte adaptateur, ordinateur tout-en-un, unité de sauvegarde, lecteur de carte, téléphone portable, ordinateur de bureau, station d’accueil, disque dur externe, Concentrateur réseau, casque audio, souris, adaptateur réseau, adaptateur secteur, projecteur, télécommande, scanner, haut-parleurs,  Caméra, console de jeux vidéos etc.
+              </td>
+          <td>
+                TIC01
+              </td>
+          <td style="text-align:right">
+                0.000
+              </td>
+          <td style="text-align:right">
+                0.150
+              </td>
+          <td style="text-align:right">
+                0.015
+              </td>
+        </tr>
+        <tr>
+          <td>
+                TIC02
+              </td>
+          <td style="text-align:right">
+                0.150
+              </td>
+          <td style="text-align:right">
+                0.500
+              </td>
+          <td style="text-align:right">
+                0.05
+              </td>
+        </tr>
+        <tr>
+          <td>
+                TIC03
+              </td>
+          <td style="text-align:right">
+                0.500
+              </td>
+          <td style="text-align:right">
+                1.000
+              </td>
+          <td style="text-align:right">
+                0.09
+              </td>
+        </tr>
+        <tr>
+          <td>
+                TIC04
+              </td>
+          <td style="text-align:right">
+                1.000
+              </td>
+          <td style="text-align:right">
+                2.000
+              </td>
+          <td style="text-align:right">
+                0.15
+              </td>
+        </tr>
+        <tr>
+          <td>
+                TIC05
+              </td>
+          <td style="text-align:right">
+                2.000
+              </td>
+          <td style="text-align:right">
+                4.000
+              </td>
+          <td style="text-align:right">
+                0.29
+              </td>
+        </tr>
+        <tr>
+          <td>
+                TIC06
+              </td>
+          <td style="text-align:right">
+                4.000
+              </td>
+          <td style="text-align:right">
+                8.000
+              </td>
+          <td style="text-align:right">
+                0.5
+              </td>
+        </tr>
+        <tr>
+          <td>
+                TIC07
+              </td>
+          <td style="text-align:right">
+                8.000
+              </td>
+          <td style="text-align:right">
+                15.000
+              </td>
+          <td style="text-align:right">
+                1.00
+              </td>
+        </tr>
+        <tr>
+          <td>
+                TIC08
+              </td>
+          <td style="text-align:right">
+                15.000
+              </td>
+          <td style="text-align:right">
+                30.000
+              </td>
+          <td style="text-align:right">
+                2.00
+              </td>
+        </tr>
+        <tr>
+          <td>
+                TIC09
+              </td>
+          <td style="text-align:right">
+                30.000
+              </td>
+          <td style="text-align:right">
+                50.000
+              </td>
+          <td style="text-align:right">
+                5.00
+              </td>
+        </tr>
+        <tr>
+          <td>
+                TIC10
+              </td>
+          <td style="text-align:right">
+                50.000
+              </td>
+          <td style="text-align:right">
+                -
+              </td>
+          <td style="text-align:right">
+                5.00
+              </td>
+        </tr>
+        <tr>
+          <td rowspan="10" valign="middle">
+                imprimantes
+                </td>
+          <td>
+                TIE01
+              </td>
+          <td style="text-align:right">
+                0.000
+              </td>
+          <td style="text-align:right">
+                0.150
+              </td>
+          <td style="text-align:right">
+                0.015
+              </td>
+        </tr>
+        <tr>
+          <td>
+                TIE02
+              </td>
+          <td style="text-align:right">
+                0.150
+              </td>
+          <td style="text-align:right">
+                0.500
+              </td>
+          <td style="text-align:right">
+                0.04
+              </td>
+        </tr>
+        <tr>
+          <td>
+                TIE03
+              </td>
+          <td style="text-align:right">
+                0.500
+              </td>
+          <td style="text-align:right">
+                1.000
+              </td>
+          <td style="text-align:right">
+                0.07
+              </td>
+        </tr>
+        <tr>
+          <td>
+                TIE04
+              </td>
+          <td style="text-align:right">
+                1.000
+              </td>
+          <td style="text-align:right">
+                2.000
+              </td>
+          <td style="text-align:right">
+                0.12
+              </td>
+        </tr>
+        <tr>
+          <td>
+                TIE05
+              </td>
+          <td style="text-align:right">
+                2.000
+              </td>
+          <td style="text-align:right">
+                4.000
+              </td>
+          <td style="text-align:right">
+                0.23
+              </td>
+        </tr>
+        <tr>
+          <td>
+                TIE06
+              </td>
+          <td style="text-align:right">
+                4.000
+              </td>
+          <td style="text-align:right">
+                8.000
+              </td>
+          <td style="text-align:right">
+                0.4
+              </td>
+        </tr>
+        <tr>
+          <td>
+                TIE07
+              </td>
+          <td style="text-align:right">
+                8.000
+              </td>
+          <td style="text-align:right">
+                15.000
+              </td>
+          <td style="text-align:right">
+                0.80
+              </td>
+        </tr>
+        <tr>
+          <td>
+                TIE08
+              </td>
+          <td style="text-align:right">
+                15.000
+              </td>
+          <td style="text-align:right">
+                30.000
+              </td>
+          <td style="text-align:right">
+               1.60
+              </td>
+        </tr>
+        <tr>
+          <td>
+                TIE09
+              </td>
+          <td style="text-align:right">
+                30.000
+              </td>
+          <td style="text-align:right">
+                50.000
+              </td>
+          <td style="text-align:right">
+                4.00
+              </td>
+        </tr>
+        <tr>
+          <td>
+                TIE10
+              </td>
+          <td style="text-align:right">
+                50.000
+              </td>
+          <td style="text-align:right">
+                -
+              </td>
+          <td style="text-align:right">
+                4.00
+              </td>
+        </tr>
+        <tr style="border-top:solid 2px #000; font-weight:bold">
+          <td colspan="5">
+                *sous réserve de modification du barème de prix par Ecologic
+              </td>
+        </tr>
+      </tbody></table>
+    </div>
+  
+</body></html>

@@ -13,7 +13,7 @@ class ContractsController < InheritedResources::Base
     
     @superadmin = Team.where(name: "system admin")
     @option = current_user.options.first
-    @users = User.all.order(lastname: "asc").map{ |obj| [(obj['firstname']+" "+obj['lastname']), obj['id']] }
+    @users = User.all.uniq!.order(lastname: "asc")
     @categories = Category.all.order(name: "asc").uniq.map{|obj| [obj['name'], obj['id']]}
     
     #"between search": recherche dans un range de dates
@@ -24,7 +24,7 @@ class ContractsController < InheritedResources::Base
       end_time = params[:end_lteq].to_date rescue Date.current
       end_time = end_time.end_of_day # sets to 23:59:59
       
-      @users = User.all.order(lastname: "asc").map{ |obj| [(obj['firstname']+" "+obj['lastname']), obj['id']] }
+      @users = User.all.order(lastname: "asc").map{ |obj| [(obj['full_name']), obj['id']] }
       
       current_user_teams_ids = current_user.team_ids
       current_user_items_ids = current_user.item_ids
@@ -91,7 +91,7 @@ class ContractsController < InheritedResources::Base
   
   def add_to_queue
     @contract_items = @contract.items
-    items = Item.by_teams(@contract.team_ids).where(category_id: @contract.categories.ids)
+    items = Item.by_teams(current_user.team_ids).where(category_id: @contract.categories.ids)
     coll1 = items.without_contract
     coll2 = items.by_contract(@contract.id)
     coll3 = items.by_obsolete_contract

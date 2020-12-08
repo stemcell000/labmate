@@ -1,0 +1,127 @@
+Dell 	
+Dell
+1 Rond Point Benjamin Franklin
+34000 MONTPELLIER
+	
+	
+Devis
+Adresse de livraison:
+
+
+Institut de la Vision
+UPMC U968
+17 rue Moreau
+75012 Paris
+	
+Adresse de facturation:
+
+
+*UPMC Dir. Finances
+COMPTABILITES FRS
+4 PLACE JUSSIEU
+75013 PARIS
+*
+Contact: Gael Orieux
+Tel: 0153462648
+e-mail: gael.orieux@inserm.fr
+	
+Contact: Nathalie Orieux
+e-mail: nathalie.boyer@inserm.fr
+
+Code client: FR2000985 	Date: 28-03-2014 	N° de Devis 100000107677
+
+Entité: Univ Paris VI Pierre et Marie Curie-Univ Paris VI Pierre et
+Marie Curie
+Numéro de marché: 2014MBC0000003
+Références: /
+Numéro du bon de commande:
+Fin de validité du devis: 27-04-2014 	Demandeur: Orieux Gael
+e-mail: gael.orieux@inserm.fr
+
+Ref. 	Description 	Quantité 	Prix Unit. HT 	Total HT 	Taux TVA
+
+210-AAXE 	*
+
+
+      Cat 3- Configuration 2- Précision T3610
+
+* 	1 	515.00 	515.00 	20.00
+1-1-1-186 	Moniteur 27" - Ecran panoramique Professionel P2714H-
+1920x1080 - connexion VGA/ DVI-D/ Display Port- réglable en hauteur -
+Dalle IPS 	1 	230.00 	230.00 	20.00
+693-11409 	Passage à 2 disques durs 3"5 SATA: 1To SATA(1-3-3-167) 	1
+105.00 	105.00 	20.00
+693-11409 	Microsoft Windows 7 Pro, 64 bits Français, licence Win 8.1
+Pro, DVD Win 8.1 Pro inclus(1-3-3-219) 	1 	91.00 	91.00 	20.00
+210-AAXE 	Dell Precision T3610 CTO Base 	1 			20.00
+329-BBNO 	Dell Precision T3610 685W Chassis 	1 			20.00
+412-AABW 	Intel Xeon Processor E5-1603 	1 			20.00
+449-BBDC 	1 à 2 disques durs SATA 3,5" C1 	1 			20.00
+780-BBCJ 	Pas de RAID 	1 			20.00
+370-AATN 	8GB (2x4GB) 1866MHz DDR3 ECC RDIMM 	1 			20.00
+490-BBMK 	512 Mo NVIDIA Quadro NVS 310 (2 DP) (adaptateur
+2 DP-DVI) 	1 			20.00
+429-AAHG 	Lecteur DVD-ROM ultraplat 8x 	1 			20.00
+385-BBBL 	Sans lecteur de carte mémoire 	1 			20.00
+520-AADM 	Haut-parleur intégré 	1 			20.00
+480-AAJX 	Écran non inclus 	1 			20.00
+580-AALH 	Clavier USB Dell QuietKey KB212-B, noir : français
+(AZERTY) 	1 			20.00
+709-12320 	3 ans de garantie de base - Intervention le jour ouvré
+suivant 	1 			20.00
+570-AAAJ 	Souris optique USB Dell (filaire) à molette (3 boutons),
+noire 	1 			20.00
+710-45318 	3 ans de service ProSupport et d'intervention sur site le
+jour ouvré suivant 	1 			20.00
+450-AAFP 	Cordon d'alimentation
+Europe/Indonésie/Laos/Mongolie/Vietnam 	1 			20.00
+817-10154 	Non sélectionné dans cette configuration 	1 			20.00
+817-10154 	Non sélectionné dans cette configuration 	1 			20.00
+817-10154 	Non sélectionné dans cette configuration 	1 			20.00
+630-AAPK 	Aucun logiciel de productivité 	1 			20.00
+658-BBII 	Applications Dell pour série N 	1 			20.00
+817-BBBC 	Merci d'avoir choisi Dell 	1 			20.00
+817-10154 	Non sélectionné dans cette configuration 	1 			20.00
+461-AAAB 	Commutateur d'intrusion dans le boîtier 	1 			20.00
+411-XXXY 	Le volume de démarrage ou de stockage a une capacité
+inférieure à 2 To 	1 			20.00
+403-BBDS 	Contrôleur SATA Intel AHCI chipset intégré (2 x 6Go/s, 4 x
+3.0Go/s) - SW RAID 0/1/5/10 	1 			20.00
+817-10154 	Non sélectionné dans cette configuration 	1 			20.00
+386-BBBE 	Pas d'utilisateur distant 	1 			20.00
+340-AFWN 	Documentation livrée en anglais, espagnol, italien, français
+et portugais 	1 			20.00
+430-XXYU 	DVD de ressources non inclus 	1 			20.00
+817-10154 	Non sélectionné dans cette configuration 	1 			20.00
+328-BBEW 	Emballage Dell Precision T3610/T5610 	1 			20.00
+387-BBBE 	Sans certification ENERGY STAR 	1 			20.00
+888-10066 	Non requis 	1 			20.00
+817-10154 	Non sélectionné dans cette configuration 	1 			20.00
+888-10066 	Non requis 	1 			20.00
+631-AADH 	Aucune gestion des systèmes hors bande 	1 			20.00
+520-AABF 	Pas de haut-parleur externe 	1 			20.00
+799-AANV 	Commande OptiPlex : France 	1 			20.00
+389-BCTM 	Étiquette de conformité Dell Precision T3610 	1 			20.00
+389-BBRO 	Intel Xeon Label 	1 			20.00
+650-AABC 	Aucun antivirus logiciel 	1 			20.00
+429-AABU 	Logiciel PowerDVD non inclus 	1 			20.00
+817-10154 	Non sélectionné dans cette configuration 	1 			20.00
+620-AACG 	DVD de récupération du système d'exploitation non
+inclus 	1 			20.00
+340-AFEJ 	Guide d'installation et des fonctionnalités : anglais,
+espagnol, italien, français, portugais 	1 			20.00
+817-10154 	Non sélectionné dans cette configuration 	1 			20.00
+328-BBCX 	Documentation d'expédition Dell Precision 	1 			20.00
+821-13454 	Sans DDP|E 	1 			20.00
+817-10154 	Non sélectionné dans cette configuration 	1 			20.00
+817-10154 	Non sélectionné dans cette configuration 	1 			20.00
+641-AAAH 	Sans Windows Live 	1 			20.00
+
+	*Sous-total H.T. * 	*941.00*
+
+	
+Sous-total H.T. 	*941.00EUR*
+TVA 	*188.20EUR*
+Total T.T.C. 	*1129.20EUR*
+
+/Offre soumise aux Conditions Générales de Vente et de Services Dell /

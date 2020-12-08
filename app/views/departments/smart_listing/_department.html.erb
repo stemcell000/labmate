@@ -1,5 +1,5 @@
-<td ><%= object.name%></td>
-<td class="actions pull-right">
+<td class="col-lg-10 col-md-10 col-sm-10"><small><%= object.name.nil? ? "unknown" : object.name %></small></td>
+<td class="col-lg-2 col-md-10 col-sm-10 actions">
 <%if can? :manage, :all %>
 	<%= smart_listing_item_actions [
 	  	{name: :edit,    url: edit_department_path(object), title: "Edit"},

@@ -32,6 +32,25 @@ class Ability
       elsif user.role? :HR_administrator
         #HR_administrator can manage users only
           can :manage, User
+          can :read, :all
+         cannot :read, ActiveAdmin::Page, namespace_name: "admin"
+        #User can only update him/herself
+          can :index, User
+          can :update, User, id: user.id
+        #User can only manage items that belongs to his/her team(s)
+          #can :cru, Item, item: {item_teams: {team_id: user.team_ids}}
+          can :create, Item
+          can :update, Item, id: Item.is_managed_by(user.id).map { |item| item.id }
+        #User can only manage contracts that belongs to his/hers or public tender 
+          can :create, Contract
+          can :update, Contract, user_id: user.id
+          #User can only destroy contracts that belongs to his/hers
+          can :destroy, Contract, user_id: user.id
+          can :add_to_queue, Contract, id: Contract.belongs_to_teams(user.team_ids).map {|contract| contract.id}
+          can :update_queue, Contract, id: Contract.belongs_to_teams(user.team_ids).map {|contract| contract.id}
+        #User can create and update brands and providers
+          can :cru, Brand
+          can :cru, Provider
       ####INVENTORY MANAGER
       elsif user.role? :inventory_manager
           can :read, :all

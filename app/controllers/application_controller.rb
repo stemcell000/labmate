@@ -63,7 +63,6 @@ class ApplicationController < ActionController::Base
          end
        end
       
-  
    rescue_from CanCan::AccessDenied do |exception|
     respond_to do |format|
       format.json { head :forbidden, content_type: 'text/html' }
@@ -75,6 +74,35 @@ class ApplicationController < ActionController::Base
   # path for redirection after user sign_in, depending on user role
   def after_sign_in_path_for(user)
    user.role == "superadmin"? admin_dashboard_path : root_path 
+  end
+
+  def massive_files_attachment(folder_name, object_list, attachmentModel)
+      begin
+      #Starting values
+        origin = File.join(Rails.root, folder_name)
+        Dir.chdir(origin)
+        files_names = Dir.entries(".")
+      #Loop over the items
+        object_list.each do |object|
+          if files_names.include? object.barcode
+            puts("Object has folder.")
+            object_dir = File.join(origin, object.barcode)
+            Dir.chdir(object_dir)
+            Dir.glob("*").each do |file_name|
+              puts("files selection.")
+              src = File.join(object_dir, file_name)
+              object_attachment = attachmentModel.new()
+              puts("attachement creation.")
+              object_attachment.attachment = File.new(src)
+              puts("file saving.")
+              object_attachment.save
+              object.item_attachments << object_attachment
+            end
+          end
+        end
+    end
+      rescue Errno::ENOENT
+      puts "Unkown folder."  
   end
 
 private

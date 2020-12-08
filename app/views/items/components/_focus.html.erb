@@ -8,9 +8,8 @@
 				
 				<div class="col-md-6">
 					<%= f.label 'Contact'%>
-					<%= f.select( :users_id_in, @users, {include_blank: " "}, {:class => "select2-select"} ) %>
+					<%= f.select( :users_id_in, @users.collect {|u| [ u.full_name, u.id ] }, {include_blank: " "}, {:class => "select2-select"} ) %>
 				</div>
-				
 		</div>
 		
 		<h6> <strong><%=t('menu.installation_date')%></strong></h6>

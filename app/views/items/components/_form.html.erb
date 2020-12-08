@@ -30,7 +30,7 @@
 					<%= f.association :location, label: Location.model_name.human(count: 2).capitalize, collection: @locations, input_html: { class:"select2-select"} %>
 				</div>
 				<div class="col-lg-5 col-md-5 col-sm-5">
-					<%= f.association :users, collection: @users, label: User.model_name.human(count: 2).capitalize, input_html: { class:"select2-select" } %>
+					<%= f.association :users, collection: @users, :label_method => :full_name, label: User.model_name.human(count: 2).capitalize, input_html: { class:"select2-select" } %>
 				</div>
 			</div>
 			<div class="row">

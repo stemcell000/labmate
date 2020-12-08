@@ -65,13 +65,17 @@
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12">
 					<strong><%= t('global.files').capitalize%> : </strong><br />
-					<% unless @item.item_attachments.empty? %>
+				<% unless @item.item_attachments.empty? %>
 						<% @item.item_attachments.each do |item_attachment|%>
+						<% unless item_attachment.doc_type.blank? %>
 							<%= link_to item_attachment.doc_type, item_attachment.attachment.to_s, :target => "_blank"%><br />
+						<%else%>
+							<%= link_to File.basename(item_attachment.attachment.to_s) , item_attachment.attachment.to_s, :target => "_blank"%><br />
 						<%end%>
-					<%else%>
-						<em>No file attached</em>
 					<%end%>
+				<%else%>
+						<em>No file attached</em>
+				<%end%>
 				</div>
 			</div>
 	
