@@ -91,7 +91,7 @@ gem 'nprogress-rails'
   #upload files
   #Attention: dans application.js, placer jquery.remotipart juste au dessous de jquery_ujs.
   gem "jquery-fileupload-rails"
-  gem 'carrierwave', '~> 1.0'
+  gem 'carrierwave', '~> 1.3'
   gem 'remotipart'
   gem 'mini_magick'
   gem 'date_validator'
